@@ -1,0 +1,13 @@
+*.swp
+*.mod
+a.out
+*.o
+snes.in
+sne*1.2_LINUX
+qa/snestp*.log*
+qa/snestp*.out*
+qa/[0-9]*
+html
+latex
+*.os
+*.ol
