@@ -1,0 +1,42 @@
+# Normal use parameters
+
+  cells            100
+  groups           1
+  materials        1
+  regions          1
+  sn               8
+  sources          0
+  calctype         1
+
+# Control parameters
+
+  epsinner         1.0E-08
+  epsouter         1.0E-08
+  forceinners      1
+  imaxinner        1
+  imaxouter        1500
+  macroscopic      1
+  printflux        1
+
+# Boundary Conditions
+
+# Mesh regions
+
+  region           1
+       nxr         100
+       dxr         0.02256751
+  endregion
+
+# Materials
+
+  mat              1
+       firstcell   1
+       lastcell    100
+       density     0.0
+       fileid      29423901.dat
+  endmat
+
+# Sources
+
+# End
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep "K[ ]*EFF" qa/snestp*.out | tr -s " " | cut -d" " -f4 > ./reference
