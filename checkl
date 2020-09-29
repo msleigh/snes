@@ -7,3 +7,4 @@ diff <(grep "K[ ]*EFF" qa/snestp*.outl | tr -s " " | cut -d" " -f4) ./referencel
 
 diff qa/snestp011.flxl snestp011.flxrefl
 
+echo "Pass"

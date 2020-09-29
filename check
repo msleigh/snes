@@ -6,3 +6,5 @@ set -o pipefail
 diff <(grep "K[ ]*EFF" qa/snestp*.out | tr -s " " | cut -d" " -f4) ./reference
 
 diff qa/snestp011.flxs snestp011.flxrefs
+
+echo "Pass"
