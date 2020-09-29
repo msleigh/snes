@@ -39,7 +39,6 @@ CONTAINS
   ! Constants
   REAL(KIND=rk) :: dx    ! Cell width
   REAL(KIND=rk) :: xs    ! Total macro X-S
-  REAL(KIND=rk) :: qt    ! Total source
   REAL(KIND=rk) :: u1    ! Mu
   REAL(KIND=rk) :: w1    ! Wgt
   REAL(KIND=rk) :: c1
@@ -52,7 +51,7 @@ CONTAINS
   ! Loop over all sweeps (there are 2 sweeps in a 1D system)
   DO sweepdir = 1_ik, numsweeps
 
-    ! Sweep 1 is right-to-1eft, sweep 2 is left-to-right
+    ! Sweep 1 is right-to-left, sweep 2 is left-to-right
     IF (sweepdir == 1_ik) THEN
       begincell = numcells
       endcell = 1_ik
@@ -71,7 +70,6 @@ CONTAINS
       ! Determine constants
       dx = width(cell)
       xs = sigma_t(cell,group)
-      qt = source_t(cell,1_ik)
 
       ! Loop over all positive direction cosines in quadrature set
       DO dir = 1_ik, numdirs
@@ -83,14 +81,14 @@ CONTAINS
         denom = 1.0_rk + c1*xs
 
         ! Calculate angular fluxes
-        angflux = (angfluxin(dir) + c1*qt)/denom
+        angflux = (angfluxin(dir) + c1*source_t(cell,1_ik))/denom
         angfluxout = 2.0_rk*angflux - angfluxin(dir)
 
         ! Fix up negative fluxes
         IF (nffu .AND. (angfluxout < 0.0_rk)) THEN
           nffu_call = nffu_call + 1_ik
           angfluxout = 0.0_rk
-          angflux = dx*qt + 2_ik*u1*angfluxin(dir)
+          angflux = dx*(source_t(cell,1_ik)) + 2_ik*u1*angfluxin(dir)
           angflux = angflux/(2_ik*u1 + xs*dx)
         ENDIF
 

@@ -17,12 +17,12 @@ CONTAINS
 
   USE getkinds_mod
   USE setdata_mod
- 
+
   IMPLICIT NONE
- 
+
   ! Arguments
   INTEGER(KIND=ik), INTENT(IN) :: group !< Energy group being solved for
- 
+
   ! Counters
   INTEGER(KIND=ik) :: cell
   INTEGER(KIND=ik) :: dir
@@ -30,12 +30,12 @@ CONTAINS
   INTEGER(KIND=ik) :: begincell
   INTEGER(KIND=ik) :: endcell
   INTEGER(KIND=ik) :: stepcell
- 
+
   ! Fluxes
   REAL(KIND=rk)                    :: angflux
   REAL(KIND=rk)                    :: angfluxout
   REAL(KIND=rk),DIMENSION(numdirs) :: angfluxin
- 
+
   ! Constants
   REAL(KIND=rk) :: dx ! Cell width
   REAL(KIND=rk) :: xs ! Total macro X-S
@@ -49,7 +49,9 @@ CONTAINS
   REAL(KIND=rk) :: qi
   REAL(KIND=rk) :: qo
   
+  !----------------------------------------------------------------------------
   ! 1. Do sweeps
+  !----------------------------------------------------------------------------
 
   ! Loop over all sweeps (there are 2 sweeps in a 1D system)
   DO sweepdir = 1_ik, numsweeps
