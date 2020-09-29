@@ -8,12 +8,10 @@ sn               8
 sources          0
 calctype         1
 
-
 # Control parameters
 
 macroscopic      1
 printflux        2
-
 
 # Boundary Conditions
 
@@ -26,7 +24,6 @@ endregion
 
 # Materials
 
-
 mat              1
      firstcell   1
      lastcell    1000
@@ -34,9 +31,7 @@ mat              1
      fileid      1u-d2o01
 endmat
 
-
 # Sources
-
 
 # End
 

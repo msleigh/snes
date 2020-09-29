@@ -1,78 +1,72 @@
 # Normal use parameters
 
-  cells            758
-  groups           1
-  materials        4
-  regions          4
-  sn               16
-  sources          0
-  calctype         1
-
+cells            758
+groups           1
+materials        4
+regions          4
+sn               16
+sources          0
+calctype         1
 
 # Control parameters
 
-  macroscopic      1
+macroscopic      1
 
 # Boundary Conditions
 
-  lhbc             1
-
+lhbc             1
 
 # Mesh regions
 
-  region           1
-       nxr         31
-       dxr         0.010236692
-  endregion
+region           1
+     nxr         31
+     dxr         0.010236692
+endregion
 
-  region           2
-       nxr         500
-       dxr         0.010239440
-  endregion
+region           2
+     nxr         500
+     dxr         0.010239440
+endregion
 
-  region           3
-       nxr         31
-       dxr         0.010236692
-  endregion
+region           3
+     nxr         31
+     dxr         0.010236692
+endregion
 
-  region           4
-       nxr         196
-       dxr         0.010218219
-  endregion
+region           4
+     nxr         196
+     dxr         0.010218219
+endregion
 
 # Materials
 
-  mat              1
-       firstcell   1
-       lastcell    31
-    density     0.0
-    fileid      126nat01
-  endmat
+mat              1
+     firstcell   1
+     lastcell    31
+     density     0.0
+     fileid      126nat01
+endmat
 
+mat           2
+  firstcell   32
+  lastcell    531
+  density     0.0
+  fileid      29223501
+endmat
 
-  mat           2
-    firstcell   32
-    lastcell    531
-    density     0.0
-    fileid      29223501
-  endmat
+mat           3
+  firstcell   532
+  lastcell    562
+  density     0.0
+  fileid      126nat01
+endmat
 
-
-  mat           3
-    firstcell   532
-    lastcell    562
-    density     0.0
-    fileid      126nat01
-  endmat
-
-
-  mat           3
-    firstcell   563
-    lastcell    758
-    density     0.0
-   fileid       111nat01
- endmat
-
+mat           4
+  firstcell   563
+  lastcell    758
+  density     0.0
+  fileid      111nat01
+endmat
 
 # Sources
 
