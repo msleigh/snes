@@ -35,7 +35,7 @@ CONTAINS
   ! 1. Initialise variables
   !----------------------------------------------------------------------------
 
-  errstat = 0
+  errstat = 0_ik
 
   !----------------------------------------------------------------------------
   ! 2. Deallocate storage
@@ -73,7 +73,7 @@ CONTAINS
   IF (ALLOCATED(mu)) DEALLOCATE(mu,STAT=allocation_status)
   IF (ALLOCATED(wgt)) DEALLOCATE(wgt,STAT=allocation_status)
 
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error', errstat, 'deallocating arrays'
     RETURN
   ENDIF

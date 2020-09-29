@@ -80,7 +80,7 @@ CONTAINS
     IF (outeriter > imaxouter) THEN
       outer_exit_stat = 1_ik
       EXIT outer_loop
-    END IF
+    ENDIF
 
     ! Store scalar flux from previous outer iteration
     scalflux_outer(:,:,:) = scalflux(:,:,:)
@@ -99,7 +99,7 @@ CONTAINS
         EXIT outer_loop
       ELSE
         source_f(:,:,:) = source_f(:,:,:)/keff
-      END IF
+      ENDIF
 
     ENDIF
 
@@ -178,7 +178,7 @@ CONTAINS
 
         IF (converged_inner) THEN
           EXIT inner_loop
-        END IF
+        ENDIF
 
       !------------------------------------------------------------------------
       ! 5. End scattering source (inner) iterations
@@ -223,7 +223,7 @@ CONTAINS
           EXIT outer_loop
         ELSE
           WRITE(*,'(A)') 'Inners not converged - forcing another outer'
-        END IF
+        ENDIF
       ENDIF
     ELSE
       EXIT outer_loop

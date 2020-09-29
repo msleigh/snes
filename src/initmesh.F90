@@ -107,7 +107,7 @@ CONTAINS
             WRITE(*,*) unitname, ': ERROR: Invalid region number given ', reg
             errstat = -1_ik
             RETURN
-          END IF
+          ENDIF
           DO
             CALL readline( &
               & linetype, &
@@ -143,7 +143,7 @@ CONTAINS
             cell = cell + 1_ik
             width(cell) = widthcellsinreg(reg)
           ENDDO
-        END IF
+        ENDIF
     END SELECT
   ENDDO
 

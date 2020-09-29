@@ -460,12 +460,12 @@ CONTAINS
     WRITE(*,'(A33,A22)')  ' Type of cross-section:           ', 'macroscopic'
   ELSE
     WRITE(*,'(A33,A22)')  ' Type of cross-section:           ', 'microscopic'
-  END IF
+  ENDIF
   IF (nffu) THEN
     WRITE(*,'(A33,A22)')  ' Negative flux fix-up:            ', 'on'
   ELSE
     WRITE(*,'(A33,A22)')  ' Negative flux fix-up:            ', 'off'
-  END IF
+  ENDIF
   IF (printflux == 0_ik) THEN
     WRITE(*,'(A33,A22)')  ' Type of flux print:              ', 'none'
   ELSEIF (printflux == 1_ik) THEN

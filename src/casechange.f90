@@ -24,7 +24,7 @@ CONTAINS
   CHARACTER (LEN=LEN(string)) :: tolower_result
   INTEGER(KIND=ik) :: i, ii
 
-  DO i = 1, LEN(string)
+  DO i = 1_ik, LEN(string)
     ii = IACHAR(string(i:i))
     SELECT CASE (ii)
       CASE (65:90)            ! ii represents an upper CASE letter in ASCII
@@ -55,7 +55,7 @@ CONTAINS
   CHARACTER (LEN=LEN(string)) :: toupper_result
   INTEGER(KIND=ik) :: i,ii
 
-  DO i = 1, LEN(string)
+  DO i = 1_ik, LEN(string)
     ii = IACHAR(string(i:i))
     SELECT CASE (ii)
       CASE (97:122)        ! ii represents a lower case letter in ASCII

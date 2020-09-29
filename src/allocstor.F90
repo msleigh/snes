@@ -118,7 +118,7 @@ CONTAINS
   mu(:)  = 0.0_rk
   wgt(:) = 0.0_rk
 
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error', errstat, 'allocating arrays'
     RETURN
   ENDIF

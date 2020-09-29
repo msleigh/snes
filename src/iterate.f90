@@ -212,7 +212,7 @@ CONTAINS
           IF (error > epsouter) THEN
             converged_outer = .FALSE.
             EXIT conv_loop_outer
-          END IF
+          ENDIF
         ENDDO
       ENDDO conv_loop_outer
 
@@ -229,7 +229,7 @@ CONTAINS
       ENDIF
     ELSE
       EXIT outer_loop
-    END IF
+    ENDIF
 
   !--------------------------------------------------------------------------
   ! 8. End fission source (outer) iterations
