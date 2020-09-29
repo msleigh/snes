@@ -1,4 +1,7 @@
 #!/bin/bash
 
+set -eu
+set -o pipefail
+
 diff <(grep "K[ ]*EFF" qa/snestp*.out | tr -s " " | cut -d" " -f4) \
      <(grep "K[ ]*EFF" qa/snestp*.outl | tr -s " " | cut -d" " -f4)

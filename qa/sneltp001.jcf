@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+set -o pipefail
 #set -x
 
 LSB_JOBID=$$

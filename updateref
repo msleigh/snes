@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -eu
+set -o pipefail
+
 grep "K[ ]*EFF" qa/snestp*.out | tr -s " " | cut -d" " -f4 > ./reference
 
 cp qa/snestp011.flxs ./snestp011.flxrefs
