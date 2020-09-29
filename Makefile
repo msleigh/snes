@@ -23,19 +23,15 @@ ifeq ($(origin TEST_PROBLEMS), undefined)
 endif
 TEST_OUTPUT = $(TEST_PROBLEMS:.in=.out)
 TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
-TEST_LOGS = $(TEST_PROBLEMS:.in=.log)
 
 .SUFFIXES: .f90
-.PHONY: tests testl test clean cleaner veryclean cleantest cleanertest verycleantest
+.PHONY: tests testl clean cleaner veryclean cleantest cleanertest verycleantest
 
-%.ol: %.F90
+%.o: %.F90
 	$(CMP) $(FFLAGS) -c -D$(MACRO) -o $@ $<
 
-%.os: %.F90
-	$(CMP) $(FFLAGS) -c -D$(MACRO) -o $@ $<
-
-.f90.o:
-	$(CMP) $(FFLAGS) -c $(SOURCE)/$*.f90
+%.o: %.f90
+	$(CMP) $(FFLAGS) -c -o $@ $<
 
 %.out: %.in snes$(VERSION)_LINUX qa/snestp001.jcf nucdata/*
 	./qa/snestp001.jcf $< 2>&1 > $*.log
@@ -57,10 +53,8 @@ tests: $(TEST_OUTPUT) reference
 testl: $(TEST_OUTPUTL) referencel
 	./checkl
 
-test: tests testl
-
 clean:
-	rm -f *.lst *.o *.os *.ol *.mod loadmap
+	rm -f *.lst *.o *.mod loadmap
 
 cleaner:
 	rm -f snes$(VERSION)_LINUX snel$(VERSION)_LINUX
