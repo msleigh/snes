@@ -88,7 +88,7 @@ CONTAINS
         WRITE(*,*) unitname, ': Error reading nuclear data file: ', &
           & TRIM(nucdatfile)
         WRITE(*,*)
-        errstat = -1
+        errstat = -1_ik
         RETURN
       CASE (3_ik)        ! Line contains valid input
 
@@ -102,7 +102,7 @@ CONTAINS
 
           ! Read total X-Ss
           CASE('-1')
-            DO group = 1, numgroups
+            DO group = 1_ik, numgroups
               mats(mat)%microxstot(group) = toreal(field(group+2))
             ENDDO
 
@@ -116,7 +116,7 @@ CONTAINS
               WRITE(*,*)
               inputerror = .TRUE.
             ENDIF
-            DO group = 1, numgroups
+            DO group = 1_ik, numgroups
               mats(mat)%microxsscat(group,group_primed) = &
                 & toreal(field(group+2))
             ENDDO
@@ -131,7 +131,7 @@ CONTAINS
               WRITE(*,*)
               inputerror = .TRUE.
             ENDIF
-            DO group = 1, numgroups
+            DO group = 1_ik, numgroups
               mats(mat)%microxsfiss(group,group_primed) = &
                 & toreal(field(group+2))
               IF (mats(mat)%microxsfiss(group,group_primed) > 0.0_rk) &
@@ -146,7 +146,7 @@ CONTAINS
   CLOSE( &
     & UNIT=inlun, &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' closing file ', &
       & TRIM(nucdatfile)
     RETURN
@@ -155,7 +155,7 @@ CONTAINS
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)
-    errstat = -1
+    errstat = -1_ik
     RETURN
   ENDIF
 

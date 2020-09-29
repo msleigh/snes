@@ -37,7 +37,6 @@ CONTAINS
 
   ! k_effective
   REAL(KIND=rk) :: keffold
-  REAL(KIND=rk) :: scale
 
   ! Counters
   INTEGER(KIND=ik)                       :: j
@@ -46,7 +45,8 @@ CONTAINS
   INTEGER(KIND=ik)                       :: outeriter
   INTEGER(KIND=ik), DIMENSION(numgroups) :: inneriter
   
-  REAL(KIND=rk), PARAMETER :: eps = 1.e-24
+  REAL(KIND=rk), PARAMETER :: eps = 1.e-24_rk
+
   WRITE(*,'(A)') &
     & '==============================================================================='
   WRITE(*,'(A)') 'ITERATIONS'
@@ -74,6 +74,7 @@ CONTAINS
   outer_exit_stat = -1_ik
   converged_outer = .FALSE.
   outeriter = 0_ik
+
   outer_loop: DO
 
     ! Increment outer iteration counter
@@ -99,8 +100,7 @@ CONTAINS
         outer_exit_stat = 2_ik
         EXIT outer_loop
       ELSE
-        scale = 1.0_rk/keff
-        source_f(:,:,1_ik) = scale*source_f(:,:,1_ik)
+        source_f(:,:,1_ik) = source_f(:,:,1_ik)/keff
       ENDIF
 
     ENDIF
@@ -113,13 +113,13 @@ CONTAINS
 
       ! Set group source equal to imposed source + fission source
 
-      ! Imposed source (source_i) must be 0 for eigenvalue calcs (calctype = 1)
+      ! Imposed source (source_i) must be zero for eigenvalue calcs (calctype = 1)
       ! In the routine init_mesh.f, source_i is set equal to value_src
       ! If calctype is 1, readsrcs.f is not called, therefore value_src is zero
       
       ! Fission source (source_f) must be zero for flux calcs (calctype = 2)
       ! In the routine fisssource.f, source_f is constructed from fluxes & X-Ss
-      ! If calctype is 2, fisssource.f is not called, therefore source_f is 0
+      ! If calctype is 2, fisssource.f is not called, therefore source_f is zero
       
       source_g(:,1_ik) = source_f(:,group,1_ik) + source_i(:,group)
       
@@ -143,7 +143,7 @@ CONTAINS
             EXIT inner_loop
           ELSE
             WRITE(*,*) unitname, &
-              & ': inners not converged - increase parameter IMAXINNERS'
+              & ': Inners not converged - increase parameter IMAXINNERS'
             WRITE(*,*)
             RETURN
           ENDIF
@@ -163,15 +163,15 @@ CONTAINS
 
         ! Do the sweep
         scalflux(:,group,0_ik) = 0.0_rk
-        IF (printflux > 1_ik) scalflux(:,group,1_ik) = 0.0_rk
-        IF (printflux > 1_ik) scalflux(:,group,2_ik) = 0.0_rk
+        IF (printflux > 1_ik) scalflux(:,group,1_ik) = 0.0_rk ! Left
+        IF (printflux > 1_ik) scalflux(:,group,2_ik) = 0.0_rk ! Right
         CALL sweep( &
           & group)
         
         ! Test for inner convergence
         converged_inner = .TRUE.
-        conv_loop_inner: DO j = 1, numcells
-          error = ABS(1.0-scalflux_inner(j,1_ik)/scalflux(j,group,0_ik))
+        conv_loop_inner: DO j = 1_ik, numcells
+          error = ABS(1.0_rk-scalflux_inner(j,1_ik)/scalflux(j,group,0_ik))
           IF (error > epsinner) THEN
             converged_inner = .FALSE.
             EXIT conv_loop_inner
@@ -195,7 +195,7 @@ CONTAINS
     ENDDO group_loop
 
     WRITE(*,'(A16,I3,A1)',ADVANCE='NO') 'OUTER ITERATION ', outeriter, '|'
-    DO group = 1, numgroups-1
+    DO group = 1_ik, numgroups - 1_ik
       WRITE(*,'(I3)',ADVANCE='NO') inneriter(group)
     ENDDO
     WRITE(*,'(I3)',ADVANCE='YES') inneriter(numgroups)
@@ -206,8 +206,8 @@ CONTAINS
 
     IF (calctype == 1_ik) THEN
       converged_outer = .TRUE.
-      conv_loop_outer: DO j = 1, numcells
-        DO group = 1, numgroups
+      conv_loop_outer: DO j = 1_ik, numcells
+        DO group = 1_ik, numgroups
           error = ABS(1.0_rk-scalflux_outer(j,group,1_ik)/scalflux(j,group,0_ik))
           IF (error > epsouter) THEN
             converged_outer = .FALSE.

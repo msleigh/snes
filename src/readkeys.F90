@@ -31,14 +31,14 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READKEYS'
 
   ! Arguments
-  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !< Error status
   CHARACTER(LEN=256), INTENT(IN)  :: filename !< Name of input file
+  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !< Error status
 
   INTEGER(KIND=ik) :: inlun
   INTEGER(KIND=ik) :: linetype
   INTEGER(KIND=ik) :: snorder
 
-  REAL(KIND=rk), PARAMETER :: eps = 1.e-24
+  REAL(KIND=rk), PARAMETER :: eps = 1.e-24_rk
 
   WRITE(*,'(A)') &
     & '================================================================================'
@@ -100,7 +100,7 @@ CONTAINS
     & FORM='FORMATTED', &
     & STATUS='OLD', &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' opening file ', &
       & TRIM(ADJUSTL(filename))
     WRITE(*,*)
@@ -126,7 +126,7 @@ CONTAINS
       CASE (2_ik)          !  Error on read
         WRITE(*,*) unitname, ': Error reading file ', TRIM(ADJUSTL(filename))
         WRITE(*,*)
-        errstat = -1
+        errstat = -1_ik
         RETURN
       CASE (3_ik)          ! Line contains valid input
 
@@ -260,7 +260,7 @@ CONTAINS
   CLOSE( &
     & UNIT=inlun, &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' closing file ', &
       & TRIM(ADJUSTL(filename))
     WRITE(*,*)
@@ -375,18 +375,18 @@ CONTAINS
   ! Boundary conditions
   ! -------------------
 
-  IF (lhbc /= 0 .AND. lhbc /= 1) THEN
+  IF (lhbc /= 0_ik .AND. lhbc /= 1_ik) THEN
     WRITE(*,*) unitname, ': Invalid left-hand boundary condition supplied: ', &
       lhbc
     WRITE(*,*)
     inputerror = .TRUE.
   ENDIF
-  IF (lh_eflux < 0.0) THEN
+  IF (lh_eflux < 0.0_rk) THEN
     WRITE(*,*) unitname, ': Invalid left-hand edge flux supplied'
     WRITE(*,*)
     inputerror = .TRUE.
   ENDIF
-  IF (rh_eflux < 0.0) THEN
+  IF (rh_eflux < 0.0_rk) THEN
     WRITE(*,*) unitname,': Invalid right-hand edge flux supplied'
     WRITE(*,*)
     inputerror = .TRUE.
@@ -401,8 +401,8 @@ CONTAINS
     inputerror = .TRUE.
   ENDIF
 
-  IF ((calctype == 2_ik) .AND. (ABS(lh_eflux) < eps) &
-    & .AND. (ABS(rh_eflux) < eps) .AND. (numsrcs == 0_ik)) THEN
+  IF ((calctype == 2_ik) .AND. (lh_eflux < eps) &
+    & .AND. (rh_eflux < eps) .AND. (numsrcs == 0_ik)) THEN
     WRITE(*,*) unitname, &
       & ': No sources or incoming fluxes supplied for flux calculation'
     WRITE(*,*)
@@ -504,7 +504,7 @@ CONTAINS
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)
-    errstat = -1
+    errstat = -1_ik
     RETURN
   ENDIF
 

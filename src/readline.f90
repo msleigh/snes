@@ -66,8 +66,6 @@ CONTAINS
 
   allocation_status = 0_ik
   
-  allocation_status = 0_ik
-   
   !----------------------------------------------------------------------------
   ! 1. Test for optional argument 'printout' and set working variable 'pp'
   !----------------------------------------------------------------------------
@@ -83,7 +81,7 @@ CONTAINS
   !----------------------------------------------------------------------------
 
   IF (ALLOCATED(field)) DEALLOCATE(field,STAT=allocation_status)
-  IF (allocation_status > 0) THEN
+  IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Deallocation error - field', allocation_status
     STOP
   ENDIF
@@ -94,10 +92,10 @@ CONTAINS
   !----------------------------------------------------------------------------
 
   READ(instream,FMT='(a)',IOSTAT=in_status) line
-  IF (in_status > 0 ) THEN    ! read error
+  IF (in_status > 0_ik) THEN     ! Read error
     line_type = 2_ik
     RETURN
-  ELSEIF (in_status < 0) THEN ! end of file
+  ELSEIF (in_status < 0_ik) THEN ! End of file
     line_type = 1_ik
     RETURN
   ENDIF
@@ -111,18 +109,18 @@ CONTAINS
   line = ADJUSTL(line)
   
   ! Compress multiple spaces to one
-  blank_loop: DO
+  DO
     i = INDEX(TRIM(line),"  ")
     IF (i == 0) EXIT
     line(i:) = line(i+1:)
-  ENDDO blank_loop
+  ENDDO
   line_length = LEN_TRIM(line)
-  
+
   ! Write out adjusted input
   IF (pp) WRITE(*,*) unitname, ': ', TRIM(line), '$'
   
   ! Check for zero-length lines and comment lines
-  IF (line_length == 0 .OR. line(1:1) == '#' ) THEN
+  IF (line_length == 0_ik .OR. line(1:1) == '#' ) THEN
     line_type = 0_ik
     RETURN
   ELSE
@@ -150,12 +148,12 @@ CONTAINS
 
   ! Allocate output arrays
   ALLOCATE(field(num_fields),STAT=allocation_status)
-  IF (allocation_status > 0) THEN
+  IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Allocation error - field'
     STOP
   ENDIF
   ALLOCATE(fp(num_fields,2),STAT=allocation_status)
-  IF (allocation_status > 0) THEN
+  IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Allocation error - fp'
     STOP
   ENDIF
@@ -164,8 +162,8 @@ CONTAINS
   fp(fld,1) = 1_ik
   DO i = 1_ik, line_length
     IF (line(i:i) == ' ') THEN
-      fp(fld,2) = i - 1
-      fp(fld+1,1) = i + 1
+      fp(fld,2) = i - 1_ik
+      fp(fld+1,1) = i + 1_ik
       fld = fld + 1_ik
     ENDIF
   ENDDO
@@ -175,7 +173,7 @@ CONTAINS
   ENDDO
 
   DEALLOCATE(fp,STAT=allocation_status)
-  IF (allocation_status > 0) THEN
+  IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Deallocation error - fp'
     STOP
   ENDIF

@@ -32,7 +32,7 @@ CONTAINS
   !----------------------------------------------------------------------------
 
   DO node = 1_ik, numnodes
-      DO j = 1, numcells
+      DO j = 1_ik, numcells
 
         source_s(j,node) = &
           & (sigma_s(j,group,group) * &

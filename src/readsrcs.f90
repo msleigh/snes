@@ -21,7 +21,7 @@ CONTAINS
   USE io_utils_mod
   USE readline_mod
   USE setdata_mod, ONLY: value_src, inputerror, numcells, numgroups, numsrcs, &
-          & firstcell_src, lastcell_src
+                       & firstcell_src, lastcell_src
   USE typechange_mod
 
   IMPLICIT NONE
@@ -85,7 +85,7 @@ CONTAINS
         EXIT
       CASE (2_ik)         ! Error on read
         WRITE(*,*) unitname, ': ERROR: Error from readline'
-        errstat = -1
+        errstat = -1_ik
         RETURN
       CASE (3_ik)         ! Line contains valid input
 
@@ -93,9 +93,9 @@ CONTAINS
 
         IF (field(1) == 'src') THEN
           src = toint(field(2))
-          IF (src > numsrcs .OR. src < 1) THEN
+          IF (src > numsrcs .OR. src < 1_ik) THEN
             WRITE(*,*) unitname, ': ERROR: Invalid source number given ', src
-            errstat = -1
+            errstat = -1_ik
             RETURN
           ENDIF
           DO
@@ -110,12 +110,12 @@ CONTAINS
                 WRITE(*,*) unitname, &
                   & ': ERROR: End of file reached before endsrc keyword ', &
                   & '(source ', src, ')'
-                errstat = -1
+                errstat = -1_ik
                 RETURN
               CASE (2_ik)         ! Error on read
                 WRITE(*,*) unitname, &
                   & ': ERROR: Error from readline reading source ', src
-                errstat = -1
+                errstat = -1_ik
                 RETURN
               CASE (3_ik)         ! Line contains valid input
                 field(1) = tolower(field(1))
@@ -126,9 +126,9 @@ CONTAINS
                     lastcell_src(src) = toint(field(2))
                   CASE ('value')
                     value_supplied = .FALSE.
-                    DO group = 1, numgroups
+                    DO group = 1_ik, numgroups
                       value_src(src,group) = toreal(field(group+1))
-                      IF (value_src(src,group) > 0.0) value_supplied = .TRUE.
+                      IF (value_src(src,group) > 0.0_rk) value_supplied = .TRUE.
                     ENDDO
                     IF (.NOT.value_supplied) THEN
                       WRITE(*,*) unitname, &
@@ -152,53 +152,53 @@ CONTAINS
   CLOSE( &
     & UNIT=inlun, &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' closing file snes.in'
     RETURN
   ENDIF
 
-  DO src = 1, numsrcs
-    IF (firstcell_src(src) < 1 .OR. firstcell_src(src) > numcells) THEN
+  DO src = 1_ik, numsrcs
+    IF (firstcell_src(src) < 1_ik .OR. firstcell_src(src) > numcells) THEN
       WRITE(*,*) unitname, ': First cell of source ', src, ' out of range'
-      errstat = -1
+      errstat = -1_ik
       RETURN
     ENDIF
-    IF (lastcell_src(src) < 1 .OR. lastcell_src(src) > numcells) THEN
+    IF (lastcell_src(src) < 1_ik .OR. lastcell_src(src) > numcells) THEN
       WRITE(*,*) unitname, ': Last cell of source ', src, ' out of range'
-      errstat = -1
+      errstat = -1_ik
       RETURN
     ENDIF
     IF (lastcell_src(src) < firstcell_src(src)) THEN
       WRITE(*,*) unitname, ': Last cell of source ', src, ' lower than first'
-      errstat = -1
+      errstat = -1_ik
       RETURN
     ENDIF
     DO group = 1, numgroups
-      IF (value_src(src,group) < 0) THEN
+      IF (value_src(src,group) < 0.0_rk) THEN
         WRITE(*,*) unitname, ': Negative value given for source ', src
-        errstat = -1
+        errstat = -1_ik
         RETURN
       ENDIF
     ENDDO
   ENDDO
   
-  IF (numsrcs == 0) THEN
+  IF (numsrcs == 0_ik) THEN
     WRITE(*,'(A19)') 'NO IMPOSED SOURCES'
   ELSE
     WRITE(*,'(A6)',ADVANCE='NO') 'Source'
-    DO group = 1, numgroups-1
+    DO group = 1_ik, numgroups-1_ik
       WRITE(*,'(A7,I4)',ADVANCE='NO') 'Group', group
     ENDDO
     WRITE(*,'(A7,I4)',ADVANCE='YES') 'Group', numgroups
     WRITE(*,'(A6)',ADVANCE='NO') '      '
-    DO group = 1, numgroups-1
+    DO group = 1_ik, numgroups-1_ik
       WRITE(*,'(A11)',ADVANCE='NO') '          '
     ENDDO
     WRITE(*,'(A11)',ADVANCE='YES') '           '
     WRITE(*,*)
-    DO src = 1, numsrcs
+    DO src = 1_ik, numsrcs
       WRITE(*,'(I6)',ADVANCE='NO') src
-      DO group = 1, numgroups - 1
+      DO group = 1_ik, numgroups-1_ik
         WRITE(*,'(F11.6)',ADVANCE='NO') value_src(src,group)
       ENDDO
       WRITE(*,'(F11.6)',ADVANCE='YES') value_src(src,numgroups)
@@ -209,7 +209,7 @@ CONTAINS
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)
-    errstat = -1
+    errstat = -1_ik
     RETURN
   ENDIF
 

@@ -30,22 +30,22 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READMATS'
 
   ! Arguments
-  CHARACTER(LEN=256),INTENT(IN) :: filename !<
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat  !<
+  CHARACTER(LEN=256), INTENT(IN)  :: filename !<
+  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !<
 
   ! Counters
   INTEGER(KIND=ik) :: group        ! Energy group
   INTEGER(KIND=ik) :: group_primed ! Energy group which is source of scatter
   INTEGER(KIND=ik) :: mat
   
-  REAL(KIND=rk) ::    group_check  ! Energy group from nuclear data file
+  REAL(KIND=rk) ::    group_check  ! Value not index
 
   ! Nuclear data file
   CHARACTER(LEN=8), DIMENSION(nummats) :: nucdat_id
 
   ! Physics
-  REAL(KIND=rk), PARAMETER :: avogadro = 6.022137E+23
-  REAL(KIND=rk)            :: number
+  REAL(KIND=rk), PARAMETER :: avogadro = 6.022137E+23_rk
+  REAL(KIND=rk)            :: numberdensity
 
   ! I/O
   INTEGER(KIND=ik) :: inlun
@@ -53,7 +53,7 @@ CONTAINS
 
   LOGICAL :: fission
 
-  REAL(KIND=rk), PARAMETER :: eps = 1.e-24
+  REAL(KIND=rk), PARAMETER :: eps = 1.e-24_rk
 
   WRITE(*,'(A)') &
     & '==============================================================================='
@@ -82,7 +82,7 @@ CONTAINS
     & FORM='FORMATTED', &
     & STATUS='OLD', &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' opening file ', &
       & TRIM(ADJUSTL(filename))
     WRITE(*,*)
@@ -94,6 +94,7 @@ CONTAINS
   !----------------------------------------------------------------------------
 
   mat = 0_ik
+
   DO
     CALL readline( &
       & linetype, &
@@ -107,7 +108,7 @@ CONTAINS
       CASE (2_ik)           !  Error on read
         WRITE(*,*) unitname, ': Error reading file: ', TRIM(ADJUSTL(filename))
         WRITE(*,*)
-        errstat = -1
+        errstat = -1_ik
         RETURN
       CASE (3_ik)           ! Line contains valid input
 
@@ -137,12 +138,12 @@ CONTAINS
                   & ': End of file reached before endmat keyword (material ', &
                   & mat,')'
                 WRITE(*,*)
-                errstat = -1
+                errstat = -1_ik
                 RETURN
               CASE (2_ik)           ! Error on read
                 WRITE(*,*) unitname, ': Error reading material ', mat
                 WRITE(*,*)
-                errstat = -1
+                errstat = -1_ik
                 RETURN
               CASE (3_ik)           ! Line contains valid input
                 field(1) = tolower(field(1))
@@ -219,7 +220,7 @@ CONTAINS
   CLOSE( &
     & UNIT=inlun, &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' closing file ', &
       & TRIM(ADJUSTL(filename))
     WRITE(*,*)
@@ -231,7 +232,7 @@ CONTAINS
   !----------------------------------------------------------------------------
 
   fission = .FALSE.
-  DO mat = 1, nummats
+  DO mat = 1_ik, nummats
     ! Allocate storage for X-Ss
     ALLOCATE( &
       & mats(mat)%microxstot(numgroups),            &
@@ -272,9 +273,9 @@ CONTAINS
       ENDIF
   
       ! Check data for this material
-      DO group = 1, numgroups
+      DO group = 1_ik, numgroups
         group_check = 0.0_rk
-        DO group_primed = 1, numgroups
+        DO group_primed = 1_ik, numgroups
           group_check = group_check + mats(mat)%microxsscat(group,group_primed)
         ENDDO
         IF (group_check >= mats(mat)%microxstot(group)) THEN
@@ -286,15 +287,15 @@ CONTAINS
 
       ! Calculate number density of nuclei given density & atomic weight
       IF ((macro) .OR. (mats(mat)%atomweight < eps)) THEN
-        number = 1.0_rk
+        numberdensity = 1.0_rk
       ELSE
-        number = (1.0E-24_rk)*mats(mat)%rho*avogadro/mats(mat)%atomweight
+        numberdensity = (1.0E-24_rk)*mats(mat)%rho*avogadro/mats(mat)%atomweight
       ENDIF
-  
+
       ! Convert microscopic cross-sections to macroscopic
-      mats(mat)%macroxstot(:)    = number*mats(mat)%microxstot(:)
-      mats(mat)%macroxsscat(:,:) = number*mats(mat)%microxsscat(:,:)
-      mats(mat)%macroxsfiss(:,:) = number*mats(mat)%microxsfiss(:,:)
+      mats(mat)%macroxstot(:)    = numberdensity*mats(mat)%microxstot(:)
+      mats(mat)%macroxsscat(:,:) = numberdensity*mats(mat)%microxsscat(:,:)
+      mats(mat)%macroxsfiss(:,:) = numberdensity*mats(mat)%microxsfiss(:,:)
   
     ENDIF
   ENDDO
@@ -303,43 +304,43 @@ CONTAINS
   ! 6. Print nuclear data for all materials
   !----------------------------------------------------------------------------
 
-  DO mat = 1, nummats
+  DO mat = 1_ik, nummats
 
     WRITE(*,'(A9,I4)') ' MATERIAL ', mat
     WRITE(*,'(A13)') '               '
     WRITE(*,*)
   
     WRITE(*,'(A20,A2)',ADVANCE='NO') 'Quantity (cm^-1)', '|'
-    DO group_primed = 1, numgroups - 1
+    DO group_primed = 1_ik, numgroups-1_ik
       WRITE(*,'(I10,A2)',ADVANCE='NO') group_primed, '|'
     ENDDO
     WRITE(*,'(I10)',ADVANCE='YES') numgroups
 
     WRITE(*,'(A20,A2)',ADVANCE='NO') '--------------------', '|'
-    DO group_primed = 1, numgroups - 1
+    DO group_primed = 1_ik, numgroups-1_ik
       WRITE(*,'(A10,A2)',ADVANCE='NO') '----------', '|'
     ENDDO
     WRITE(*,'(A10,A2)',ADVANCE='YES') '----------', '|'
   
     WRITE(*,'(A20,A2)',ADVANCE='NO') 'Total XS', '|'
-    DO group_primed = 1, numgroups - 1
+    DO group_primed = 1_ik, numgroups-1_ik
       WRITE(*,'(F10.6,A2)',ADVANCE='NO') mats(mat)%macroxstot(group_primed), &
         & '|'
     ENDDO
     WRITE(*,'(F10.6)',ADVANCE='YES') mats(mat)%macroxstot(numgroups)
 
-    DO group = 1, numgroups
+    DO group = 1_ik, numgroups
       WRITE(*,'(A16,I4,A2)',ADVANCE='NO') 'Scatter -> group', group, '|'
-      DO group_primed = 1, numgroups - 1
+      DO group_primed = 1_ik, numgroups-1_ik
         WRITE(*,'(F10.6,A2)',ADVANCE='NO') &
           & mats(mat)%macroxsscat(group,group_primed), '|'
       ENDDO
       WRITE(*,'(F10.6)',ADVANCE='YES') mats(mat)%macroxsscat(group,numgroups)
     ENDDO
 
-    DO group = 1, numgroups
+    DO group = 1_ik, numgroups
       WRITE(*,'(A16,I4,A2)',ADVANCE='NO') 'Fission -> group', group, '|'
-      DO group_primed = 1, numgroups - 1
+      DO group_primed = 1_ik, numgroups-1_ik
         WRITE(*,'(F10.6,A2)',ADVANCE='NO') &
           & mats(mat)%macroxsfiss(group,group_primed), '|'
       ENDDO
@@ -353,7 +354,7 @@ CONTAINS
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)
-    errstat = -1
+    errstat = -1_ik
     RETURN
   ENDIF
 

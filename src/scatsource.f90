@@ -32,10 +32,10 @@ CONTAINS
   ! 1. Add group-to-group scattering (g' -> g where g' < g) to group source
   !----------------------------------------------------------------------------
 
-  IF (group > 1) THEN
+  IF (group > 1_ik) THEN
     DO node = 1_ik, numnodes
-      DO j = 1, numcells
-        DO group_primed = 1, group - 1
+      DO j = 1_ik, numcells
+        DO group_primed = 1_ik, group-1_ik
           source_g(j,node) = source_g(j,node) + &
             & (sigma_s(j,group,group_primed) * &
             & scalflux_outer(j,group_primed,node))

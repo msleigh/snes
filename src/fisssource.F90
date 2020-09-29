@@ -41,12 +41,12 @@ CONTAINS
   !----------------------------------------------------------------------------
 
   DO node = 1_ik, numnodes
-    DO group = 1, numgroups
-      DO j = 1, numcells
+    DO group = 1_ik, numgroups
+      DO j = 1_ik, numcells
 
         source_f(j,group,node) = 0.0_rk
 
-        DO group_primed = 1, numgroups
+        DO group_primed = 1_ik, numgroups
 
           source_f(j,group,node) = source_f(j,group,node) + &
             & (sigma_f(j,group,group_primed) * &
@@ -58,11 +58,15 @@ CONTAINS
 
         ENDDO
 
-        sfs = sfs + (1._rk/REAL(numnodes))*source_f(j,group,node)
+        sfs = sfs + source_f(j,group,node)
 
       ENDDO
     ENDDO
   ENDDO
+
+  ! In DG version, average left and right sources, which have been summed in
+  ! loop above
+  sfs = sfs / REAL(numnodes)
 
   RETURN
   END SUBROUTINE fisssource

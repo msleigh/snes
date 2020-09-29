@@ -57,7 +57,7 @@ CONTAINS
     FORM='FORMATTED', &
     STATUS='REPLACE', &
     IOSTAT=errstat)
-  IF (errstat .NE. 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' opening file flux2.dat'
     RETURN
   ENDIF
@@ -71,7 +71,7 @@ CONTAINS
   WRITE(outlun,'(A17)') '# XLABEL=[x (cm)]'
   WRITE(outlun,'(A41)') '# YLABEL=[Scalar flux (cm^{-2}.s^{-1})]'
   WRITE(outlun,ADVANCE='NO',FMT='(A10)') '# SERIES=['
-  DO group = 1, numgroups-1
+  DO group = 1_ik, numgroups-1_ik
     WRITE(outlun,ADVANCE='NO',FMT='(A5,1X,I1)') 'Group', group, ','
   ENDDO
   WRITE(outlun,ADVANCE='YES',FMT='(A5,1X,I1,A1)') 'Group', numgroups, ']'
@@ -79,13 +79,13 @@ CONTAINS
   WRITE(outlun,'(A15,F7.3,A1)') '# YLIMITS=[0.0,', MAXVAL(scalflux(:,:,:)), ']'
   WRITE(outlun,'(A1)') '#'
   
-  DO cell = 1, numcells
+  DO cell = 1_ik, numcells
     WRITE( &
       & UNIT=outlun, &
       & ADVANCE='NO', &
       & FMT='(F28.6)') &
       & origin(cell)
-    DO group = 1, numgroups-1
+    DO group = 1_ik, numgroups-1_ik
       WRITE( &
         & UNIT=outlun, &
         & ADVANCE='NO', &
@@ -102,7 +102,7 @@ CONTAINS
       & ADVANCE='NO', &
       & FMT='(F28.6)') &
       & centre(cell)
-    DO group = 1, numgroups-1
+    DO group = 1_ik, numgroups-1_ik
       WRITE( &
         & UNIT=outlun, &
         & ADVANCE='NO', &
@@ -119,7 +119,7 @@ CONTAINS
       & ADVANCE='NO', &
       & FMT='(F28.6)') &
       & origin(cell) + width(cell)
-    DO group = 1,numgroups-1
+    DO group = 1_ik, numgroups-1_ik
       WRITE( &
         & UNIT=outlun,&
         & ADVANCE='NO', &
@@ -140,7 +140,7 @@ CONTAINS
   CLOSE( &
     & UNIT=outlun, &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' closing file flux2.dat'
     RETURN
   ENDIF

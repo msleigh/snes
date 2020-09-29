@@ -32,24 +32,24 @@ CONTAINS
   ! 1. Initialise variables
   !----------------------------------------------------------------------------
 
-  errstat = 0
-  logical_unit_number = 0
+  errstat = 0_ik
+  logical_unit_number = 0_ik
   lun_in_use = .TRUE.
 
   !----------------------------------------------------------------------------
   ! 2. Find free LUN
   !----------------------------------------------------------------------------
 
-  DO WHILE (lun_in_use .AND. logical_unit_number < 100)
-    logical_unit_number = logical_unit_number + 1
+  DO WHILE (lun_in_use .AND. logical_unit_number < 100_ik)
+    logical_unit_number = logical_unit_number + 1_ik
     INQUIRE( &
       & UNIT=logical_unit_number, &
       & OPENED=lun_in_use)
   ENDDO
 
-  IF (lun_in_use .AND. logical_unit_number == 100) THEN
+  IF (lun_in_use .AND. logical_unit_number == 100_ik) THEN
     WRITE(*,*) unitname, ': ERROR - no free logical unit numbers available'
-    errstat = -1
+    errstat = -1_ik
     RETURN
   ENDIF
 

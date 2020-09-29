@@ -1,3 +1,5 @@
 #!/bin/bash
 
 grep "K[ ]*EFF" qa/snestp*.outl | tr -s " " | cut -d" " -f4 > ./referencel
+
+cp qa/snestp011.flxl ./snestp011.flxrefl

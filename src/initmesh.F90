@@ -33,17 +33,17 @@ CONTAINS
   INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
 
   ! Counters
-  INTEGER(KIND=ik)   :: cell
-  INTEGER(KIND=ik)   :: group
-  INTEGER(KIND=ik)   :: group_primed
-  INTEGER(KIND=ik)   :: mat
-  INTEGER(KIND=ik)   :: reg
-  INTEGER(KIND=ik)   :: cellinreg
-  INTEGER(KIND=ik)   :: src
-  INTEGER(KIND=ik)   :: inlun
-  INTEGER(KIND=ik)   :: linetype
+  INTEGER(KIND=ik) :: cell
+  INTEGER(KIND=ik) :: group
+  INTEGER(KIND=ik) :: group_primed
+  INTEGER(KIND=ik) :: mat
+  INTEGER(KIND=ik) :: reg
+  INTEGER(KIND=ik) :: cellinreg
+  INTEGER(KIND=ik) :: src
+  INTEGER(KIND=ik) :: inlun
+  INTEGER(KIND=ik) :: linetype
 
-  CHARACTER(LEN=7), PARAMETER  :: meshdumpfile = 'snes.in'
+  CHARACTER(LEN=7), PARAMETER :: meshdumpfile = 'snes.in'
 
   WRITE(*,'(A)') &
     & '==============================================================================='
@@ -71,7 +71,7 @@ CONTAINS
     & FORM='FORMATTED', &
     & STATUS='OLD', &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' opening file ', &
       & TRIM(meshdumpfile)
     RETURN
@@ -81,8 +81,9 @@ CONTAINS
   ! 3. Read mesh geometry
   !----------------------------------------------------------------------------
 
-  cell = 0
-  reg = 0
+  cell = 0_ik
+  reg  = 0_ik
+
   DO
     CALL readline( &
       & linetype, &
@@ -96,15 +97,15 @@ CONTAINS
       CASE (2_ik)           ! Error on read
         WRITE(*,*) unitname, ': Error from readline reading geometry file ', &
           & TRIM(meshdumpfile)
-        errstat = -1
+        errstat = -1_ik
         RETURN
       CASE (3_ik)           ! Line contains valid input
         field(1) = tolower(field(1))
         IF (field(1) == 'region') THEN
-          reg = reg + 1
+          reg = reg + 1_ik
           IF (reg > numregs) THEN
             WRITE(*,*) unitname, ': ERROR: Invalid region number given ', reg
-            errstat = -1
+            errstat = -1_ik
             RETURN
           END IF
           DO
@@ -138,7 +139,7 @@ CONTAINS
                 END SELECT
             END SELECT
           ENDDO
-          DO cellinreg = 1, numcellsinreg(reg)
+          DO cellinreg = 1_ik, numcellsinreg(reg)
             cell = cell + 1_ik
             width(cell) = widthcellsinreg(reg)
           ENDDO
@@ -153,7 +154,7 @@ CONTAINS
   CLOSE( &
     & UNIT=inlun, &
     & IOSTAT=errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Error code ', errstat, ' closing file ', &
       & TRIM(meshdumpfile)
     RETURN
@@ -168,7 +169,7 @@ CONTAINS
     WRITE(*,*) unitname, &
       & ': WARNING - region keywords only provided for first ', reg, &
       & ' regions out of ', numregs
-    errstat = -1
+    errstat = -1_ik
     RETURN
   ENDIF
 
@@ -177,10 +178,10 @@ CONTAINS
   !----------------------------------------------------------------------------
  
   origin(1) = xmin
-  centre(1) = xmin + width(1)/2.0_rk
-  DO cell = 2, numcells
+  centre(1) = xmin + width(1)*0.5_rk
+  DO cell = 2_ik, numcells
     origin(cell) = origin(cell-1_ik) + width(cell-1_ik)
-    centre(cell) = origin(cell) + width(cell)/2.0_rk
+    centre(cell) = origin(cell) + width(cell)*0.5_rk
   ENDDO
   xmax = origin(numcells) + width(numcells)
   
@@ -189,13 +190,13 @@ CONTAINS
   ! 7. Construct mesh material properties
   !----------------------------------------------------------------------------
 
-  DO mat = 1, nummats
+  DO mat = 1_ik, nummats
     matnum(firstcell_mat(mat):lastcell_mat(mat)) = mat
   ENDDO
 
-  DO cell = 1, numcells
-    DO group = 1, numgroups
-      DO group_primed = 1, numgroups
+  DO cell = 1_ik, numcells
+    DO group = 1_ik, numgroups
+      DO group_primed = 1_ik, numgroups
         sigma_s(cell,group,group_primed) = &
           & mats(matnum(cell))%macroxsscat(group,group_primed)
         sigma_f(cell,group,group_primed) = &
@@ -210,14 +211,14 @@ CONTAINS
   !  7. Construct mesh material properties
   !----------------------------------------------------------------------------
   
-  DO group = 1,numgroups
-    DO mat = 1,nummats
-      DO group_primed = 1,numgroups
+  DO group = 1_ik, numgroups
+    DO mat = 1_ik, nummats
+      DO group_primed = 1_ik, numgroups
         sigma_s(firstcell_mat(mat):lastcell_mat(mat),group,group_primed) = &
           & mats(mat)%macroxsscat(group,group_primed)
         sigma_f(firstcell_mat(mat):lastcell_mat(mat),group,group_primed) = &
           & mats(mat)%macroxsfiss(group,group_primed)
-     ENDDO
+      ENDDO
       sigma_t(firstcell_mat(mat):lastcell_mat(mat),group) = &
         & mats(mat)%macroxstot(group)
     ENDDO
@@ -229,7 +230,7 @@ CONTAINS
   !----------------------------------------------------------------------------
 
   DO group = 1_ik, numgroups 
-    DO src = 1,numsrcs
+    DO src = 1_ik, numsrcs
       source_i(firstcell_src(src):lastcell_src(src),group) = value_src(src,group)
     ENDDO
   ENDDO
@@ -248,7 +249,7 @@ CONTAINS
       'Material no.'
     WRITE(*,'(A4,4A16)') '----', '-----------', '-----------', '----------', &
       '------------'
-    DO cell = 1, numcells
+    DO cell = 1_ik, numcells
 #ifdef CODETYPE
       WRITE(*,'(I4,3F16.6,I16)') cell, origin(cell), centre(cell), &
         width(cell), matnum(cell)

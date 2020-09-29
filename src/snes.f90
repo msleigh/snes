@@ -30,7 +30,7 @@ PROGRAM main
   IMPLICIT NONE
 
   CHARACTER(LEN=4), PARAMETER :: unitname = 'MAIN'
-  REAL(KIND=rk), PARAMETER    :: version = 1.1
+  REAL(KIND=rk),    PARAMETER :: version = 1.1
 
   CHARACTER(LEN=8)  :: datestr
   CHARACTER(LEN=10) :: timestr
@@ -62,9 +62,9 @@ PROGRAM main
   WRITE(*,'(A37,F4.1)') '                         Version :',version
   WRITE(*,'(A52)')      '                          Author : msleigh'
   WRITE(*,'(A38,2(A2,A1),A6)') '                      Start Time : ', &
-    timestr(1:2), ':', timestr(5:10)
-  WRITE(*,'(A38,2(A2,A1),A6)') '                      Start Date : ', &
-    datestr(7:8), '/', datestr(1:4)
+    timestr(1:2), ':', timestr(3:4), ':', timestr(5:10)
+  WRITE(*,'(A38,2(A2,A1),A4)') '                      Start Date : ', &
+    datestr(7:8), '/', datestr(5:6), '/', datestr(1:4)
   WRITE(*,*)
   WRITE(*,*)
 
@@ -86,7 +86,7 @@ PROGRAM main
   CALL readkeys( &
     & keywordfile, &
     & errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
@@ -95,7 +95,7 @@ PROGRAM main
 
   CALL allocstor( &
     & errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
@@ -107,7 +107,7 @@ PROGRAM main
   CALL readmats( &
     & materialfile, &
     & errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
@@ -117,7 +117,7 @@ PROGRAM main
   IF (calctype == 2_ik) THEN
     CALL readsrcs( &
       & errstat)
-    IF (errstat /= 0) THEN
+    IF (errstat /= 0_ik) THEN
       WRITE(*,*) unitname, ': Non-zero error code'
       WRITE(*,*) unitname, ': Aborting...'
       WRITE(*,*)
@@ -131,7 +131,7 @@ PROGRAM main
 
   CALL initmesh( &
     & errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting,..'
     WRITE(*,*)
@@ -144,7 +144,7 @@ PROGRAM main
 
   CALL quadsets( &
     & errstat)
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
@@ -161,21 +161,21 @@ PROGRAM main
   ! 6. Write output
   !----------------------------------------------------------------------------
 
-  IF (printflux == 1 .OR. printflux == 3) THEN
+  IF (printflux == 1_ik .OR. printflux == 3_ik) THEN
     CALL printflux1( &
       & errstat)
-    IF (errstat /= 0) THEN
+    IF (errstat /= 0_ik) THEN
       WRITE(*,*) unitname, ': Non-zero error code'
       WRITE(*,*) unitname, ': Aborting...'
       WRITE(*,*)
       STOP
-    END IF
-  END IF
+    ENDIF
+  ENDIF
   
-  IF (printflux > 1) THEN
+  IF (printflux > 1_ik) THEN
     CALL printflux2( &
       & errstat)
-    IF (errstat /= 0) THEN
+    IF (errstat /= 0_ik) THEN
       WRITE(*,*) unitname, ': Non-zero error code'
       WRITE(*,*) unitname, ': Aborting...'
       WRITE(*,*)
@@ -193,34 +193,34 @@ PROGRAM main
   CALL deallocstor( &
     & errstat)
 
-  IF (ALLOCATED(mats)) errstat = -1
-  IF (ALLOCATED(firstcell_mat)) errstat = -1
-  IF (ALLOCATED(lastcell_mat)) errstat = -1
-  IF (ALLOCATED(firstcell_src)) errstat = -1
-  IF (ALLOCATED(lastcell_src)) errstat = -1
-  IF (ALLOCATED(value_src)) errstat = -1
-  IF (ALLOCATED(numcellsinreg)) errstat = -1
-  IF (ALLOCATED(widthcellsinreg)) errstat = -1
-  IF (ALLOCATED(centre)) errstat = -1
-  IF (ALLOCATED(origin)) errstat = -1
-  IF (ALLOCATED(width)) errstat = -1
-  IF (ALLOCATED(matnum)) errstat = -1
-  IF (ALLOCATED(sigma_s)) errstat = -1
-  IF (ALLOCATED(sigma_f)) errstat = -1
-  IF (ALLOCATED(sigma_t)) errstat = -1
-  IF (ALLOCATED(scalflux)) errstat = -1
-  IF (ALLOCATED(scalflux_inner)) errstat = -1
-  IF (ALLOCATED(scalflux_outer)) errstat = -1
-  IF (ALLOCATED(source_f)) errstat = -1
-  IF (ALLOCATED(source_g)) errstat = -1
-  IF (ALLOCATED(source_i)) errstat = -1
-  IF (ALLOCATED(source_s)) errstat = -1
-  IF (ALLOCATED(source_t)) errstat = -1
-  IF (ALLOCATED(mu)) errstat = -1
-  IF (ALLOCATED(wgt)) errstat = -1
-  IF (ALLOCATED(field)) errstat = -1
+  IF (ALLOCATED(mats))            errstat = -1_ik
+  IF (ALLOCATED(firstcell_mat))   errstat = -1_ik
+  IF (ALLOCATED(lastcell_mat))    errstat = -1_ik
+  IF (ALLOCATED(firstcell_src))   errstat = -1_ik
+  IF (ALLOCATED(lastcell_src))    errstat = -1_ik
+  IF (ALLOCATED(value_src))       errstat = -1_ik
+  IF (ALLOCATED(numcellsinreg))   errstat = -1_ik
+  IF (ALLOCATED(widthcellsinreg)) errstat = -1_ik
+  IF (ALLOCATED(centre))          errstat = -1_ik
+  IF (ALLOCATED(origin))          errstat = -1_ik
+  IF (ALLOCATED(width))           errstat = -1_ik
+  IF (ALLOCATED(matnum))          errstat = -1_ik
+  IF (ALLOCATED(sigma_s))         errstat = -1_ik
+  IF (ALLOCATED(sigma_f))         errstat = -1_ik
+  IF (ALLOCATED(sigma_t))         errstat = -1_ik
+  IF (ALLOCATED(scalflux))        errstat = -1_ik
+  IF (ALLOCATED(scalflux_inner))  errstat = -1_ik
+  IF (ALLOCATED(scalflux_outer))  errstat = -1_ik
+  IF (ALLOCATED(source_f))        errstat = -1_ik
+  IF (ALLOCATED(source_g))        errstat = -1_ik
+  IF (ALLOCATED(source_i))        errstat = -1_ik
+  IF (ALLOCATED(source_s))        errstat = -1_ik
+  IF (ALLOCATED(source_t))        errstat = -1_ik
+  IF (ALLOCATED(mu))              errstat = -1_ik
+  IF (ALLOCATED(wgt))             errstat = -1_ik
+  IF (ALLOCATED(field))           errstat = -1_ik
 
-  IF (errstat /= 0) THEN
+  IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
