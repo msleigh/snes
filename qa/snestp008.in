@@ -8,7 +8,6 @@
   sources          0
   calctype         1
 
-
 # Control parameters
 
   macroscopic      1
@@ -36,14 +35,12 @@
        fileid      1u-d2o01
   endmat
 
-
   mat              2
        firstcell   1001
        lastcell    2000
        density     0.0
        fileid      2h2o__01
   endmat
-
 
 # Sources
 

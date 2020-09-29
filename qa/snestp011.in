@@ -1,0 +1,84 @@
+# Mono-energetic, non-multiplying, heterogeneous slab
+# (Reed test problem?)
+
+# |  A   |  B   | Void |     C     |
+# |  50  |      0      | 1.0 |  0  |
+
+# Reference: Reed, W.H.
+#            Nucl. Sci. Eng., 1971
+#            Vol. 46, pp. 309-314
+
+# Normal use parameters
+
+cells     80
+groups    1
+materials 4
+regions   1
+sn        16
+sources   2
+calctype  2
+
+# Control parameters
+
+epsinner    1.0E-06
+epsouter    1.0E-06
+forceinners 1
+imaxinner   50
+imaxouter   20
+macroscopic 1
+printflux   1
+
+# Boundary conditions
+
+# Mesh regions
+
+region  1
+  nxr   80
+  dxr   0.1
+endregion
+
+# Materials
+
+mat         1
+  firstcell 1
+  lastcell  20
+  density   0.0
+  fileid    11212301
+endmat
+
+mat         2
+  firstcell 21
+  lastcell  30
+  density   0.0
+  fileid    21212301
+endmat
+
+mat         3
+  firstcell 31
+  lastcell  50
+  void
+endmat
+
+mat         4
+  firstcell 51
+  lastcell  80
+  density   0.0
+  fileid    41212301
+endmat
+
+# Sources
+
+src         1
+  firstcell 1
+  lastcell  20
+  value     50.0
+endsrc
+
+src         2
+  firstcell 51
+  lastcell  60
+  value     1.0
+endsrc
+
+# End
+

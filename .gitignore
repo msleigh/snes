@@ -6,6 +6,7 @@ snes.in
 sne*1.2_LINUX
 qa/snestp*.log*
 qa/snestp*.out*
+qa/snestp*.flx*
 qa/[0-9]*
 html
 latex

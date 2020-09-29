@@ -17,6 +17,7 @@ INPUT=${INDIR}/qa/${TPNAME}.in
 
 OUTDIR=${BASEDIR}/qa/${LSB_JOBID}
 OUTPUT=${TPNAME}.out
+FLXDAT=${TPNAME}.flxs
 
 AOUTDIR=${BASEDIR}
 AOUT=${AOUTDIR}/snes${VERSION}_${CT}
@@ -29,7 +30,7 @@ cp ${INPUT} ./snes.in
 
 NUCDIR=${BASEDIR}/nucdata
 for NUC in 19423901 29423901 19223501 29223501 126nat01 111nat01 \
-           1h2o__01 2h2o__01 1u-d2o01 ; do
+           1h2o__01 2h2o__01 1u-d2o01 11212301 21212301 41212301 ; do
   cp ${NUCDIR}/a${NUC}.dat   ./${NUC}.dat
 done
 
@@ -56,6 +57,7 @@ echo "---------------------------------------------------"  >> ${OUTPUT} # skip
 #bjobs -1 ${LSB_JOBID}                                       >> ${OUTPUT} # ski
 
 mv ${OUTPUT} ${BASEDIR}/qa
+[[ -f flux1.dat ]] && mv flux1.dat ${BASEDIR}/qa/${FLXDAT}
 
 exit 0
 

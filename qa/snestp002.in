@@ -1,10 +1,17 @@
-# Normal use parameters
+# Mono-energetic, critical, homogeneous slab
+
+# Width:     2.256751 cm
+# Reference: Sood, A., Forster A.R. and K.D. Parsons
+#            Progr. in Nucl. Energy, 2003
+#            Vol. 42, No. 1, pp. 55-106
+
+# # Normal use parameters
 
   cells            100
   groups           1
   materials        1
   regions          1
-  sn               8
+  sn               16
   sources          0
   calctype         1
 

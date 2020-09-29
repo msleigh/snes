@@ -1,3 +1,12 @@
+# Mono-energetic, critical, homogeneous slab.
+# 
+# | Pu239 |
+# 
+# Width:      1.853722 cm
+# Reference:  Sood, A., Forster A.R. and K.D. Parsons
+#             Progr. Nucl. Energy, 2003
+#             Vol. 42, No. 1, pp. 55-106
+
 # Normal use parameters
 
 cells            100
@@ -10,6 +19,11 @@ calctype         1
 
 # Control parameters
 
+epsinner         1.0E-08
+epsouter         1.0E-08
+forceinners      1
+imaxinner        30
+imaxouter        15
 macroscopic      1
 
 # Boundary Conditions

@@ -37,10 +37,10 @@ TEST_LOGS = $(TEST_PROBLEMS:.in=.log)
 .f90.o:
 	$(CMP) $(FFLAGS) -c $(SOURCE)/$*.f90
 
-%.out: %.in snes$(VERSION)_LINUX
+%.out: %.in snes$(VERSION)_LINUX qa/snestp001.jcf nucdata/*
 	./qa/snestp001.jcf $< 2>&1 > $*.log
 
-%.outl: %.in snel$(VERSION)_LINUX
+%.outl: %.in snel$(VERSION)_LINUX qa/sneltp001.jcf nucdata/*
 	./qa/sneltp001.jcf $< 2>&1 > $*.logl
 
 snes$(VERSION)_LINUX: MACRO=CODETYPE
