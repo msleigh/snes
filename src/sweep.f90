@@ -41,8 +41,8 @@ CONTAINS
   REAL(KIND=rk) :: xs    ! Total macro X-S
   REAL(KIND=rk) :: u1    ! Mu
   REAL(KIND=rk) :: w1    ! Wgt
-  REAL(KIND=rk) :: c1
   REAL(KIND=rk) :: denom
+  REAL(KIND=rk) :: c1
 
   !----------------------------------------------------------------------------
   ! 1. Do sweeps
@@ -95,16 +95,12 @@ CONTAINS
         ! Add ang fluxes to scalar fluxes
         scalflux(cell,group,0_ik) = scalflux(cell,group,0_ik) + w1*angflux
         IF (printflux > 1_ik) THEN
-          IF (sweepdir == 1_ik) THEN                  ! RIGHT-TO-LEFT
-            scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) &
-                                & + w1*angfluxout
-            scalflux(cell,group,2_ik) = scalflux(cell,group,2_ik) &
-                                & + w1*angfluxin(dir)
-          ELSE                                        ! LEFT-TO-RIGHT
-            scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) &
-                                & + w1*angfluxin(dir)
-            scalflux(cell,group,2_ik) = scalflux(cell,group,2_ik) &
-                                & + w1*angfluxout
+          IF (sweepdir == 1_ik) THEN
+            scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) + w1*angfluxout
+            scalflux(cell,group,2_ik) = scalflux(cell,group,2_ik) + w1*angfluxin(dir)
+          ELSE
+            scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) + w1*angfluxin(dir)
+            scalflux(cell,group,2_ik) = scalflux(cell,group,2_ik) + w1*angfluxout
           ENDIF
         ENDIF
 
@@ -112,9 +108,9 @@ CONTAINS
 
       ENDDO ! Loop over directions
 
-    ENDDO   ! Loop over cells
+    ENDDO ! Loop over cells
 
-  ENDDO     ! Loop over sweeps
+  ENDDO ! Loop over sweeps
 
   RETURN
   END SUBROUTINE sweep
