@@ -1,7 +1,7 @@
 VERSION = 1.2
 SOURCE = src
 VPATH = $(SOURCE)
-OBJDIR = ./snes 
+OBJDIR = ./snes
 MODDIR = $(SOURCE)
 
 LFLAGS =
@@ -13,13 +13,13 @@ FFLAGS = -pedantic \
          -Wall -Wextra -Werror \
 	 -Wno-error=unused-function
 
-CMP = gfortran 
+CMP = gfortran
 
 OBJ := $(shell cat ./Objects)
 OBJL := $(shell cat ./Objectsl)
 
 ifeq ($(origin TEST_PROBLEMS), undefined)
-  TEST_PROBLEMS = $(sort $(wildcard qa/sne*tp*.in))
+  TEST_PROBLEMS = $(sort $(wildcard qa/snestp*.in))
 endif
 TEST_OUTPUT = $(TEST_PROBLEMS:.in=.out)
 TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
