@@ -16,12 +16,11 @@ FFLAGS = -pedantic \
 CMP = gfortran
 
 OBJ := $(shell cat ./Objects)
-OBJL := $(shell cat ./Objectsl)
 
 ifeq ($(origin TEST_PROBLEMS), undefined)
   TEST_PROBLEMS = $(sort $(wildcard qa/snestp*.in))
 endif
-TEST_OUTPUT = $(TEST_PROBLEMS:.in=.out)
+TEST_OUTPUTS = $(TEST_PROBLEMS:.in=.outs)
 TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
 
 .SUFFIXES: .f90
@@ -33,38 +32,40 @@ TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
 %.o: %.f90
 	$(CMP) $(FFLAGS) -c -o $@ $<
 
-%.out: %.in snes$(VERSION)_LINUX qa/snestp001.jcf nucdata/*
-	./qa/snestp001.jcf $< 2>&1 > $*.log
+%.outs: %.in snes$(VERSION) qa/jcf nucdata/*
+	./qa/jcf $(VERSION) "s" $< 2>&1 > $*.logs
 
-%.outl: %.in snel$(VERSION)_LINUX qa/sneltp001.jcf nucdata/*
-	./qa/sneltp001.jcf $< 2>&1 > $*.logl
+%.outl: %.in snel$(VERSION) qa/jcf nucdata/*
+	./qa/jcf $(VERSION) "l" $< 2>&1 > $*.logl
 
-snes$(VERSION)_LINUX: MACRO=CODETYPE
-snes$(VERSION)_LINUX: $(OBJ) Objects
-	$(CMP) $(FFLAGS) $(LFLAGS) $(OBJ) -o snes$(VERSION)_LINUX
+snes$(VERSION): MACRO=CODETYPE
+snes$(VERSION): $(OBJ) Objects
+	$(CMP) $(FFLAGS) $(LFLAGS) $(OBJ) -o snes$(VERSION)
 
-snel$(VERSION)_LINUX: MACRO=SNEL
-snel$(VERSION)_LINUX: $(OBJL) Objectsl
-	$(CMP) $(FFLAGS) $(LFLAGS) $(OBJL) -o snel$(VERSION)_LINUX
+snel$(VERSION): MACRO=SNEL
+snel$(VERSION): $(OBJ) Objects
+	$(CMP) $(FFLAGS) $(LFLAGS) $(OBJ) -o snel$(VERSION)
 
-tests: $(TEST_OUTPUT) reference
-	./check
+tests: $(TEST_OUTPUTS) references
+	./check "s"
 
 testl: $(TEST_OUTPUTL) referencel
-	./checkl
+	./check "l"
 
 clean:
 	rm -f *.lst *.o *.mod loadmap
 
 cleaner:
-	rm -f snes$(VERSION)_LINUX snel$(VERSION)_LINUX
+	rm -f snes$(VERSION) snel$(VERSION)
 
 veryclean: clean cleaner
 
 cleantest:
-	rm -rf qa/snestp*.log*
+	rm -rf qa/snestp*.log* qa/tpx*
 
 cleanertest:
-	rm -rf qa/snestp*.out*
+	rm -rf qa/snestp*.out* qa/snestp*.flx*
 
 verycleantest: cleantest cleanertest
+
+clobber: veryclean verycleantest

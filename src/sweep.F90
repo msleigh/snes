@@ -42,7 +42,16 @@ CONTAINS
   REAL(KIND=rk) :: u1    ! Mu
   REAL(KIND=rk) :: w1    ! Wgt
   REAL(KIND=rk) :: denom
+#ifdef CODETYPE
   REAL(KIND=rk) :: c1
+#else
+  REAL(KIND=rk) :: ds
+  REAL(KIND=rk) :: dd
+  REAL(KIND=rk) :: u2
+  REAL(KIND=rk) :: u3
+  REAL(KIND=rk) :: qi
+  REAL(KIND=rk) :: qo
+#endif
 
   !----------------------------------------------------------------------------
   ! 1. Do sweeps
@@ -70,6 +79,17 @@ CONTAINS
       ! Determine constants
       dx = width(cell)
       xs = sigma_t(cell,group)
+#ifndef CODETYPE
+      ds = dx*xs
+      dd = dx*ds
+      IF (sweepdir == 1_ik) THEN
+        qi = source_t(cell,2_ik)
+        qo = source_t(cell,1_ik)
+      ELSE
+        qi = source_t(cell,1_ik)
+        qo = source_t(cell,2_ik)
+      ENDIF
+#endif
 
       ! Loop over all positive direction cosines in quadrature set
       DO dir = 1_ik, numdirs
@@ -77,23 +97,40 @@ CONTAINS
         ! Determine constants
         u1 = mu(dir)
         w1 = wgt(dir)
+#ifdef CODETYPE
         c1 = dx/(2.0_rk*u1)
         denom = 1.0_rk + c1*xs
+#else
+        u2 = 2_ik*mu(dir)
+        u3 = 3_ik*mu(dir)
+        denom = 1.0_rk/(u2*u3 + 4_ik*u1*ds + ds*ds)
+#endif
 
         ! Calculate angular fluxes
+#ifdef CODETYPE
         angflux = (angfluxin(dir) + c1*source_t(cell,1_ik))/denom
         angfluxout = 2.0_rk*angflux - angfluxin(dir)
+#else
+        angfluxout     = u2*(u3 + 2_ik*ds)*angfluxin(dir) + dx*u1*(qi-qo) + dd*qi
+        angfluxout     = angfluxout*denom
+        angfluxin(dir) = u2*(u3 - ds)*angfluxin(dir) + dx*u3*(qi + qo) + dd*qo
+        angfluxin(dir) = angfluxin(dir)*denom
+        angflux        = 0.5_rk*(angfluxout + angfluxin(dir))
+#endif
 
         ! Fix up negative fluxes
         IF (nffu .AND. (angfluxout < 0.0_rk)) THEN
           nffu_call = nffu_call + 1_ik
           angfluxout = 0.0_rk
+#ifdef CODETYPE
           angflux = dx*(source_t(cell,1_ik)) + 2_ik*u1*angfluxin(dir)
           angflux = angflux/(2_ik*u1 + xs*dx)
+#endif
         ENDIF
 
         ! Add ang fluxes to scalar fluxes
         scalflux(cell,group,0_ik) = scalflux(cell,group,0_ik) + w1*angflux
+#ifdef CODETYPE
         IF (printflux > 1_ik) THEN
           IF (sweepdir == 1_ik) THEN
             scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) + w1*angfluxout
@@ -103,8 +140,19 @@ CONTAINS
             scalflux(cell,group,2_ik) = scalflux(cell,group,2_ik) + w1*angfluxout
           ENDIF
         ENDIF
+#else
+        IF (sweepdir == 1_ik) THEN
+          scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) + w1*angfluxin(dir)
+          scalflux(cell,group,2_ik) = scalflux(cell,group,2_ik) + w1*angfluxout
+        ELSE
+          scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) + w1*angfluxout
+          scalflux(cell,group,2_ik) = scalflux(cell,group,2_ik) + w1*angfluxin(dir)
+        ENDIF
+#endif
 
+#ifdef CODETYPE
         angfluxin(dir) = angfluxout
+#endif
 
       ENDDO ! Loop over directions
 

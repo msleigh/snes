@@ -44,7 +44,7 @@ CONTAINS
   INTEGER(KIND=ik)                       :: node
   INTEGER(KIND=ik)                       :: outeriter
   INTEGER(KIND=ik), DIMENSION(numgroups) :: inneriter
-  
+
   REAL(KIND=rk), PARAMETER :: eps = 1.e-24_rk
 
   WRITE(*,'(A)') &
@@ -60,9 +60,13 @@ CONTAINS
 
   keff = 1.0_rk
 
+#ifdef CODETYPE
   scalflux(:,:,0_ik) = 1.0_rk
   if (printflux > 1_ik) scalflux(:,:,1_ik) = 1.0_rk
   if (printflux > 1_ik) scalflux(:,:,2_ik) = 1.0_rk
+#else
+  scalflux(:,:,:) = 1.0_rk
+#endif
 
   inneriter(:) = 0_ik
   outeriter    = 0_ik
@@ -85,7 +89,11 @@ CONTAINS
     ENDIF
 
     ! Store scalar flux from previous outer iteration
+#ifdef CODETYPE
     scalflux_outer(:,:,1_ik) = scalflux(:,:,0_ik)
+#else
+    scalflux_outer(:,:,:) = scalflux(:,:,:)
+#endif
 
     IF (calctype == 1_ik) then
 
@@ -100,7 +108,12 @@ CONTAINS
         outer_exit_stat = 2_ik
         EXIT outer_loop
       ELSE
+#ifdef CODDETYPE
         source_f(:,:,1_ik) = source_f(:,:,1_ik)/keff
+#else
+        source_f(:,:,:) = source_f(:,:,:)/keff
+#endif
+
       ENDIF
 
     ENDIF
@@ -116,13 +129,19 @@ CONTAINS
       ! Imposed source (source_i) must be zero for eigenvalue calcs (calctype = 1)
       ! In the routine init_mesh.f, source_i is set equal to value_src
       ! If calctype is 1, readsrcs.f is not called, therefore value_src is zero
-      
+
       ! Fission source (source_f) must be zero for flux calcs (calctype = 2)
       ! In the routine fisssource.f, source_f is constructed from fluxes & X-Ss
       ! If calctype is 2, fisssource.f is not called, therefore source_f is zero
-      
+
+#ifdef CODETYPE
       source_g(:,1_ik) = source_f(:,group,1_ik) + source_i(:,group)
-      
+#else
+    DO node = 1_ik, numnodes
+      source_g(:,node) = source_f(:,group,node) + source_i(:,group)
+    ENDDO
+#endif
+
       call scatsource( &
         & group)
 
@@ -150,34 +169,46 @@ CONTAINS
         ENDIF
 
         ! Save scalar flux from previous inner iteration
+#ifdef CODETYPE
         scalflux_inner(:,1_ik) = scalflux(:,group,0_ik)
+#else
+        scalflux_inner(:,:) = scalflux(:,group,:)
+#endif
 
         ! Set up scattering source
         CALL updatesource( &
           & group)
-        
+
         ! Calculate total sources
         DO node = 1_ik, numnodes
             source_t(:,node) = source_g(:,node) + source_s(:,node)
         ENDDO
 
         ! Do the sweep
+#ifdef CODETYPE
         scalflux(:,group,0_ik) = 0.0_rk
         IF (printflux > 1_ik) scalflux(:,group,1_ik) = 0.0_rk ! Left
         IF (printflux > 1_ik) scalflux(:,group,2_ik) = 0.0_rk ! Right
+#else
+      scalflux(:,group,:) = 0.0_rk
+#endif
         CALL sweep( &
           & group)
-        
+
         ! Test for inner convergence
         converged_inner = .TRUE.
         conv_loop_inner: DO j = 1_ik, numcells
+#ifdef CODETYPE
           error = ABS(1.0_rk-scalflux_inner(j,1_ik)/scalflux(j,group,0_ik))
+#else
+          error = ABS(1.0_rk-scalflux_inner(j,0_ik)/scalflux(j,group,0_ik))
+#endif
           IF (error > epsinner) THEN
             converged_inner = .FALSE.
             EXIT conv_loop_inner
           ENDIF
         ENDDO conv_loop_inner
-      
+
         IF (converged_inner) THEN
           EXIT inner_loop
         ENDIF
@@ -208,7 +239,11 @@ CONTAINS
       converged_outer = .TRUE.
       conv_loop_outer: DO j = 1_ik, numcells
         DO group = 1_ik, numgroups
+#ifdef CODETYPE
           error = ABS(1.0_rk-scalflux_outer(j,group,1_ik)/scalflux(j,group,0_ik))
+#else
+          error = ABS(1.0_rk-scalflux_outer(j,group,0_ik)/scalflux(j,group,0_ik))
+#endif
           IF (error > epsouter) THEN
             converged_outer = .FALSE.
             EXIT conv_loop_outer

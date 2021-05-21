@@ -4,25 +4,25 @@ set -eu
 set -o pipefail
 #set -x
 
-LSB_JOBID=$$
+VERSION="$1"
+SFX="$2"
+TPNAME=$(basename $3 .in)
 
-echo "Starting job ${LSB_JOBID}"
+JOBID=$$
+
+echo "Starting job ${JOBID}"
 
 BASEDIR=$(pwd)
-
-VERSION=1.2
-CT=LINUX
-TPNAME=$(basename $1 .in)
 
 INDIR=${BASEDIR}
 INPUT=${INDIR}/qa/${TPNAME}.in
 
-OUTDIR=${BASEDIR}/qa/${LSB_JOBID}
-OUTPUT=${TPNAME}.outl
-FLXDAT=${TPNAME}.flxl
+OUTDIR=${BASEDIR}/qa/tpx${JOBID}
+OUTPUT=${TPNAME}.out${SFX}
+FLXDAT=${TPNAME}.flx${SFX}
 
 AOUTDIR=${BASEDIR}
-AOUT=${AOUTDIR}/snel${VERSION}_${CT}
+AOUT=${AOUTDIR}/sne${SFX}${VERSION}
 
 mkdir -p $OUTDIR
 cd $OUTDIR
@@ -56,7 +56,6 @@ echo                                                                     # skip
 echo "---------------------------------------------------"  >> ${OUTPUT} # skip
 echo "RESOURCES                                          "  >> ${OUTPUT} # skip
 echo "---------------------------------------------------"  >> ${OUTPUT} # skip
-#bjobs -1 ${LSB_JOBID}                                       >> ${OUTPUT} # ski
 
 mv ${OUTPUT} ${BASEDIR}/qa
 [[ -f flux1.dat ]] && mv flux1.dat ${BASEDIR}/qa/${FLXDAT}

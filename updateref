@@ -3,6 +3,8 @@
 set -eu
 set -o pipefail
 
-grep "K[ ]*EFF" qa/snestp*.out | tr -s " " | cut -d" " -f4 > ./reference
+SFX="$1"
 
-cp qa/snestp011.flxs ./snestp011.flxrefs
+grep "K[ ]*EFF" qa/snestp*.out${SFX} | tr -s " " | cut -d" " -f4 > ./reference${SFX}
+
+cp qa/snestp011.flx${SFX} ./snestp011.flxref${SFX}

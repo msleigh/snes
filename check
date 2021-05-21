@@ -3,8 +3,10 @@
 set -eu
 set -o pipefail
 
-diff <(grep "K[ ]*EFF" qa/snestp*.out | tr -s " " | cut -d" " -f4) ./reference
+SFX="$1"
 
-diff qa/snestp011.flxs snestp011.flxrefs
+diff <(grep "K[ ]*EFF" qa/snestp*.out${SFX} | tr -s " " | cut -d" " -f4) ./reference${SFX}
+
+diff qa/snestp011.flx${SFX} snestp011.flxref${SFX}
 
 echo "Pass"
