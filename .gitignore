@@ -12,3 +12,4 @@ html
 latex
 *.os
 *.ol
+.ipynb_checkpoints
