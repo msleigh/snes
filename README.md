@@ -13,7 +13,8 @@ discontinuous variants.
 - Make
 - GFortran
 - Doxygen (optional)
-- Docker (optional)
+- Docker (optional, to generate documentation locally)
+- ghp-import (optional, to push documentation to GitHub Pages)
 - Jupyter (optional)
 
 ## Usage

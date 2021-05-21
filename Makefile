@@ -52,6 +52,12 @@ tests: $(TEST_OUTPUTS) references
 testl: $(TEST_OUTPUTL) referencel
 	./check "l"
 
+doc:
+	doxygen
+
+github:
+	ghp-import --no-jekyll --no-history --push html
+
 clean:
 	rm -f *.lst *.o *.mod loadmap
 
