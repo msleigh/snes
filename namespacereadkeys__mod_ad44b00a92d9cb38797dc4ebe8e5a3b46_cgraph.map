@@ -1,0 +1,8 @@
+<map id="readkeys_mod::readkeys" name="readkeys_mod::readkeys">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,173,133"/>
+<area shape="rect" id="node2" href="$namespaceio__utils__mod.html#a4872e23be05fffed706b0b8c83811cd3" title=" " alt="" coords="221,5,396,32"/>
+<area shape="rect" id="node3" href="$namespacereadline__mod.html#a111c828ec481536e60d9fba9eb34a7ec" title=" " alt="" coords="233,56,385,83"/>
+<area shape="rect" id="node4" href="$namespacetypechange__mod.html#aa17a153aeff8b8dc6d5944544f441a9e" title="Function to return integer representation of input string." alt="" coords="231,107,386,133"/>
+<area shape="rect" id="node5" href="$namespacecasechange__mod.html#ac98459f7bd9a1e3079f95a6caae7afaf" title="Function to return lower CASE of input string." alt="" coords="221,157,396,184"/>
+<area shape="rect" id="node6" href="$namespacetypechange__mod.html#ad4905f3336ede8ae90943cd602931c0b" title="Function to return real representation of input string." alt="" coords="228,208,389,235"/>
+</map>
