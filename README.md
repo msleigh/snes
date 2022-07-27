@@ -4,10 +4,7 @@ snes
 A one-dimensional discrete-ordinates neutron transport code written in Fortran, with diamond-difference and linear-
 discontinuous variants.
 
-<img src="https://img.shields.io/github/v/release/msleigh/snes?include_prereleases">
-<img src="https://img.shields.io/github/license/msleigh/fcimc">
-<img src="https://img.shields.io/github/last-commit/msleigh/snes">
-<img src="https://img.shields.io/tokei/lines/github/msleigh/snes">
+<img src="https://img.shields.io/github/v/release/msleigh/snes?include_prereleases"> <img src="https://img.shields.io/github/license/msleigh/fcimc"> <img src="https://img.shields.io/github/last-commit/msleigh/snes"> <img src="https://img.shields.io/tokei/lines/github/msleigh/snes">
 
 ![Build status (`develop`)](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=main)
 
