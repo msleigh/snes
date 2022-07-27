@@ -1,9 +1,18 @@
 CMP = doxygen
 
-.PHONY: github clean clobber
+.PHONY: html github clean clobber
 
-html: Doxyfile *.md
+# Needs to be consistent with input to Doxygen in Doxyfile
+markdown := $(wildcard *.md)
+fortran := $(wildcard ../src/*.f90)
+
+# Find README.md
+vpath %.md ..
+
+doxygen.log: Doxyfile README.md $(markdown) $(fortran)
 	$(CMP) > doxygen.log
+
+html: doxygen.log
 
 github:
 	ghp-import --no-jekyll --no-history --push html

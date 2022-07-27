@@ -4,18 +4,38 @@ snes
 A one-dimensional discrete-ordinates neutron transport code written in Fortran, with diamond-difference and linear-
 discontinuous variants.
 
-<img src="https://img.shields.io/github/v/release/msleigh/snes?include_prereleases"> <img src="https://img.shields.io/github/license/msleigh/fcimc"> <img src="https://img.shields.io/tokei/lines/github/msleigh/snes"> <img src="https://img.shields.io/github/last-commit/msleigh/snes">
+<img src="https://img.shields.io/github/v/release/msleigh/snes?include_prereleases">
+<img src="https://img.shields.io/github/license/msleigh/fcimc">
+<img src="https://img.shields.io/github/last-commit/msleigh/snes">
+<img src="https://img.shields.io/tokei/lines/github/msleigh/snes">
 
-![Build status (`develop`)](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=develop)
+![Build status (`develop`)](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=main)
 
 ## Dependencies
 
-- Make
+### Code
+
 - GFortran
-- Doxygen (optional)
-- Docker (optional, to generate documentation locally)
+
+### Bundled calculations
+
+- Matplotlib
+- Jupyter
+
+### Documentation
+
+- Doxygen
+- Graphviz
+- LaTeX
 - ghp-import (optional, to push documentation to GitHub Pages)
-- Jupyter (optional)
+
+### Misc
+
+- Docker (optional)
+
+## Installation
+
+
 
 ## Usage
 
@@ -32,8 +52,14 @@ Do a `make clean` when switching between versions.
 
 To build the documentation:
 
-    doxygen
-    open html/index.html
+    make -C docs html
+    open docs/html/index.html
+
+### Cleaning
+
+To clean up intermediate build files etc.:
+
+    make clean
 
 ### Docker
 
