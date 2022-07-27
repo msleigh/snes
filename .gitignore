@@ -8,8 +8,9 @@ qa/snestp*.log*
 qa/snestp*.out*
 qa/snestp*.flx*
 qa/tpx[0-9]*
-html
-latex
+docs/html
+docs/latex
+docs/doxygen.log
 *.os
 *.ol
 .ipynb_checkpoints
