@@ -11,7 +11,7 @@ FFLAGS = -pedantic \
          -fmax-errors=1 \
          -fcheck=all \
          -Wall -Wextra -Werror \
-	 -Wno-error=unused-function
+         -Wno-error=unused-function
 
 CMP = gfortran
 
