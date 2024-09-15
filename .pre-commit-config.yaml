@@ -1,0 +1,9 @@
+repos:
+- repo: local
+  hooks:
+  - id: strip-notebook-output
+    name: Strip Jupyter Notebook Output
+    language: system
+    entry: jupyter nbconvert --clear-output --inplace verification.ipynb
+    files: \.ipynb$
+
