@@ -5,6 +5,7 @@ set -o pipefail
 
 SFX="$1"
 
-grep "K[ ]*EFF" qa/snestp*.out${SFX} | tr -s " " | cut -d" " -f4 > ./reference${SFX}
+# shellcheck disable=SC2086
+grep "K[ ]*EFF" qa/snestp*.out${SFX} | tr -s " " | cut -d" " -f4 > "./reference${SFX}"
 
-cp qa/snestp011.flx${SFX} ./snestp011.flxref${SFX}
+cp "qa/snestp011.flx${SFX}" "./snestp011.flxref${SFX}"
