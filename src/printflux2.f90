@@ -78,7 +78,7 @@ CONTAINS
   WRITE(outlun,'(A11,F7.3,A1,F7.3,A1)') '# XLIMITS=[', xmin, ',', xmax, ']'
   WRITE(outlun,'(A15,F7.3,A1)') '# YLIMITS=[0.0,', MAXVAL(scalflux(:,:,:)), ']'
   WRITE(outlun,'(A1)') '#'
-  
+
   DO cell = 1_ik, numcells
     WRITE( &
       & UNIT=outlun, &

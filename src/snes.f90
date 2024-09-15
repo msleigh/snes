@@ -171,7 +171,7 @@ PROGRAM main
       STOP
     ENDIF
   ENDIF
-  
+
   IF (printflux > 1_ik) THEN
     CALL printflux2( &
       & errstat)

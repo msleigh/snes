@@ -48,7 +48,7 @@ CONTAINS
 
   WRITE(*,'(A)') 'Printing cell-centred scalar fluxes to file flux1.dat'
   WRITE(*,*)
-  
+
   CALL get_free_lun(outlun,errstat)
   OPEN( &
     & UNIT=outlun, &

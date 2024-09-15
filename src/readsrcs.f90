@@ -181,7 +181,7 @@ CONTAINS
       ENDIF
     ENDDO
   ENDDO
-  
+
   IF (numsrcs == 0_ik) THEN
     WRITE(*,'(A19)') 'NO IMPOSED SOURCES'
   ELSE
@@ -205,7 +205,7 @@ CONTAINS
     ENDDO
   ENDIF
   WRITE(*,*)
-  
+
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)

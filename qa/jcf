@@ -61,4 +61,3 @@ mv ${OUTPUT} ${BASEDIR}/qa
 [[ -f flux1.dat ]] && mv flux1.dat ${BASEDIR}/qa/${FLXDAT}
 
 exit 0
-

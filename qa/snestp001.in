@@ -1,7 +1,7 @@
 # Mono-energetic, critical, homogeneous slab.
-# 
+#
 # | Pu239 |
-# 
+#
 # Width:      1.853722 cm
 # Reference:  Sood, A., Forster A.R. and K.D. Parsons
 #             Progr. Nucl. Energy, 2003
@@ -47,4 +47,3 @@ endmat
 # Sources
 
 # End
-

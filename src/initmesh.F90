@@ -176,7 +176,7 @@ CONTAINS
   !----------------------------------------------------------------------------
   ! 6. Calculate cell centres and origins
   !----------------------------------------------------------------------------
- 
+
   origin(1) = xmin
   centre(1) = xmin + width(1)*0.5_rk
   DO cell = 2_ik, numcells
@@ -184,7 +184,7 @@ CONTAINS
     centre(cell) = origin(cell) + width(cell)*0.5_rk
   ENDDO
   xmax = origin(numcells) + width(numcells)
-  
+
 #ifdef CODETYPE
   !----------------------------------------------------------------------------
   ! 7. Construct mesh material properties
@@ -205,12 +205,12 @@ CONTAINS
       sigma_t(cell,group) = mats(matnum(cell))%macroxstot(group)
     ENDDO
   ENDDO
- 
+
 #else
   !----------------------------------------------------------------------------
   !  7. Construct mesh material properties
   !----------------------------------------------------------------------------
-  
+
   DO group = 1_ik, numgroups
     DO mat = 1_ik, nummats
       DO group_primed = 1_ik, numgroups
@@ -224,12 +224,12 @@ CONTAINS
     ENDDO
   ENDDO
 #endif
- 
+
   !----------------------------------------------------------------------------
   !  8. Set up mesh sources
   !----------------------------------------------------------------------------
 
-  DO group = 1_ik, numgroups 
+  DO group = 1_ik, numgroups
     DO src = 1_ik, numsrcs
       source_i(firstcell_src(src):lastcell_src(src),group) = value_src(src,group)
     ENDDO

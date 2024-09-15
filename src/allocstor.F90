@@ -9,7 +9,7 @@ CONTAINS
 
   !> \author msleigh
   !!
-  !! \brief Allocate storage 
+  !! \brief Allocate storage
   !!
   !! PURPOSE: Allocates sizes to global arrays
   !!
@@ -82,7 +82,7 @@ CONTAINS
   width(:)           = 0.0_rk
 #ifdef CODETYPE
   matnum(:)          = 0_ik
-#endif 
+#endif
 
   ! Arrays for sources and fluxes
   ALLOCATE( &

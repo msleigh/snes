@@ -44,14 +44,14 @@ CONTAINS
   USE getkinds_mod
 
   IMPLICIT NONE
-  
+
   CHARACTER(LEN=8), PARAMETER :: unitname = 'readline'
-  
+
   ! Arguments
   INTEGER(kind=ik),  INTENT(OUT) :: line_type !< Output argument
   INTEGER(kind=ik),  INTENT(IN)  :: instream  !< Input stream
   LOGICAL, OPTIONAL, INTENT(IN)  :: printout  !< Flag to print or not
-  
+
   INTEGER(KIND=ik), DIMENSION(:,:), ALLOCATABLE :: fp
   LOGICAL                                       :: pp
   INTEGER(KIND=ik)                              :: allocation_status
@@ -60,12 +60,12 @@ CONTAINS
   INTEGER(KIND=ik)                              :: loc_com
   INTEGER(KIND=ik)                              :: fld
   CHARACTER(LEN=120)                            :: line
-  
+
   ! Counters
   INTEGER(KIND=ik) :: i
 
   allocation_status = 0_ik
-  
+
   !----------------------------------------------------------------------------
   ! 1. Test for optional argument 'printout' and set working variable 'pp'
   !----------------------------------------------------------------------------
@@ -107,7 +107,7 @@ CONTAINS
 
   ! Remove initial spaces
   line = ADJUSTL(line)
-  
+
   ! Compress multiple spaces to one
   DO
     i = INDEX(TRIM(line),"  ")
@@ -118,7 +118,7 @@ CONTAINS
 
   ! Write out adjusted input
   IF (pp) WRITE(*,*) unitname, ': ', TRIM(line), '$'
-  
+
   ! Check for zero-length lines and comment lines
   IF (line_length == 0_ik .OR. line(1:1) == '#' ) THEN
     line_type = 0_ik
