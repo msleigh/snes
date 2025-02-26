@@ -106,27 +106,27 @@ Below are the prompts (each in its own code block) that you can use with a code-
 ```text
 # Prompt 1: Environment Setup and Preliminary Work
 
-We are on a Git branch called 'feature/update-docs', for the documentation project. Ensure that Ford is installed locally. We use the UV tool for managin Python tools and dependencies, with a 'pyproject.yaml' file.  Write a small script (or set of instructions) that verifies Ford's installation by generating a basic documentation output from a simple Fortran file that contains a Doxygen-style comment.
+We are on a Git branch called 'feature/update-docs', for the documentation project. Ensure that Ford is installed locally. We use the UV tool for managing Python tools and dependencies, with a 'pyproject.yaml' file. Write a small script (or set of instructions) that verifies Ford's installation by generating a basic documentation output from a simple Fortran file that contains a Doxygen-style comment.
 
-Remember to take small, incremental steps and test each part before proceeding.
+Ensure that all dependencies are correctly installed and the environment is configured to support the entire documentation workflow. Remember to take small, incremental steps and test each part before proceeding.
 ```
 
 ### Prompt 2: Create and Configure `ford.yaml`
 ```text
 # Prompt 2: Create and Configure `ford.yaml`
 
-Create a minimal `ford.yaml` configuration file that instructs Ford to parse Fortran files and extract Doxygen-style comments. Start with a basic configuration and include a simple test case: a Fortran file with a Doxygen comment that should be included in the generated documentation.
+Create a comprehensive `ford.yaml` configuration file that instructs Ford to parse Fortran files and extract Doxygen-style comments. Ensure the configuration supports the entire project structure and includes all necessary files. Start with a basic configuration and include a simple test case: a Fortran file with a Doxygen comment that should be included in the generated documentation.
 
-Break the work into small steps and verify the output before adding more complexity.
+Break the work into small steps and verify the output before adding more complexity. Ensure the configuration aligns with the project's overall documentation strategy.
 ```
 
 ### Prompt 3: Develop Custom Ford Theme Inspired by MkDocs Material
 ```text
 # Prompt 3: Develop Custom Ford Theme Inspired by MkDocs Material
 
-Develop a minimal custom Ford theme that takes inspiration from the MkDocs Material theme. Begin by identifying key style elements (such as fonts, layout, and color scheme) from MkDocs Material. Then, create a basic theme configuration file for Ford that applies these styles.
+Develop a comprehensive custom Ford theme that takes inspiration from the MkDocs Material theme. Begin by identifying key style elements (such as fonts, layout, and color scheme) from MkDocs Material. Then, create a detailed theme configuration file for Ford that applies these styles.
 
-Ensure that the theme is integrated into the Ford configuration and generate documentation to verify the visual layout. Please take small, incremental steps and test the theme integration at each stage.
+Ensure that the theme is integrated into the Ford configuration and generate documentation to verify the visual layout. Ensure the theme supports the entire documentation structure and enhances readability and navigation. Please take small, incremental steps and test the theme integration at each stage.
 ```
 
 ### Prompt 4: Documentation Structure Implementation
@@ -135,7 +135,7 @@ Ensure that the theme is integrated into the Ford configuration and generate doc
 
 Organize the documentation into three sections: User Documentation, Theory Documentation, and Developer Documentation. Create placeholder Markdown files for each section. Update the Ford configuration so that these sections are included in the generated documentation.
 
-Verify that each section appears correctly and is navigable. Provide small code samples and test that the sections are correctly linked. Proceed in small steps with frequent testing.
+Verify that each section appears correctly and is navigable. Ensure the documentation structure aligns with the project's overall goals and provides clear guidance for users, developers, and theorists. Provide small code samples and test that the sections are correctly linked. Proceed in small steps with frequent testing.
 ```
 
 ### Prompt 5: GitHub Actions Workflow for Documentation Build and Deployment
@@ -144,7 +144,7 @@ Verify that each section appears correctly and is navigable. Provide small code 
 
 Set up a GitHub Actions workflow file that triggers a documentation build and deployment on every push to the main branch, and also supports manual dispatch. The workflow should run Ford to generate the documentation and deploy it to GitHub Pages.
 
-Begin by creating a basic workflow file, then incrementally add steps to build and deploy the documentation. Test each part of the workflow thoroughly before moving on.
+Ensure the workflow is robust and supports the entire documentation lifecycle, including error handling and logging. Begin by creating a basic workflow file, then incrementally add steps to build and deploy the documentation. Test each part of the workflow thoroughly before moving on.
 ```
 
 ### Prompt 6: End-to-End Integration Testing and Finalization
@@ -153,10 +153,10 @@ Begin by creating a basic workflow file, then incrementally add steps to build a
 
 Integrate all the components by performing an end-to-end test. Start by running a complete local build of the documentation. Then push the changes to the main branch to trigger the GitHub Actions workflow. Verify that the documentation is successfully deployed to GitHub Pages.
 
-Write and run integration tests that confirm:
+Write and run comprehensive integration tests that confirm:
 - All documentation sections (User, Theory, Developer) are present.
 - Doxygen-style comments from the Fortran code are correctly parsed.
 - The GitHub Actions workflow completes successfully.
 
-Ensure that the instructions include steps for reviewing logs and handling any errors. End by wiring all components together.
+Ensure that the instructions include steps for reviewing logs and handling any errors. Ensure the entire documentation process is seamless and aligns with the project's overall objectives. End by wiring all components together.
 ```
