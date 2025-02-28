@@ -1,4 +1,6 @@
-# Theory Documentation
+---
+title: Theory Documentation
+---
 
 This section covers the theoretical background and methodologies used in the software.
 

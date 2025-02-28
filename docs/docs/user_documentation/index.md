@@ -1,4 +1,6 @@
-# User Documentation
+---
+title: User Documentation
+---
 
 This section provides guidance for users on how to install, configure, and use the software effectively.
 
