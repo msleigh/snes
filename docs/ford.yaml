@@ -1,0 +1,8 @@
+project:
+  name: Example Project
+  author: Your Name
+  summary: A simple project to verify Ford installation.
+output_dir: ./docs
+input_dir: .
+files:
+  - example.f90
