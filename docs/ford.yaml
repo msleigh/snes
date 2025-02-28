@@ -1,10 +1,10 @@
 project:
-  name: snes
+  title: snes
   author: msleigh
   summary:
 output_dir:
-input_dir: ../
-files:
+source_dir: ../
+source_files:
   - example.f90
   - allocstor.F90
   - casechange.f90
