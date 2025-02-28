@@ -1,4 +1,6 @@
-## Documentation Overhaul Specification
+---
+title: Specification
+---
 
 ### 1. **Objective:**
    Extend and improve the documentation in the repository by replacing Doxygen with Ford, while enhancing readability, structure, and organization. The documentation will be split into user, theory, and developer sections and delivered through Ford with a clean, Material-inspired theme.

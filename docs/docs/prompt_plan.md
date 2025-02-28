@@ -1,4 +1,8 @@
-## Detailed Blueprint
+---
+title: Prompt plan
+---
+
+## Blueprint
 
 ### 1. Environment Setup and Preliminary Work
 - **Objective:** Prepare the local environment and verify existing assets.
