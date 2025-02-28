@@ -7,3 +7,24 @@ input_dir:
 files:
   - example.f90
   - allocstor.F90
+  - casechange.f90
+  - deallocstor.f90
+  - fisssource.F90
+  - getkinds.f90
+  - initmesh.F90
+  - io_utils.f90
+  - iterate.F90
+  - printflux1.f90
+  - printflux2.f90
+  - quadsets.f90
+  - readkeys.F90
+  - readline.f90
+  - readmats.f90
+  - readnucdat.f90
+  - readsrcs.f90
+  - scatsource.f90
+  - setdata.f90
+  - snes.f90
+  - sweep.F90
+  - typechange.f90
+  - updatesource.f90
