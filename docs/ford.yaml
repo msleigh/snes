@@ -1,8 +1,8 @@
 project:
-  name: Example Project
-  author: Your Name
-  summary: A simple project to verify Ford installation.
-output_dir: ./docs
-input_dir: .
+  name: snes
+  author: msleigh
+  summary:
+output_dir:
+input_dir:
 files:
   - example.f90
