@@ -1,8 +1,8 @@
 ---
 project: snes
 author: msleigh
-output_dir: ./docs/html
-page_dir: ..
+output_dir: ./html
+page_dir: ./docs
 src_dir: ../src
 ---
 
