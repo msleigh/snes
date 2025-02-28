@@ -3,7 +3,7 @@ project:
   author: msleigh
   summary:
 output_dir:
-input_dir:
+input_dir: ../
 files:
   - example.f90
   - allocstor.F90
