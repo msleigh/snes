@@ -4,6 +4,7 @@
 !! Extracts nuclear data from ASCII input file
 
 MODULE readnucdat_mod
+  !! Extracts nuclear data from ASCII input file
 
 PRIVATE
 PUBLIC :: readnucdat

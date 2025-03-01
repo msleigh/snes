@@ -4,6 +4,7 @@
 !! Extracts material parameters from ASCII input file
 
 MODULE readmats_mod
+  !! Extracts material parameters from ASCII input file
 
 PRIVATE
 PUBLIC :: readmats

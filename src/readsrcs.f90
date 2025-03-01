@@ -4,6 +4,7 @@
 !! Extracts source parameters from ASCII input file
 
 MODULE readsrcs_mod
+  !! Extracts source parameters from ASCII input file
 
 PRIVATE
 PUBLIC :: readsrcs

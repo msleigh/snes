@@ -4,6 +4,7 @@
 !! Routine to read in a line of input from file instream
 
 MODULE readline_mod
+  !! Routine to read in a line of input from file instream
 
 USE getkinds_mod
 

@@ -4,6 +4,7 @@
 !! Sets up source term for current iteration
 
 MODULE scatsource_mod
+  !! Sets up the scattering source term for the current iteration
 
 PRIVATE
 PUBLIC :: scatsource

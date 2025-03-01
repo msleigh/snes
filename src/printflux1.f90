@@ -4,6 +4,7 @@
 !! Writes scalar flux output to ASCII file
 
 MODULE printflux1_mod
+  !! Writes scalar flux output to ASCII file
 
 PRIVATE
 PUBLIC :: printflux1

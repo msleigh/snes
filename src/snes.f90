@@ -4,6 +4,7 @@
 !! Main controlling unit for SNES (Simple Neutron Transport Equation Solver)
 
 PROGRAM main
+  !! Main program for solving the neutron transport equation
   !! STRUCTURE
   !! 1. Initialise variables
   !! 2. Get input data and allocate storage

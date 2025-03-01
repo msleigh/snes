@@ -4,6 +4,7 @@
 !! Performs sweep over all cells and directions
 
 MODULE sweep_mod
+  !! Performs a sweep over all cells and directions for neutron transport
 
 PRIVATE
 PUBLIC :: sweep

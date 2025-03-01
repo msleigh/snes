@@ -4,6 +4,7 @@
 !! Declares global data
 
 MODULE setdata_mod
+  !! Declares and manages global data structures and parameters
 
 USE getkinds_mod
 

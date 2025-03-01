@@ -4,6 +4,7 @@
 !! Defines quadrature sets for Sn approximations
 
 MODULE quadsets_mod
+  !! Defines quadrature sets for Sn approximations
 
 PRIVATE
 PUBLIC :: quadsets

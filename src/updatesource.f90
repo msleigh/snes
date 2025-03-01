@@ -4,6 +4,7 @@
 !! Updates within-group scattering source for current group/inner
 
 MODULE updatesource_mod
+  !! Updates the scattering source for the current group and iteration
 
 PRIVATE
 PUBLIC :: updatesource

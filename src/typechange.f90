@@ -4,6 +4,7 @@
 !! Provides functions to convert strings to real and integer types
 
 MODULE typechange_mod
+  !! Provides functions to convert strings to numerical types
 USE getkinds_mod
 
 PRIVATE

@@ -4,6 +4,7 @@
 !! Extracts keyword parameters from ASCII input file
 
 MODULE readkeys_mod
+  !! Extracts keyword parameters from ASCII input file
 
 PRIVATE
 PUBLIC :: readkeys
