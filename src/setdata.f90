@@ -1,7 +1,3 @@
-!> \author msleigh
-!!
-!! PURPOSE: Declares global data
-
 !! author: msleigh
 !! date: 2002
 !!

@@ -1,22 +1,16 @@
-!> \author msleigh
-!!
-!! PURPOSE: Main controlling unit for SNES (Simple Neutron Transport Equation
-!!          Solver)
-!!
-!! STRUCTURE
-!! 1. Initialise variables
-!! 2. Get input data and allocate storage
-!! 3. Set up mesh and quadrature set
-!! 4. Solve neutron transport equation
-!! 5. Write output
-!! 6. Deallocate storage
-
 !! author: msleigh
 !! date: 2002
 !!
 !! Main controlling unit for SNES (Simple Neutron Transport Equation Solver)
 
 PROGRAM main
+  !! STRUCTURE
+  !! 1. Initialise variables
+  !! 2. Get input data and allocate storage
+  !! 3. Set up mesh and quadrature set
+  !! 4. Solve neutron transport equation
+  !! 5. Write output
+  !! 6. Deallocate storage
 
   USE allocstor_mod
   USE deallocstor_mod

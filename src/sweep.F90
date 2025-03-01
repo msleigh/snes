@@ -1,8 +1,3 @@
-!> author: msleigh
-!> date: 2002
-!>
-!> Performs sweep over all cells and directions
-
 !! author: msleigh
 !! date: 2002
 !!
