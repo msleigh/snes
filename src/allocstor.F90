@@ -1,14 +1,13 @@
-!> author: msleigh
-!> date: 2002
-!>
-!> Allocates sizes to global arrays
-
-!> author: msleigh
-!> date: 2002
-!>
-!> Allocates sizes to global arrays
+!! author: msleigh
+!! date: 2002
+!!
+!! Allocates sizes to global arrays
 
 MODULE allocstor_mod
+  !! author: msleigh
+  !! date: 2002
+  !!
+  !! Allocates sizes to global arrays
 
 PRIVATE
 PUBLIC :: allocstor
