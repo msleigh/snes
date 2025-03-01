@@ -11,7 +11,6 @@ PUBLIC :: updatesource
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Updates within-group scattering source for current group/inner
   !!

@@ -13,7 +13,7 @@ PUBLIC :: toint
 
 CONTAINS
 
-  !> \brief Function to return real representation of input string
+  !! Function to return real representation of input string
 
   FUNCTION toreal(string) RESULT (toreal_result)
 
@@ -27,7 +27,7 @@ CONTAINS
 
   !----------------------------------------------------------------------------
 
-  !> \brief Function to return integer representation of input string
+  !! Function to return integer representation of input string
 
   FUNCTION toint(string) RESULT (toint_result)
 

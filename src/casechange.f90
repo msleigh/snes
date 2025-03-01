@@ -13,7 +13,7 @@ PUBLIC :: tolower
 
 CONTAINS
 
-  !> \brief Function to return lower CASE of input string
+  !! Function to return lower CASE of input string
   !!
   !! Uses ASCII collating sequence
   !! UPPER=LOWER-32 for this sequence

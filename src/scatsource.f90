@@ -11,7 +11,6 @@ PUBLIC :: scatsource
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Sets up source term for current iteration
   !!

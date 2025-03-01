@@ -11,7 +11,6 @@ PUBLIC :: get_free_lun
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Gets free logical unit number (LUN)
   !!
