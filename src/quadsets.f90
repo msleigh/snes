@@ -1,7 +1,7 @@
-!> author: msleigh
-!> date: 2002
-!>
-!> Defines quadrature sets for Sn approximations
+!! author: msleigh
+!! date: 2002
+!!
+!! Defines quadrature sets for Sn approximations
 
 MODULE quadsets_mod
 

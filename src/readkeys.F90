@@ -1,7 +1,7 @@
-!> author: msleigh
-!> date: 2002
-!>
-!> Extracts keyword parameters from ASCII input file
+!! author: msleigh
+!! date: 2002
+!!
+!! Extracts keyword parameters from ASCII input file
 
 MODULE readkeys_mod
 

@@ -1,7 +1,7 @@
-!> author: msleigh
-!> date: 2002
-!>
-!> Provides utilities for changing case in strings
+!! author: msleigh
+!! date: 2002
+!!
+!! Provides utilities for changing case in strings
 
 MODULE casechange_mod
 

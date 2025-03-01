@@ -1,7 +1,7 @@
-!> author: msleigh
-!> date: 2002
-!>
-!> Deallocates allocatable storage
+!! author: msleigh
+!! date: 2002
+!!
+!! Deallocates allocatable storage
 
 MODULE deallocstor_mod
 

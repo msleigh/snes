@@ -4,10 +4,10 @@
 !!
 !! PURPOSE: Declares kind type parameters
 
-!> author: msleigh
-!> date: 2002
-!>
-!> Declares kind type parameters
+!! author: msleigh
+!! date: 2002
+!!
+!! Declares kind type parameters
 
 MODULE getkinds_mod
 

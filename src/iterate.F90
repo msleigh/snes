@@ -1,7 +1,7 @@
-!> author: msleigh
-!> date: 2002
-!>
-!> Controls iteration process
+!! author: msleigh
+!! date: 2002
+!!
+!! Controls iteration process
 
 MODULE iterate_mod
 
