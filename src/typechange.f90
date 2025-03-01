@@ -1,3 +1,8 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Provides functions to convert strings to real and integer types
+
 MODULE typechange_mod
 USE getkinds_mod
 

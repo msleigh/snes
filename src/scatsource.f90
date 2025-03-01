@@ -1,3 +1,8 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Sets up source term for current iteration
+
 MODULE scatsource_mod
 
 PRIVATE

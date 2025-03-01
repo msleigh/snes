@@ -2,6 +2,11 @@
 !!
 !! PURPOSE: Declares global data
 
+!! author: msleigh
+!! date: 2002
+!!
+!! Declares global data
+
 MODULE setdata_mod
 
 USE getkinds_mod

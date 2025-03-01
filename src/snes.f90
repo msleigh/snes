@@ -11,6 +11,11 @@
 !! 5. Write output
 !! 6. Deallocate storage
 
+!! author: msleigh
+!! date: 2002
+!!
+!! Main controlling unit for SNES (Simple Neutron Transport Equation Solver)
+
 PROGRAM main
 
   USE allocstor_mod

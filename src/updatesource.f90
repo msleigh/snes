@@ -1,3 +1,8 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Updates within-group scattering source for current group/inner
+
 MODULE updatesource_mod
 
 PRIVATE
