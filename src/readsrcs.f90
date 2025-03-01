@@ -1,3 +1,8 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Extracts source parameters from ASCII input file
+
 MODULE readsrcs_mod
 
 PRIVATE
