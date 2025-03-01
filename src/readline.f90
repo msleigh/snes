@@ -19,7 +19,6 @@ INTEGER(KIND=ik), PUBLIC                             :: num_fields
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Routine to read in a line of input from file instream
   !!          Line is split into field() with each element of field

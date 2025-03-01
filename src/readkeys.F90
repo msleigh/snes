@@ -11,7 +11,6 @@ PUBLIC :: readkeys
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Extracts keyword parameters from ASCII input file
   !!

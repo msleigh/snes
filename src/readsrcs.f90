@@ -11,8 +11,6 @@ PUBLIC :: readsrcs
 
 CONTAINS
 
-  !> \author msleigh
-  !!
   !!
   !! STRUCTURE
   !! 1. Initialise variables

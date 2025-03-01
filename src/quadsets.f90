@@ -11,7 +11,6 @@ PUBLIC :: quadsets
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Defines quadrature sets for Sn approximations
   !!

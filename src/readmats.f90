@@ -11,7 +11,6 @@ PUBLIC :: readmats
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Extracts material parameters from ASCII input file
   !!

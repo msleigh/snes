@@ -11,7 +11,6 @@ PUBLIC :: printflux2
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Writes scalar flux output to ASCII file
   !!

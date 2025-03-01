@@ -11,7 +11,6 @@ PUBLIC :: readnucdat
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Extracts nuclear data from ASCII input file
   !!
