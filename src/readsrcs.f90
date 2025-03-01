@@ -7,7 +7,6 @@ CONTAINS
 
   !> \author msleigh
   !!
-  !! PURPOSE: Extracts source parameters from raw data
   !!
   !! STRUCTURE
   !! 1. Initialise variables
