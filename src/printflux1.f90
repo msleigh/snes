@@ -21,6 +21,7 @@ CONTAINS
   !! 4. Close output file
 
   SUBROUTINE printflux1( &
+    !! Writes scalar flux output to a file
     & errstat)
 
   USE getkinds_mod

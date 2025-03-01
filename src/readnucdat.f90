@@ -19,6 +19,7 @@ CONTAINS
   !! 2. Read and check material parameters from input data
 
   SUBROUTINE readnucdat( &
+    !! Reads nuclear data for a given material
     & id, &
     & mat, &
     & fission, &

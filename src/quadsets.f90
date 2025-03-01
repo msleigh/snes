@@ -19,6 +19,7 @@ CONTAINS
   !! 2. Define quadrature set
 
   SUBROUTINE quadsets( &
+    !! Defines quadrature sets for Sn approximations
     & errstat)
 
   USE getkinds_mod

@@ -17,6 +17,7 @@ CONTAINS
   !! 2. Read and check source parameters from input data
 
   SUBROUTINE readsrcs( &
+    !! Reads source parameters from an input file
     & errstat)
 
   USE casechange_mod

@@ -21,6 +21,7 @@ CONTAINS
   !! 4. Print information
 
   SUBROUTINE readkeys( &
+    !! Extracts keyword parameters from an input file
     & filename, &
     & errstat)
 

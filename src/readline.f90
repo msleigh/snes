@@ -42,6 +42,7 @@ CONTAINS
   !! 4. Print information
 
   SUBROUTINE readline( &
+    !! Reads a line of input and splits it into fields
     & line_type, &
     & instream, &
     & printout)

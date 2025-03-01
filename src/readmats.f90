@@ -19,6 +19,7 @@ CONTAINS
   !! 2. Read and check material parameters from input data
 
   SUBROUTINE readmats( &
+    !! Reads material parameters from an input file
     & filename, &
     & errstat)
 
