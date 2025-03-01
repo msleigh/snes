@@ -11,7 +11,6 @@ PUBLIC :: fisssource
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Calculates fission source for current outer iteration
   !!

@@ -11,7 +11,6 @@ PUBLIC :: iterate
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Controls iteration process
   !!

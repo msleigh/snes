@@ -11,7 +11,6 @@ PUBLIC :: initmesh
 
 CONTAINS
 
-  !> \author msleigh
   !!
   !! PURPOSE: Constructs the mesh by assigning data to cell arrays
   !!

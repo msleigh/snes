@@ -11,7 +11,7 @@ PUBLIC :: deallocstor
 
 CONTAINS
 
-  !> \brief Deallocates allocatable storage
+  !! \brief Deallocates allocatable storage
   !!
   !! STRUCTURE
   !! 1. Initialise variables
