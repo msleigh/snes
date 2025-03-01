@@ -21,6 +21,7 @@ CONTAINS
   !! 4. Print information
 
   SUBROUTINE initmesh( &
+    !! Initializes the mesh and assigns data to cell arrays
     & errstat)
 
   USE casechange_mod

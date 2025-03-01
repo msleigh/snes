@@ -20,6 +20,7 @@ CONTAINS
   !! 2. Find free LUN
 
   SUBROUTINE get_free_lun( &
+    !! Finds a free logical unit number
     & logical_unit_number, &
     & errstat)
 

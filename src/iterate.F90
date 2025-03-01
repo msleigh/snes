@@ -22,6 +22,7 @@ CONTAINS
   !! 5. Test for convergence
 
   SUBROUTINE iterate
+    !! Controls the iterative solution process
 
   USE getkinds_mod
   USE setdata_mod

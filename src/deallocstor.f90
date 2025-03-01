@@ -18,6 +18,7 @@ CONTAINS
   !! 2. Deallocate storage
 
   SUBROUTINE deallocstor( &
+    !! Deallocates all allocated storage
     & errstat)
 
   USE getkinds_mod, only: ik

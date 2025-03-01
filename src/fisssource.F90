@@ -19,6 +19,7 @@ CONTAINS
   !! 2. Set up fission source term
 
   SUBROUTINE fisssource( &
+    !! Calculates the fission source for the current iteration
     & sfs)
 
   USE getkinds_mod
