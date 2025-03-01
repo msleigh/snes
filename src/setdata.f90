@@ -90,6 +90,7 @@ INTEGER(KIND=ik), PARAMETER, PUBLIC :: numsweeps = 2_ik
 ! file but not stored), and macroscopic cross-sections are calculated.
 
 TYPE mattype
+  !! Represents material properties and cross-sections
   INTEGER(KIND=rk)                       :: mat_id
   REAL(KIND=rk)                          :: rho
   REAL(KIND=rk)                          :: atomweight
