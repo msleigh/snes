@@ -1,9 +1,3 @@
-!> \author msleigh
-!!
-!! NOTES:   1D within-group non-multiplying version
-!!
-!! PURPOSE: Declares kind type parameters
-
 !! author: msleigh
 !! date: 2002
 !!
