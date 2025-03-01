@@ -1,4 +1,7 @@
-!> \author msleigh
+!> author: msleigh
+!> date: 2002
+!>
+!> Allocates sizes to global arrays
 
 MODULE allocstor_mod
 
@@ -7,18 +10,12 @@ PUBLIC :: allocstor
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! \brief Allocate storage
-  !!
-  !! PURPOSE: Allocates sizes to global arrays
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Allocate storage
-
   SUBROUTINE allocstor( &
     & errstat)
+    !! author: msleigh
+    !! date: 2002
+    !!
+    !! Allocates sizes to global arrays
 
   USE getkinds_mod
   USE setdata_mod
@@ -28,16 +25,16 @@ CONTAINS
   CHARACTER(LEN=9), PARAMETER :: unitname = 'ALLOCSTOR'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Local error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   !---------------------------------------------------------------------------
-  ! 1. Initialise variables
+  !> 1. Initialise variables
   !---------------------------------------------------------------------------
 
   errstat = 0_ik
 
   !---------------------------------------------------------------------------
-  ! 2. Allocate storage
+  !> 2. Allocate storage
   !---------------------------------------------------------------------------
 
   ALLOCATE( &
