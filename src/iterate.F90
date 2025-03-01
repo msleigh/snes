@@ -4,6 +4,7 @@
 !! Controls iteration process
 
 MODULE iterate_mod
+  !! Handles iterative solution processes
 
 PRIVATE
 PUBLIC :: iterate

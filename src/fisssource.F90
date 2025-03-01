@@ -4,6 +4,7 @@
 !! Calculates fission source for current outer iteration
 
 MODULE fisssource_mod
+  !! Defines the fission source terms
 
 PRIVATE
 PUBLIC :: fisssource

@@ -4,6 +4,7 @@
 !! Declares kind type parameters
 
 MODULE getkinds_mod
+  !! Provides kind parameters for numerical precision
 
   IMPLICIT NONE
 

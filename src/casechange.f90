@@ -4,6 +4,7 @@
 !! Provides utilities for changing case in strings
 
 MODULE casechange_mod
+  !! Provides utilities for changing case in strings
 
 USE getkinds_mod
 

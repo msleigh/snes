@@ -4,6 +4,7 @@
 !! Deallocates allocatable storage
 
 MODULE deallocstor_mod
+  !! Handles memory deallocation for storage
 
 PRIVATE
 PUBLIC :: deallocstor

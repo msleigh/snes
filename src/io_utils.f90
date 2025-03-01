@@ -4,6 +4,7 @@
 !! Provides I/O utility functions
 
 MODULE io_utils_mod
+  !! Contains input/output utility functions
 
 PRIVATE
 PUBLIC :: get_free_lun

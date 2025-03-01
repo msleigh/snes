@@ -4,6 +4,7 @@
 !! Allocates sizes to global arrays
 
 MODULE allocstor_mod
+  !! Handles memory allocation for storage
   !! author: msleigh
   !! date: 2002
   !!

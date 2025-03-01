@@ -4,6 +4,7 @@
 !! Constructs the mesh by assigning data to cell arrays
 
 MODULE initmesh_mod
+  !! Initializes the computational mesh
 
 PRIVATE
 PUBLIC :: initmesh
