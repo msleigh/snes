@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Performs sweep over all cells and directions
+
 MODULE sweep_mod
 
 PRIVATE
@@ -5,15 +10,11 @@ PUBLIC :: sweep
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Performs sweep over all cells and directions
-  !!
-  !! STRUCTURE
-  !! 1. Do sweeps
-
   SUBROUTINE sweep( &
     & group)
+    !! AUTHOR: msleigh
+    !!
+    !! Performs sweep over all cells and directions
 
   USE getkinds_mod
   USE setdata_mod
@@ -21,7 +22,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(IN) :: group !< Energy group being solved for
+  INTEGER(KIND=ik), INTENT(IN) :: group !! Energy group being solved for
 
   ! Counters
   INTEGER(KIND=ik) :: cell
