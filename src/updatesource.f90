@@ -18,6 +18,7 @@ CONTAINS
   !! 1. Update within-group scattering source for current group
 
   SUBROUTINE updatesource( &
+    !! Updates the scattering source for the specified energy group
     & group)
 
   USE getkinds_mod

@@ -18,6 +18,7 @@ CONTAINS
   !! 1. Add group-to-group scattering (g' -> g where g' < g) to group source
 
   SUBROUTINE scatsource( &
+    !! Sets up the scattering source term for the current iteration
     & group)
 
   USE getkinds_mod

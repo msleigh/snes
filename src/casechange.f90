@@ -19,6 +19,7 @@ CONTAINS
   !! UPPER=LOWER-32 for this sequence
 
   FUNCTION tolower(string) RESULT (tolower_result)
+    !! Converts a string to lowercase using ASCII values
 
   USE getkinds_mod
 

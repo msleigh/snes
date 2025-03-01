@@ -16,6 +16,7 @@ CONTAINS
   !! Function to return real representation of input string
 
   FUNCTION toreal(string) RESULT (toreal_result)
+    !! Converts a string to a real number
 
     IMPLICIT NONE
     CHARACTER(LEN=*), INTENT(IN) :: string !< String to convert
@@ -30,6 +31,7 @@ CONTAINS
   !! Function to return integer representation of input string
 
   FUNCTION toint(string) RESULT (toint_result)
+    !! Converts a string to an integer
 
     IMPLICIT NONE
     CHARACTER (LEN=*), INTENT(IN) :: string !< String to convert
