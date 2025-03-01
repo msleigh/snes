@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Extracts nuclear data from ASCII input file
+
 MODULE readnucdat_mod
 
 PRIVATE

@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Calculates fission source for current outer iteration
+
 MODULE fisssource_mod
 
 PRIVATE

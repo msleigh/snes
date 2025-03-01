@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Constructs the mesh by assigning data to cell arrays
+
 MODULE initmesh_mod
 
 PRIVATE

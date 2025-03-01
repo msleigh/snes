@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Extracts material parameters from ASCII input file
+
 MODULE readmats_mod
 
 PRIVATE

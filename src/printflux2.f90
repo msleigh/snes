@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Writes scalar flux output to ASCII file
+
 MODULE printflux2_mod
 
 PRIVATE

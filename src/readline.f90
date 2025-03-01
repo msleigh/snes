@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Routine to read in a line of input from file instream
+
 MODULE readline_mod
 
 USE getkinds_mod

@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Controls iteration process
+
 MODULE iterate_mod
 
 PRIVATE

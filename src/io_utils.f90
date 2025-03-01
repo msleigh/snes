@@ -1,3 +1,8 @@
+!> author: msleigh
+!> date: 2002
+!>
+!> Provides I/O utility functions
+
 MODULE io_utils_mod
 
 PRIVATE
