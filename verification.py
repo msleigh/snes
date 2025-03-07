@@ -8,12 +8,12 @@ import subprocess
 # Run the tests and extract K_EFF values for snes
 subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run(["make", "tests"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-!grep 'K[ ]*EFF' qa/*.outs | tr -s ' ' | cut -d' ' -f4  > /tmp/keffs
+subprocess.run("grep 'K[ ]*EFF' qa/*.outs | tr -s ' ' | cut -d' ' -f4 > /tmp/keffs", shell=True, check=True)
 
 # Run the tests and extract K_EFF values for snel
 subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run(["make", "testl"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-!grep 'K[ ]*EFF' qa/*.outl | tr -s ' ' | cut -d' ' -f4 > /tmp/keffl
+subprocess.run("grep 'K[ ]*EFF' qa/*.outl | tr -s ' ' | cut -d' ' -f4 > /tmp/keffl", shell=True, check=True)
 
 # Read the K_EFF values from the files
 with open("/tmp/keffs", "r", encoding="utf-8") as f:
