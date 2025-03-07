@@ -19,4 +19,20 @@ The codebase is organized into several key directories and files:
 
 ## Contribution Guidelines
 
-Guidelines for contributing to the project.
+To contribute to the project, follow these steps to set up your development environment:
+
+1. **Clone the Repository**: Start by cloning the repository to your local machine.
+
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+
+2. **Install Pre-commit Hooks**: This project uses pre-commit hooks to ensure code quality. Install the pre-commit package and set up the hooks by running:
+
+   ```bash
+   pip install pre-commit
+   pre-commit install
+   ```
+
+   This will automatically run checks on your code before each commit, helping maintain code quality and consistency.
