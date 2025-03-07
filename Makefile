@@ -59,6 +59,8 @@ cleaner:
 
 veryclean: clean cleaner
 
+clobber: veryclean verycleantest
+
 cleantest:
 	rm -rf qa/snestp*.log* qa/tpx*
 
