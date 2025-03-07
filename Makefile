@@ -69,5 +69,8 @@ cleanertest:
 
 verycleantest: cleantest cleanertest
 
-docs:
+docs: docs/docs/images/keff_results.png
 	make -C docs html
+
+docs/docs/images/keff_results.png: verification.py
+	uv run python verification.py
