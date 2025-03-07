@@ -18,7 +18,7 @@ make
 ```
 This will compile the code using the provided Makefile.
 
-By default, this build uses diamond differencing (MACRO=CODETYPE). To build SNES with diamond differencing (default), simply run:
+By default, this build uses diamond differencing (MACRO=SNES). To build SNES with diamond differencing (default), simply run:
 ```bash
 make
 ```
