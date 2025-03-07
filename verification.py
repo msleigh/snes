@@ -8,12 +8,30 @@ import subprocess
 # Run the tests and extract K_EFF values for snes
 subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run(["make", "tests"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-subprocess.run("grep 'K[ ]*EFF' qa/*.outs | tr -s ' ' | cut -d' ' -f4 > /tmp/keffs", shell=True, check=True)
+import re
+
+# Extract K_EFF values for snes
+with open("/tmp/keffs", "w", encoding="utf-8") as f_out:
+    for file in glob.glob("qa/*.outs"):
+        with open(file, "r", encoding="utf-8") as f_in:
+            for line in f_in:
+                if "K EFF" in line:
+                    match = re.search(r"K[ ]*EFF[ ]*([0-9.]+)", line)
+                    if match:
+                        f_out.write(match.group(1) + "\n")
 
 # Run the tests and extract K_EFF values for snel
 subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run(["make", "testl"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-subprocess.run("grep 'K[ ]*EFF' qa/*.outl | tr -s ' ' | cut -d' ' -f4 > /tmp/keffl", shell=True, check=True)
+# Extract K_EFF values for snel
+with open("/tmp/keffl", "w", encoding="utf-8") as f_out:
+    for file in glob.glob("qa/*.outl"):
+        with open(file, "r", encoding="utf-8") as f_in:
+            for line in f_in:
+                if "K EFF" in line:
+                    match = re.search(r"K[ ]*EFF[ ]*([0-9.]+)", line)
+                    if match:
+                        f_out.write(match.group(1) + "\n")
 
 # Read the K_EFF values from the files
 with open("/tmp/keffs", "r", encoding="utf-8") as f:
