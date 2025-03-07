@@ -6,7 +6,7 @@ set -o pipefail
 
 VERSION="$1"
 SFX="$2"
-TPNAME="$(basename "$3" .in)"
+TPNAME="$(basename "${3:-$2}" .in)"
 
 JOBID=$$
 
