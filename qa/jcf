@@ -4,7 +4,6 @@ set -eu
 set -o pipefail
 #set -x
 
-VERSION="$1"
 SFX="$2"  !! Suffix used for output file naming (e.g., distinguishing sweep types)
 TPNAME="$(basename "${3:-$2}" .in)"
 
@@ -22,7 +21,7 @@ OUTPUT=${TPNAME}.out${SFX}
 FLXDAT=${TPNAME}.flx${SFX}
 
 AOUTDIR=${BASEDIR}
-AOUT=${AOUTDIR}/sne${SFX}${VERSION}
+AOUT=${AOUTDIR}/sne${SFX}
 
 mkdir -p "${OUTDIR}"
 cd "${OUTDIR}"
