@@ -16,6 +16,6 @@ providing an accurate and efficient model of neutron flux in one-dimensional sys
 
 ## Verification
 
-The following plot shows the K_EFF results for the test problems:
+The following plot shows the \( k_{\text{eff}} \) results for the test problems:
 
 <img src="images/keff_results.png" alt="K_EFF Results" width="800"/>
