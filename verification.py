@@ -13,7 +13,7 @@ subprocess.run(["make", "tests"])
 
 # Extract K_EFF values for snes
 with open("/tmp/keffs", "w", encoding="utf-8") as f_out:
-    for file in glob.glob("qa/*.outs"):
+    for file in sorted(glob.glob("qa/*.outs")):
         with open(file, "r", encoding="utf-8") as f_in:
             for line in f_in:
                 if "K EFFECTIVE" in line:
@@ -28,7 +28,7 @@ subprocess.run(["make", "clobber"])
 subprocess.run(["make", "testl"])
 # Extract K_EFF values for snel
 with open("/tmp/keffl", "w", encoding="utf-8") as f_out:
-    for file in glob.glob("qa/*.outl"):
+    for file in sorted(glob.glob("qa/*.outl")):
         with open(file, "r", encoding="utf-8") as f_in:
             for line in f_in:
                 if "K EFFECTIVE" in line:
