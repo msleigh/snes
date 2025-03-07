@@ -16,8 +16,8 @@ with open("/tmp/keffs", "w", encoding="utf-8") as f_out:
     for file in glob.glob("qa/*.outs"):
         with open(file, "r", encoding="utf-8") as f_in:
             for line in f_in:
-                if "K EFF" in line:
-                    match = re.search(r"K[ ]*EFF[ ]*([0-9.]+)", line)
+                if "K EFFECTIVE" in line:
+                    match = re.search(r"K[ ]*EFFECTIVE[ ]*=[ ]*([0-9.]+)", line)
                     if match:
                         f_out.write(match.group(1) + "\n")
                     else:
@@ -31,8 +31,8 @@ with open("/tmp/keffl", "w", encoding="utf-8") as f_out:
     for file in glob.glob("qa/*.outl"):
         with open(file, "r", encoding="utf-8") as f_in:
             for line in f_in:
-                if "K EFF" in line:
-                    match = re.search(r"K[ ]*EFF[ ]*([0-9.]+)", line)
+                if "K EFFECTIVE" in line:
+                    match = re.search(r"K[ ]*EFFECTIVE[ ]*=[ ]*([0-9.]+)", line)
                     if match:
                         f_out.write(match.group(1) + "\n")
                     else:
