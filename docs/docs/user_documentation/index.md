@@ -30,3 +30,11 @@ make snel1.2
 ## Usage
 
 Examples and explanations on how to use the software.
+
+## Docker Build Instructions
+
+To build the Docker container locally, run:
+```bash
+docker buildx build -t snes .
+```
+This command will build the container using the provided Dockerfile.
