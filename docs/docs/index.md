@@ -7,6 +7,12 @@ ordered_subpage: theory_documentation
 
 ## Introduction
 
+## K_EFF Results
+
+The following plot shows the K_EFF results for the test problems:
+
+![K_EFF Results](images/keff_results.png)
+
 Welcome to the SNES Documentation.
 
 SNES is a one-dimensional discrete ordinates neutron transport code written in Fortran.
