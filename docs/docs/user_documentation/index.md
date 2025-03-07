@@ -29,7 +29,19 @@ make snel1.2
 
 ## Usage
 
-Examples and explanations on how to use the software.
+Once the code is built, you can run the tests to ensure everything is functioning correctly. To run the tests, execute the following command in the terminal:
+
+```bash
+make tests
+```
+
+This will run the test suite using the `snes` executable. To run the tests with the `snel` executable, use:
+
+```bash
+make testl
+```
+
+After running the tests, you can check the results by examining the output files generated in the `qa` directory. The output files will have extensions `.outs` for `snes` and `.outl` for `snel`. You can also review the log files with extensions `.logs` and `.logl` for detailed information about the test runs.
 
 ## Building Documentation Locally
 
