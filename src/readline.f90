@@ -19,33 +19,29 @@ INTEGER(KIND=ik), PUBLIC                             :: num_fields
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Routine to read in a line of input from file instream
-  !!          Line is split into field() with each element of field
-  !!          containing character representation of each white-space-
-  !!          delimited field in variable line
-  !!          Variable num_fields contains number of fields in field()
-  !!          Allows comment character # to appear anywhere on input line
-  !!          Output argument 'line_type' is integer specifying type of line
-  !!          read, i.e. line_type=0 all comment or blank line
-  !!                     line_type=1 end of file
-  !!                     line_type=2 error on read
-  !!                     line_type=3 line contains input
-  !!          Output argument printout is flag for printing out line read
-  !!                     .TRUE. is print
-  !!                     .FALSE. is do not print
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Extract keyword parameters from data
-  !! 3. Check validity of keyword parameters
-  !! 4. Print information
-
   SUBROUTINE readline( &
     !! Reads a line of input and splits it into fields
     & line_type, &
     & instream, &
     & printout)
+
+  !! Line is split into field() with each element of field
+  !! containing character representation of each white-space-
+  !! delimited field in variable line
+
+  !! Variable num_fields contains number of fields in field()
+
+  !! Allows comment character # to appear anywhere on input line
+
+  !! Output argument 'line_type' is integer specifying type of line
+  !! read, i.e.: line_type=0 all comment or blank line;
+  !!             line_type=1 end of file;
+  !!             line_type=2 error on read;
+  !!             line_type=3 line contains input.
+
+  !! Output argument printout is flag for printing out line read
+  !!            .TRUE. is print
+  !!            .FALSE. is do not print
 
   USE getkinds_mod
 
@@ -54,9 +50,9 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'readline'
 
   ! Arguments
-  INTEGER(kind=ik),  INTENT(OUT) :: line_type !< Output argument
-  INTEGER(kind=ik),  INTENT(IN)  :: instream  !< Input stream
-  LOGICAL, OPTIONAL, INTENT(IN)  :: printout  !< Flag to print or not
+  INTEGER(kind=ik),  INTENT(OUT) :: line_type !! Type of line read
+  INTEGER(kind=ik),  INTENT(IN)  :: instream  !! Input stream identifier
+  LOGICAL, OPTIONAL, INTENT(IN)  :: printout  !! Flag to print the line
 
   INTEGER(KIND=ik), DIMENSION(:,:), ALLOCATABLE :: fp
   LOGICAL                                       :: pp

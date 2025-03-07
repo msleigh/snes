@@ -11,13 +11,6 @@ PUBLIC :: readnucdat
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Extracts nuclear data from ASCII input file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Read and check material parameters from input data
-
   SUBROUTINE readnucdat( &
     !! Reads nuclear data for a given material
     & id, &
@@ -37,10 +30,10 @@ CONTAINS
   CHARACTER(LEN=10), PARAMETER  :: unitname = 'READNUCDAT'
 
   ! Arguments
-  CHARACTER(LEN=8), INTENT(IN)  :: id      !< Nuclide ID code
-  INTEGER(KIND=ik), INTENT(IN)  :: mat     !< Material number
-  LOGICAL,          INTENT(OUT) :: fission !< Fission flag
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Local error status
+  CHARACTER(LEN=8), INTENT(IN)  :: id      !! Nuclide ID code
+  INTEGER(KIND=ik), INTENT(IN)  :: mat     !! Material number
+  LOGICAL,          INTENT(OUT) :: fission !! Fission flag
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Error status indicator
 
   ! Counters
   INTEGER(KIND=ik) :: group        ! Energy group

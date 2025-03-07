@@ -21,10 +21,10 @@ PUBLIC :: mattype
 LOGICAL,          PUBLIC :: inputerror
 
 ! Iterations criteria
-REAL(KIND=rk),    PUBLIC :: epsinner      ! Convergence criterion for inner iters
-REAL(KIND=rk),    PUBLIC :: epsouter      ! Convergence criterion for inner iters
-INTEGER(KIND=ik), PUBLIC :: imaxinner     ! Maximum no. of inner iterations
-INTEGER(KIND=ik), PUBLIC :: imaxouter     ! Maximum no. of outer iterations
+REAL(KIND=rk),    PUBLIC :: epsinner      !! Convergence criterion for inner iters
+REAL(KIND=rk),    PUBLIC :: epsouter      !! Convergence criterion for inner iters
+INTEGER(KIND=ik), PUBLIC :: imaxinner     !! Maximum no. of inner iterations
+INTEGER(KIND=ik), PUBLIC :: imaxouter     !! Maximum no. of outer iterations
 
 ! Switches
 INTEGER(KIND=ik), PUBLIC :: calctype      ! Calculation type

@@ -11,11 +11,6 @@ PUBLIC :: readsrcs
 
 CONTAINS
 
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Read and check source parameters from input data
-
   SUBROUTINE readsrcs( &
     !! Reads source parameters from an input file
     & errstat)
@@ -33,7 +28,7 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READSRCS'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Error status indicator
 
   ! Counters
   INTEGER(KIND=ik) :: group

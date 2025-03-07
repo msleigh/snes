@@ -11,16 +11,9 @@ PUBLIC :: fisssource
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Calculates fission source for current outer iteration
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Set up fission source term
-
   SUBROUTINE fisssource( &
-    !! Calculates the fission source for the current iteration
     & sfs)
+    !! Calculates the fission source for the current iteration
 
   USE getkinds_mod
   USE setdata_mod
@@ -28,7 +21,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  REAL(KIND=rk), INTENT(OUT) :: sfs !< Sum of the fission source
+  REAL(KIND=rk), INTENT(OUT) :: sfs !! Sum of the fission source
 
   ! Counters
   INTEGER(KIND=ik) :: j

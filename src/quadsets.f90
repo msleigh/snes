@@ -11,16 +11,9 @@ PUBLIC :: quadsets
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Defines quadrature sets for Sn approximations
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Define quadrature set
-
   SUBROUTINE quadsets( &
-    !! Defines quadrature sets for Sn approximations
     & errstat)
+    !! Defines quadrature sets for Sn approximations
 
   USE getkinds_mod
   USE setdata_mod
@@ -28,7 +21,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !<
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   !----------------------------------------------------------------------------
   ! 1. Initialise variables

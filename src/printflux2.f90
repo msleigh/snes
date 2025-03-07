@@ -11,18 +11,15 @@ PUBLIC :: printflux2
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Writes scalar flux output to ASCII file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Open output file
-  !! 3. Write data
-  !! 4. Close output file
-
   SUBROUTINE printflux2( &
-    !! Writes scalar flux output to a file
     & errstat)
+    !! Writes scalar flux output to a file
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Open output file
+  ! 3. Write data
+  ! 4. Close output file
 
   USE getkinds_mod
   USE io_utils_mod
@@ -33,7 +30,7 @@ CONTAINS
   CHARACTER(LEN=10), PARAMETER :: unitname = 'PRINTFLUX2'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   ! I/O
   INTEGER(KIND=ik) :: outlun

@@ -11,12 +11,6 @@ PUBLIC :: deallocstor
 
 CONTAINS
 
-  !! \brief Deallocates allocatable storage
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Deallocate storage
-
   SUBROUTINE deallocstor( &
     !! Deallocates all allocated storage
     & errstat)
@@ -34,7 +28,7 @@ CONTAINS
   CHARACTER(LEN=11), PARAMETER :: unitname = 'DEALLOCSTOR'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Local error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   INTEGER(KIND=ik) :: allocation_status
 

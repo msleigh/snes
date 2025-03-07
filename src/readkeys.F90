@@ -11,19 +11,16 @@ PUBLIC :: readkeys
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Extracts keyword parameters from ASCII input file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Extract keyword parameters from data
-  !! 3. Check validity of keyword parameters
-  !! 4. Print information
-
   SUBROUTINE readkeys( &
     !! Extracts keyword parameters from an input file
     & filename, &
     & errstat)
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Extract keyword parameters from data
+  ! 3. Check validity of keyword parameters
+  ! 4. Print information
 
   USE casechange_mod
   USE getkinds_mod
@@ -37,8 +34,8 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READKEYS'
 
   ! Arguments
-  CHARACTER(LEN=256), INTENT(IN)  :: filename !< Name of input file
-  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !< Error status
+  CHARACTER(LEN=256), INTENT(IN)  :: filename !! Name of the input file
+  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !! Error status indicator
 
   INTEGER(KIND=ik) :: inlun
   INTEGER(KIND=ik) :: linetype

@@ -11,12 +11,6 @@ PUBLIC :: scatsource
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Sets up source term for current iteration
-  !!
-  !! STRUCTURE
-  !! 1. Add group-to-group scattering (g' -> g where g' < g) to group source
-
   SUBROUTINE scatsource( &
     !! Sets up the scattering source term for the current iteration
     & group)
@@ -27,7 +21,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(IN) :: group !< Energy group being considered
+  INTEGER(KIND=ik), INTENT(IN) :: group !! Energy group being considered
 
   ! Counters
   INTEGER(KIND=ik) :: j

@@ -11,12 +11,6 @@ PUBLIC :: updatesource
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Updates within-group scattering source for current group/inner
-  !!
-  !! STRUCTURE
-  !! 1. Update within-group scattering source for current group
-
   SUBROUTINE updatesource( &
     !! Updates the scattering source for the specified energy group
     & group)
@@ -27,7 +21,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(IN) :: group !< Energy group being considered
+  INTEGER(KIND=ik), INTENT(IN) :: group !! Energy group being considered
 
   ! Counters
   INTEGER(KIND=ik) :: j

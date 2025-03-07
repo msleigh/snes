@@ -13,11 +13,6 @@ PUBLIC :: tolower
 
 CONTAINS
 
-  !! Function to return lower CASE of input string
-  !!
-  !! Uses ASCII collating sequence
-  !! UPPER=LOWER-32 for this sequence
-
   FUNCTION tolower(string) RESULT (tolower_result)
     !! Converts a string to lowercase using ASCII values
 
@@ -26,9 +21,9 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  CHARACTER (LEN=*), INTENT(in) :: string !< Input string
+  CHARACTER (LEN=*), INTENT(in) :: string !! Input string to be converted to lowercase
 
-  CHARACTER (LEN=LEN(string)) :: tolower_result
+  CHARACTER (LEN=LEN(string)) :: tolower_result !! Output string in lower case
   INTEGER(KIND=ik) :: i, ii
 
   DO i = 1_ik, LEN(string)

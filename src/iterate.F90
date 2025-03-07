@@ -11,18 +11,16 @@ PUBLIC :: iterate
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Controls iteration process
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Set up iteration
-  !! 3. Set up source
-  !! 4. Do sweep
-  !! 5. Test for convergence
-
   SUBROUTINE iterate
     !! Controls the iterative solution process
+    !! Controls the iterative solution process
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Set up iteration
+  ! 3. Set up source
+  ! 4. Do sweep
+  ! 5. Test for convergence
 
   USE getkinds_mod
   USE setdata_mod

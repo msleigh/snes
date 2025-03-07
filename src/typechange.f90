@@ -5,6 +5,7 @@
 
 MODULE typechange_mod
   !! Provides functions to convert strings to numerical types
+
 USE getkinds_mod
 
 PRIVATE
@@ -13,13 +14,11 @@ PUBLIC :: toint
 
 CONTAINS
 
-  !! Function to return real representation of input string
-
   FUNCTION toreal(string) RESULT (toreal_result)
     !! Converts a string to a real number
 
     IMPLICIT NONE
-    CHARACTER(LEN=*), INTENT(IN) :: string !< String to convert
+    CHARACTER(LEN=*), INTENT(IN) :: string !! String to convert to a real number
     REAL(KIND=rk) :: toreal_result
 
     READ(string,*) toreal_result
@@ -28,13 +27,11 @@ CONTAINS
 
   !----------------------------------------------------------------------------
 
-  !! Function to return integer representation of input string
-
   FUNCTION toint(string) RESULT (toint_result)
     !! Converts a string to an integer
 
     IMPLICIT NONE
-    CHARACTER (LEN=*), INTENT(IN) :: string !< String to convert
+    CHARACTER (LEN=*), INTENT(IN) :: string !! String to convert to an integer
     INTEGER(KIND=ik) :: toint_result
 
     READ(string,*) toint_result

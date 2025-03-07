@@ -11,13 +11,6 @@ PUBLIC :: readmats
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Extracts material parameters from ASCII input file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Read and check material parameters from input data
-
   SUBROUTINE readmats( &
     !! Reads material parameters from an input file
     & filename, &
@@ -36,8 +29,8 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READMATS'
 
   ! Arguments
-  CHARACTER(LEN=256), INTENT(IN)  :: filename !<
-  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !<
+  CHARACTER(LEN=256), INTENT(IN)  :: filename !! Name of the input file
+  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !! Error status indicator
 
   ! Counters
   INTEGER(KIND=ik) :: group        ! Energy group

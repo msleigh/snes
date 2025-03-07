@@ -11,18 +11,15 @@ PUBLIC :: initmesh
 
 CONTAINS
 
-  !!
-  !! PURPOSE: Constructs the mesh by assigning data to cell arrays
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Construct mesh geometry
-  !! 3. Construct mesh material properties
-  !! 4. Print information
-
   SUBROUTINE initmesh( &
-    !! Initializes the mesh and assigns data to cell arrays
     & errstat)
+    !! Initializes the mesh and assigns data to cell arrays
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Construct mesh geometry
+  ! 3. Construct mesh material properties
+  ! 4. Print information
 
   USE casechange_mod
   USE getkinds_mod
@@ -36,7 +33,7 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'INITMESH'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Error status
 
   ! Counters
   INTEGER(KIND=ik) :: cell
