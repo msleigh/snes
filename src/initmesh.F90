@@ -188,7 +188,7 @@ CONTAINS
   ENDDO
   xmax = origin(numcells) + width(numcells)
 
-#ifdef CODETYPE
+#ifdef SNES
   !----------------------------------------------------------------------------
   ! 7. Construct mesh material properties
   !----------------------------------------------------------------------------
@@ -253,7 +253,7 @@ CONTAINS
     WRITE(*,'(A4,4A16)') '----', '-----------', '-----------', '----------', &
       '------------'
     DO cell = 1_ik, numcells
-#ifdef CODETYPE
+#ifdef SNES
       WRITE(*,'(I4,3F16.6,I16)') cell, origin(cell), centre(cell), &
         width(cell), matnum(cell)
 #else

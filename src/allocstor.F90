@@ -72,7 +72,7 @@ CONTAINS
     & centre(numcells), &
     & origin(numcells), &
     & width(numcells), &
-#ifdef CODETYPE
+#ifdef SNES
     & matnum(numcells), &
 #endif
     & STAT=errstat)
@@ -81,7 +81,7 @@ CONTAINS
   centre(:)          = 0.0_rk
   origin(:)          = 0.0_rk
   width(:)           = 0.0_rk
-#ifdef CODETYPE
+#ifdef SNES
   matnum(:)          = 0_ik
 #endif
 

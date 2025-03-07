@@ -37,7 +37,7 @@ TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
 %.outl: %.in snel qa/jcf nucdata/*
 	./qa/jcf "l" $< 2>&1 > $*.logl
 
-snes: MACRO=CODETYPE
+snes: MACRO=SNES
 snes: $(OBJ) Objects
 	$(CMP) $(FFLAGS) $(LFLAGS) $(OBJ) -o snes$(VERSION)
 

@@ -49,7 +49,7 @@ CONTAINS
 
           source_f(j,group,node) = source_f(j,group,node) + &
             & (sigma_f(j,group,group_primed) * &
-#ifdef CODETYPE
+#ifdef SNES
             & scalflux(j,group_primed,0_ik))
 #else
             & scalflux_outer(j,group_primed,node))

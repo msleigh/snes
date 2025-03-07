@@ -44,7 +44,7 @@ CONTAINS
   REAL(KIND=rk) :: u1    ! Mu
   REAL(KIND=rk) :: w1    ! Wgt
   REAL(KIND=rk) :: denom
-#ifdef CODETYPE
+#ifdef SNES
   REAL(KIND=rk) :: c1
 #else
   REAL(KIND=rk) :: ds
@@ -81,7 +81,7 @@ CONTAINS
       ! Determine constants
       dx = width(cell)
       xs = sigma_t(cell,group)
-#ifndef CODETYPE
+#ifndef SNES
       ds = dx*xs
       dd = dx*ds
       IF (sweepdir == 1_ik) THEN
@@ -99,7 +99,7 @@ CONTAINS
         ! Determine constants
         u1 = mu(dir)
         w1 = wgt(dir)
-#ifdef CODETYPE
+#ifdef SNES
         c1 = dx/(2.0_rk*u1)
         denom = 1.0_rk + c1*xs
 #else
@@ -109,7 +109,7 @@ CONTAINS
 #endif
 
         ! Calculate angular fluxes
-#ifdef CODETYPE
+#ifdef SNES
         angflux = (angfluxin(dir) + c1*source_t(cell,1_ik))/denom
         angfluxout = 2.0_rk*angflux - angfluxin(dir)
 #else
@@ -124,7 +124,7 @@ CONTAINS
         IF (nffu .AND. (angfluxout < 0.0_rk)) THEN
           nffu_call = nffu_call + 1_ik
           angfluxout = 0.0_rk
-#ifdef CODETYPE
+#ifdef SNES
           angflux = dx*(source_t(cell,1_ik)) + 2_ik*u1*angfluxin(dir)
           angflux = angflux/(2_ik*u1 + xs*dx)
 #endif
@@ -132,7 +132,7 @@ CONTAINS
 
         ! Add ang fluxes to scalar fluxes
         scalflux(cell,group,0_ik) = scalflux(cell,group,0_ik) + w1*angflux
-#ifdef CODETYPE
+#ifdef SNES
         IF (printflux > 1_ik) THEN
           IF (sweepdir == 1_ik) THEN
             scalflux(cell,group,1_ik) = scalflux(cell,group,1_ik) + w1*angfluxout
@@ -152,7 +152,7 @@ CONTAINS
         ENDIF
 #endif
 
-#ifdef CODETYPE
+#ifdef SNES
         angfluxin(dir) = angfluxout
 #endif
 

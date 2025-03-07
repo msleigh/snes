@@ -70,7 +70,7 @@ CONTAINS
   imaxouter     = 20_ik
   longmeshprint = .FALSE.
   macro         = .FALSE.
-#ifdef CODETYPE
+#ifdef SNES
   nffu          = .TRUE.
   numnodes      = 1_ik
 #else
