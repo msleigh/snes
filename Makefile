@@ -23,7 +23,7 @@ TEST_OUTPUTS = $(TEST_PROBLEMS:.in=.outs)
 TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
 
 .SUFFIXES: .f90
-.PHONY: tests testl clean cleaner veryclean cleantest cleanertest verycleantest
+.PHONY: tests testl clean cleaner veryclean cleantest cleanertest verycleantest docs
 
 %.o: %.F90
 	$(CMP) $(FFLAGS) -c -D$(MACRO) -o $@ $<
@@ -67,4 +67,5 @@ cleanertest:
 
 verycleantest: cleantest cleanertest
 
-clobber: veryclean verycleantest
+docs:
+	make -C docs html
