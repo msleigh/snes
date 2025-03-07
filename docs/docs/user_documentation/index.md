@@ -6,7 +6,17 @@ This section provides guidance for users on how to install, configure, and use t
 
 ## Installation
 
-Instructions on how to install the software.
+Prerequisites:
+
+* A Fortran compiler (e.g., gfortran) that supports Fortran 95 or later.
+* GNU Make.
+* A Unix-like environment.
+
+To build SNES, open a terminal at the project root and run:
+```bash
+make
+```
+This will compile the code using the provided Makefile.
 
 ## Usage
 
