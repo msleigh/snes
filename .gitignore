@@ -3,7 +3,7 @@
 a.out
 *.o
 snes.in
-sne*1.2
+sne[ls]
 qa/snestp*.log*
 qa/snestp*.out*
 qa/snestp*.flx*
