@@ -43,6 +43,32 @@ make testl
 
 After running the tests, you can check the results by examining the output files generated in the `qa` directory. The output files will have extensions `.outs` for `snes` and `.outl` for `snel`. You can also review the log files with extensions `.logs` and `.logl` for detailed information about the test runs.
 
+### Using the `compare` Script
+
+The `compare` script is used to compare the effective multiplication factors (K_EFF) between the `snes` and `snel` test outputs. To use it, run:
+
+```bash
+./compare
+```
+
+This will output the differences in K_EFF values between the two sets of test outputs, helping you identify any discrepancies.
+
+### Using the `updateref` Script
+
+The `updateref` script updates the reference files with the current test outputs. To use it, run:
+
+```bash
+./updateref s
+```
+
+or
+
+```bash
+./updateref l
+```
+
+This will update the reference files with the current outputs, which is useful if you have verified that the new outputs are correct.
+
 ## Building Documentation Locally
 
 To build the documentation locally, ensure you have all the necessary dependencies installed. Then, navigate to the `docs` directory and run:
