@@ -20,6 +20,8 @@ with open("/tmp/keffs", "w", encoding="utf-8") as f_out:
                     match = re.search(r"K[ ]*EFF[ ]*([0-9.]+)", line)
                     if match:
                         f_out.write(match.group(1) + "\n")
+                    else:
+                        print(f"No match found in line: {line}")
 
 # Run the tests and extract K_EFF values for snel
 subprocess.run(["make", "clobber"])
@@ -33,6 +35,8 @@ with open("/tmp/keffl", "w", encoding="utf-8") as f_out:
                     match = re.search(r"K[ ]*EFF[ ]*([0-9.]+)", line)
                     if match:
                         f_out.write(match.group(1) + "\n")
+                    else:
+                        print(f"No match found in line: {line}")
 
 # Read the K_EFF values from the files
 with open("/tmp/keffs", "r", encoding="utf-8") as f:
