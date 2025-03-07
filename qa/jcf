@@ -5,7 +5,7 @@ set -o pipefail
 #set -x
 
 VERSION="$1"
-SFX="$2"
+SFX="$2"  !! Suffix used for output file naming (e.g., distinguishing sweep types)
 TPNAME="$(basename "${3:-$2}" .in)"
 
 JOBID=$$
