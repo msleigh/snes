@@ -44,9 +44,6 @@ with open("/tmp/keffs", "r", encoding="utf-8") as f:
 with open("/tmp/keffl", "r", encoding="utf-8") as f:
     keffl = f.read()
 
-print(keffs)
-sys.exit()
-
 # Convert the K_EFF values to float and prepare for plotting
 snes = [float(s) for s in keffs.split()]
 snel = [float(s) for s in keffl.split()]
