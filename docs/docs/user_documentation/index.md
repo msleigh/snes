@@ -36,10 +36,10 @@ Examples and explanations on how to use the software.
 To build the documentation locally, ensure you have all the necessary dependencies installed. Then, navigate to the `docs` directory and run:
 
 ```bash
-make html
+make -C docs html
 ```
 
-This will generate the HTML documentation in the `docs/_build/html` directory.
+This will generate the HTML documentation in the `docs/docs/_build/html` directory.
 
 ## Docker Build Instructions
 
