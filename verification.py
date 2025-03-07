@@ -3,14 +3,16 @@ import matplotlib.pyplot as plt
 # Set the figure size
 plt.rcParams["figure.figsize"] = (20, 10)
 
+import subprocess
+
 # Run the tests and extract K_EFF values for snes
-!make clobber > /dev/null
-!make tests > /dev/null
+subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run(["make", "tests"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 !grep 'K[ ]*EFF' qa/*.outs | tr -s ' ' | cut -d' ' -f4  > /tmp/keffs
 
 # Run the tests and extract K_EFF values for snel
-!make clobber > /dev/null
-!make testl > /dev/null
+subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run(["make", "testl"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 !grep 'K[ ]*EFF' qa/*.outl | tr -s ' ' | cut -d' ' -f4 > /tmp/keffl
 
 # Read the K_EFF values from the files
