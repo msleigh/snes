@@ -39,7 +39,7 @@ To build the documentation locally, ensure you have all the necessary dependenci
 make -C docs html
 ```
 
-This will generate the HTML documentation in the `docs/docs/_build/html` directory.
+This will generate the HTML documentation in the `docs/html` directory.
 
 ## Docker Build Instructions
 
