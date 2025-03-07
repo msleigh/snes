@@ -1,7 +1,7 @@
 .PHONY: html github clean clobber
 
 # Needs to be consistent with input to Ford in snes.md
-markdown := $(wildcard *.md)
+markdown := $(filter-out images/index.md, $(wildcard *.md))
 fortran := $(wildcard ../src/*.f90)
 
 html: snes.md $(markdown) $(fortran)
