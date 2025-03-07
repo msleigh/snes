@@ -4,7 +4,7 @@ set -eu
 set -o pipefail
 #set -x
 
-SFX="$1"  !! Suffix used for output file naming (e.g., distinguishing sweep types)
+SFX="$1"  # Suffix used for output file naming (e.g., distinguishing sweep types)
 TPNAME="$(basename "$2" .in)"
 
 JOBID=$$
