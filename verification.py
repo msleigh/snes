@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
+import re
+import glob
+import subprocess
+import sys
 
 # Set the figure size
 plt.rcParams["figure.figsize"] = (20, 10)
 
-import subprocess
-
 # Run the tests and extract K_EFF values for snes
-subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-subprocess.run(["make", "tests"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-import re
-import glob
+subprocess.run(["make", "clobber"])
+subprocess.run(["make", "tests"])
 
 # Extract K_EFF values for snes
 with open("/tmp/keffs", "w", encoding="utf-8") as f_out:
@@ -22,8 +22,8 @@ with open("/tmp/keffs", "w", encoding="utf-8") as f_out:
                         f_out.write(match.group(1) + "\n")
 
 # Run the tests and extract K_EFF values for snel
-subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-subprocess.run(["make", "testl"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run(["make", "clobber"])
+subprocess.run(["make", "testl"])
 # Extract K_EFF values for snel
 with open("/tmp/keffl", "w", encoding="utf-8") as f_out:
     for file in glob.glob("qa/*.outl"):
@@ -39,6 +39,9 @@ with open("/tmp/keffs", "r", encoding="utf-8") as f:
     keffs = f.read()
 with open("/tmp/keffl", "r", encoding="utf-8") as f:
     keffl = f.read()
+
+print(keffs)
+sys.exit()
 
 # Convert the K_EFF values to float and prepare for plotting
 snes = [float(s) for s in keffs.split()]
