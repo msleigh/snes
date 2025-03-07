@@ -9,6 +9,7 @@ import subprocess
 subprocess.run(["make", "clobber"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 subprocess.run(["make", "tests"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import re
+import glob
 
 # Extract K_EFF values for snes
 with open("/tmp/keffs", "w", encoding="utf-8") as f_out:
