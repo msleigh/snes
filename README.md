@@ -1,3 +1,6 @@
+---
+title: Readme
+---
 snes
 ====
 
@@ -69,4 +72,3 @@ To create the Docker build (used in GitHub to build and run the tests):
 Run the Jupyter notebook to plot the results:
 
     jupyter notebook verification.ipynb
-

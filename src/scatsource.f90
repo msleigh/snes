@@ -1,18 +1,18 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Sets up source term for current iteration
+
 MODULE scatsource_mod
+  !! Sets up the scattering source term for the current iteration
 
 PRIVATE
 PUBLIC :: scatsource
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Sets up source term for current iteration
-  !!
-  !! STRUCTURE
-  !! 1. Add group-to-group scattering (g' -> g where g' < g) to group source
-
   SUBROUTINE scatsource( &
+    !! Sets up the scattering source term for the current iteration
     & group)
 
   USE getkinds_mod
@@ -21,7 +21,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(IN) :: group !< Energy group being considered
+  INTEGER(KIND=ik), INTENT(IN) :: group !! Energy group being considered
 
   ! Counters
   INTEGER(KIND=ik) :: j

@@ -1,22 +1,25 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Writes scalar flux output to ASCII file
+
 MODULE printflux1_mod
+  !! Writes scalar flux output to ASCII file
 
 PRIVATE
 PUBLIC :: printflux1
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Writes scalar flux output to ASCII file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Open output file
-  !! 3. Write data
-  !! 4. Close output file
-
   SUBROUTINE printflux1( &
     & errstat)
+    !! Writes scalar flux output to a file
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Open output file
+  ! 3. Write data
+  ! 4. Close output file
 
   USE getkinds_mod
   USE io_utils_mod
@@ -27,7 +30,7 @@ CONTAINS
   CHARACTER(LEN=10), PARAMETER :: unitname = 'PRINTFLUX1'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   ! I/O
   INTEGER(KIND=ik) :: outlun
@@ -48,7 +51,7 @@ CONTAINS
 
   WRITE(*,'(A)') 'Printing cell-centred scalar fluxes to file flux1.dat'
   WRITE(*,*)
-  
+
   CALL get_free_lun(outlun,errstat)
   OPEN( &
     & UNIT=outlun, &

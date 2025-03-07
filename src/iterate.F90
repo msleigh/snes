@@ -1,22 +1,26 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Controls iteration process
+
 MODULE iterate_mod
+  !! Handles iterative solution processes
 
 PRIVATE
 PUBLIC :: iterate
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Controls iteration process
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Set up iteration
-  !! 3. Set up source
-  !! 4. Do sweep
-  !! 5. Test for convergence
-
   SUBROUTINE iterate
+    !! Controls the iterative solution process
+    !! Controls the iterative solution process
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Set up iteration
+  ! 3. Set up source
+  ! 4. Do sweep
+  ! 5. Test for convergence
 
   USE getkinds_mod
   USE setdata_mod
@@ -60,7 +64,7 @@ CONTAINS
 
   keff = 1.0_rk
 
-#ifdef CODETYPE
+#ifdef SNES
   scalflux(:,:,0_ik) = 1.0_rk
   if (printflux > 1_ik) scalflux(:,:,1_ik) = 1.0_rk
   if (printflux > 1_ik) scalflux(:,:,2_ik) = 1.0_rk
@@ -89,7 +93,7 @@ CONTAINS
     ENDIF
 
     ! Store scalar flux from previous outer iteration
-#ifdef CODETYPE
+#ifdef SNES
     scalflux_outer(:,:,1_ik) = scalflux(:,:,0_ik)
 #else
     scalflux_outer(:,:,:) = scalflux(:,:,:)
@@ -108,7 +112,7 @@ CONTAINS
         outer_exit_stat = 2_ik
         EXIT outer_loop
       ELSE
-#ifdef CODDETYPE
+#ifdef SNES
         source_f(:,:,1_ik) = source_f(:,:,1_ik)/keff
 #else
         source_f(:,:,:) = source_f(:,:,:)/keff
@@ -134,7 +138,7 @@ CONTAINS
       ! In the routine fisssource.f, source_f is constructed from fluxes & X-Ss
       ! If calctype is 2, fisssource.f is not called, therefore source_f is zero
 
-#ifdef CODETYPE
+#ifdef SNES
       source_g(:,1_ik) = source_f(:,group,1_ik) + source_i(:,group)
 #else
     DO node = 1_ik, numnodes
@@ -169,7 +173,7 @@ CONTAINS
         ENDIF
 
         ! Save scalar flux from previous inner iteration
-#ifdef CODETYPE
+#ifdef SNES
         scalflux_inner(:,1_ik) = scalflux(:,group,0_ik)
 #else
         scalflux_inner(:,:) = scalflux(:,group,:)
@@ -185,7 +189,7 @@ CONTAINS
         ENDDO
 
         ! Do the sweep
-#ifdef CODETYPE
+#ifdef SNES
         scalflux(:,group,0_ik) = 0.0_rk
         IF (printflux > 1_ik) scalflux(:,group,1_ik) = 0.0_rk ! Left
         IF (printflux > 1_ik) scalflux(:,group,2_ik) = 0.0_rk ! Right
@@ -198,7 +202,7 @@ CONTAINS
         ! Test for inner convergence
         converged_inner = .TRUE.
         conv_loop_inner: DO j = 1_ik, numcells
-#ifdef CODETYPE
+#ifdef SNES
           error = ABS(1.0_rk-scalflux_inner(j,1_ik)/scalflux(j,group,0_ik))
 #else
           error = ABS(1.0_rk-scalflux_inner(j,0_ik)/scalflux(j,group,0_ik))
@@ -239,7 +243,7 @@ CONTAINS
       converged_outer = .TRUE.
       conv_loop_outer: DO j = 1_ik, numcells
         DO group = 1_ik, numgroups
-#ifdef CODETYPE
+#ifdef SNES
           error = ABS(1.0_rk-scalflux_outer(j,group,1_ik)/scalflux(j,group,0_ik))
 #else
           error = ABS(1.0_rk-scalflux_outer(j,group,0_ik)/scalflux(j,group,0_ik))

@@ -1,19 +1,18 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Extracts material parameters from ASCII input file
+
 MODULE readmats_mod
+  !! Extracts material parameters from ASCII input file
 
 PRIVATE
 PUBLIC :: readmats
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Extracts material parameters from ASCII input file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Read and check material parameters from input data
-
   SUBROUTINE readmats( &
+    !! Reads material parameters from an input file
     & filename, &
     & errstat)
 
@@ -30,14 +29,14 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READMATS'
 
   ! Arguments
-  CHARACTER(LEN=256), INTENT(IN)  :: filename !<
-  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !<
+  CHARACTER(LEN=256), INTENT(IN)  :: filename !! Name of the input file
+  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !! Error status indicator
 
   ! Counters
   INTEGER(KIND=ik) :: group        ! Energy group
   INTEGER(KIND=ik) :: group_primed ! Energy group which is source of scatter
   INTEGER(KIND=ik) :: mat
-  
+
   REAL(KIND=rk) ::    group_check  ! Value not index
 
   ! Nuclear data file
@@ -69,11 +68,11 @@ CONTAINS
   errstat = 0_ik
   inputerror = .FALSE.
   nucdat_id(:) = ''
-  
+
   !----------------------------------------------------------------------------
   ! 2. Open keyword input file
   !----------------------------------------------------------------------------
-  
+
   CALL get_free_lun(inlun,errstat)
   OPEN( &
     & UNIT=inlun, &
@@ -242,7 +241,7 @@ CONTAINS
       & mats(mat)%macroxsfiss(numgroups,numgroups), &
       & mats(mat)%macroxsscat(numgroups,numgroups), &
       & STAT=errstat)
-  
+
     IF (nucdat_id(mat) == 'void') THEN
 
       ! Material is void
@@ -263,7 +262,7 @@ CONTAINS
         & mat, &
         & fission, &
         & errstat)
-  
+
       ! Check for presence of fission X-Ss in flux calculation
       IF ((calctype == 2_ik) .AND. (fission)) THEN
         WRITE(*,*) unitname, &
@@ -271,7 +270,7 @@ CONTAINS
         WRITE(*,*)
         inputerror = .TRUE.
       ENDIF
-  
+
       ! Check data for this material
       DO group = 1_ik, numgroups
         group_check = 0.0_rk
@@ -296,7 +295,7 @@ CONTAINS
       mats(mat)%macroxstot(:)    = numberdensity*mats(mat)%microxstot(:)
       mats(mat)%macroxsscat(:,:) = numberdensity*mats(mat)%microxsscat(:,:)
       mats(mat)%macroxsfiss(:,:) = numberdensity*mats(mat)%microxsfiss(:,:)
-  
+
     ENDIF
   ENDDO
 
@@ -309,7 +308,7 @@ CONTAINS
     WRITE(*,'(A9,I4)') ' MATERIAL ', mat
     WRITE(*,'(A13)') '               '
     WRITE(*,*)
-  
+
     WRITE(*,'(A20,A2)',ADVANCE='NO') 'Quantity (cm^-1)', '|'
     DO group_primed = 1_ik, numgroups-1_ik
       WRITE(*,'(I10,A2)',ADVANCE='NO') group_primed, '|'
@@ -321,7 +320,7 @@ CONTAINS
       WRITE(*,'(A10,A2)',ADVANCE='NO') '----------', '|'
     ENDDO
     WRITE(*,'(A10,A2)',ADVANCE='YES') '----------', '|'
-  
+
     WRITE(*,'(A20,A2)',ADVANCE='NO') 'Total XS', '|'
     DO group_primed = 1_ik, numgroups-1_ik
       WRITE(*,'(F10.6,A2)',ADVANCE='NO') mats(mat)%macroxstot(group_primed), &
@@ -350,7 +349,7 @@ CONTAINS
     WRITE(*,*)
 
   ENDDO
-  
+
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)

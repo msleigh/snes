@@ -1,17 +1,18 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Deallocates allocatable storage
+
 MODULE deallocstor_mod
+  !! Handles memory deallocation for storage
 
 PRIVATE
 PUBLIC :: deallocstor
 
 CONTAINS
 
-  !> \brief Deallocates allocatable storage
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Deallocate storage
-
   SUBROUTINE deallocstor( &
+    !! Deallocates all allocated storage
     & errstat)
 
   USE getkinds_mod, only: ik
@@ -27,7 +28,7 @@ CONTAINS
   CHARACTER(LEN=11), PARAMETER :: unitname = 'DEALLOCSTOR'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Local error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   INTEGER(KIND=ik) :: allocation_status
 

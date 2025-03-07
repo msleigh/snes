@@ -1,22 +1,25 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Writes scalar flux output to ASCII file
+
 MODULE printflux2_mod
+  !! Writes scalar flux output to ASCII file
 
 PRIVATE
 PUBLIC :: printflux2
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Writes scalar flux output to ASCII file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Open output file
-  !! 3. Write data
-  !! 4. Close output file
-
   SUBROUTINE printflux2( &
     & errstat)
+    !! Writes scalar flux output to a file
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Open output file
+  ! 3. Write data
+  ! 4. Close output file
 
   USE getkinds_mod
   USE io_utils_mod
@@ -27,7 +30,7 @@ CONTAINS
   CHARACTER(LEN=10), PARAMETER :: unitname = 'PRINTFLUX2'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   ! I/O
   INTEGER(KIND=ik) :: outlun
@@ -78,7 +81,7 @@ CONTAINS
   WRITE(outlun,'(A11,F7.3,A1,F7.3,A1)') '# XLIMITS=[', xmin, ',', xmax, ']'
   WRITE(outlun,'(A15,F7.3,A1)') '# YLIMITS=[0.0,', MAXVAL(scalflux(:,:,:)), ']'
   WRITE(outlun,'(A1)') '#'
-  
+
   DO cell = 1_ik, numcells
     WRITE( &
       & UNIT=outlun, &

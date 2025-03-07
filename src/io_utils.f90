@@ -1,19 +1,18 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Provides I/O utility functions
+
 MODULE io_utils_mod
+  !! Contains input/output utility functions
 
 PRIVATE
 PUBLIC :: get_free_lun
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Gets free logical unit number (LUN)
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Find free LUN
-
   SUBROUTINE get_free_lun( &
+    !! Finds a free logical unit number for file operations
     & logical_unit_number, &
     & errstat)
 
@@ -23,8 +22,8 @@ CONTAINS
 
   CHARACTER(LEN=12), PARAMETER :: unitname = 'GET_FREE_LUN'
 
-  INTEGER(KIND=ik), INTENT(OUT) :: logical_unit_number !<
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat             !<
+  INTEGER(KIND=ik), INTENT(OUT) :: logical_unit_number !! Logical unit number to be assigned
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat             !! Local error status indicator
 
   LOGICAL :: lun_in_use
 
@@ -57,4 +56,3 @@ CONTAINS
   END SUBROUTINE get_free_lun
 
 END MODULE io_utils_mod
-

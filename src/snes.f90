@@ -1,17 +1,18 @@
-!> \author msleigh
+!! author: msleigh
+!! date: 2002
 !!
-!! PURPOSE: Main controlling unit for SNES (Simple Neutron Transport Equation
-!!          Solver)
-!!
-!! STRUCTURE
-!! 1. Initialise variables
-!! 2. Get input data and allocate storage
-!! 3. Set up mesh and quadrature set
-!! 4. Solve neutron transport equation
-!! 5. Write output
-!! 6. Deallocate storage
+!! Main controlling unit for SNES (Simple Neutron Transport Equation Solver)
 
 PROGRAM main
+  !! Main program for solving the neutron transport equation
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Get input data and allocate storage
+  ! 3. Set up mesh and quadrature set
+  ! 4. Solve neutron transport equation
+  ! 5. Write output
+  ! 6. Deallocate storage
 
   USE allocstor_mod
   USE deallocstor_mod
@@ -29,20 +30,20 @@ PROGRAM main
 
   IMPLICIT NONE
 
-  CHARACTER(LEN=4), PARAMETER :: unitname = 'MAIN'
-  REAL(KIND=rk),    PARAMETER :: version = 1.1
+  CHARACTER(LEN=4), PARAMETER :: unitname = 'MAIN' !! Name of the program unit
+  REAL(KIND=rk),    PARAMETER :: version = 1.1     !! Version of the program
 
-  CHARACTER(LEN=8)  :: datestr
-  CHARACTER(LEN=10) :: timestr
-  INTEGER(KIND=ik)  :: startcount
-  INTEGER(KIND=ik)  :: endcount
-  INTEGER(KIND=ik)  :: countrate
-  INTEGER(KIND=ik)  :: countmax
-  REAL(KIND=rk)     :: duration
+  CHARACTER(LEN=8)  :: datestr      !! Date string from DATE_AND_TIME
+  CHARACTER(LEN=10) :: timestr      !! Time string from DATE_AND_TIME
+  INTEGER(KIND=ik)  :: startcount   !! Start clock count
+  INTEGER(KIND=ik)  :: endcount     !! End clock count
+  INTEGER(KIND=ik)  :: countrate    !! System clock rate
+  INTEGER(KIND=ik)  :: countmax     !! Maximum clock count
+  REAL(KIND=rk)     :: duration     !! Duration of execution in seconds
 
-  INTEGER(KIND=ik)   :: errstat
-  CHARACTER(LEN=256) :: keywordfile
-  CHARACTER(LEN=256) :: materialfile
+  INTEGER(KIND=ik)   :: errstat       !! Error status indicator
+  CHARACTER(LEN=256) :: keywordfile   !! Filename for input keywords
+  CHARACTER(LEN=256) :: materialfile  !! Filename for material parameters
 
   !----------------------------------------------------------------------------
   ! Timing
@@ -171,7 +172,7 @@ PROGRAM main
       STOP
     ENDIF
   ENDIF
-  
+
   IF (printflux > 1_ik) THEN
     CALL printflux2( &
       & errstat)

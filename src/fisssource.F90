@@ -1,20 +1,19 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Calculates fission source for current outer iteration
+
 MODULE fisssource_mod
+  !! Defines the fission source terms
 
 PRIVATE
 PUBLIC :: fisssource
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Calculates fission source for current outer iteration
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Set up fission source term
-
   SUBROUTINE fisssource( &
     & sfs)
+    !! Calculates the fission source for the current iteration
 
   USE getkinds_mod
   USE setdata_mod
@@ -22,7 +21,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  REAL(KIND=rk), INTENT(OUT) :: sfs !< Sum of the fission source
+  REAL(KIND=rk), INTENT(OUT) :: sfs !! Sum of the fission source
 
   ! Counters
   INTEGER(KIND=ik) :: j
@@ -50,7 +49,7 @@ CONTAINS
 
           source_f(j,group,node) = source_f(j,group,node) + &
             & (sigma_f(j,group,group_primed) * &
-#ifdef CODETYPE
+#ifdef SNES
             & scalflux(j,group_primed,0_ik))
 #else
             & scalflux_outer(j,group_primed,node))

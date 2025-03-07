@@ -1,19 +1,18 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Extracts source parameters from ASCII input file
+
 MODULE readsrcs_mod
+  !! Extracts source parameters from ASCII input file
 
 PRIVATE
 PUBLIC :: readsrcs
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Extracts source parameters from raw data
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Read and check source parameters from input data
-
   SUBROUTINE readsrcs( &
+    !! Reads source parameters from an input file
     & errstat)
 
   USE casechange_mod
@@ -29,7 +28,7 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READSRCS'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Error status indicator
 
   ! Counters
   INTEGER(KIND=ik) :: group
@@ -181,7 +180,7 @@ CONTAINS
       ENDIF
     ENDDO
   ENDDO
-  
+
   IF (numsrcs == 0_ik) THEN
     WRITE(*,'(A19)') 'NO IMPOSED SOURCES'
   ELSE
@@ -205,7 +204,7 @@ CONTAINS
     ENDDO
   ENDIF
   WRITE(*,*)
-  
+
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)

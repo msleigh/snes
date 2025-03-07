@@ -1,4 +1,3 @@
-VERSION = 1.2
 SOURCE = src
 VPATH = $(SOURCE)
 OBJDIR = ./snes
@@ -32,18 +31,18 @@ TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
 %.o: %.f90
 	$(CMP) $(FFLAGS) -c -o $@ $<
 
-%.outs: %.in snes$(VERSION) qa/jcf nucdata/*
-	./qa/jcf $(VERSION) "s" $< 2>&1 > $*.logs
+%.outs: %.in snes qa/jcf nucdata/*
+	./qa/jcf "s" $< 2>&1 > $*.logs
 
-%.outl: %.in snel$(VERSION) qa/jcf nucdata/*
-	./qa/jcf $(VERSION) "l" $< 2>&1 > $*.logl
+%.outl: %.in snel qa/jcf nucdata/*
+	./qa/jcf "l" $< 2>&1 > $*.logl
 
-snes$(VERSION): MACRO=CODETYPE
-snes$(VERSION): $(OBJ) Objects
+snes: MACRO=SNES
+snes: $(OBJ) Objects
 	$(CMP) $(FFLAGS) $(LFLAGS) $(OBJ) -o snes$(VERSION)
 
-snel$(VERSION): MACRO=SNEL
-snel$(VERSION): $(OBJ) Objects
+snel: MACRO=SNEL
+snel: $(OBJ) Objects
 	$(CMP) $(FFLAGS) $(LFLAGS) $(OBJ) -o snel$(VERSION)
 
 tests: $(TEST_OUTPUTS) references
@@ -56,7 +55,7 @@ clean:
 	rm -f *.lst *.o *.mod loadmap
 
 cleaner:
-	rm -f snes$(VERSION) snel$(VERSION)
+	rm -f snes snel
 
 veryclean: clean cleaner
 

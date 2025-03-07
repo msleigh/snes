@@ -1,24 +1,25 @@
-!> \author msleigh
+!! author: msleigh
+!! date: 2002
+!!
+!! Allocates sizes to global arrays
 
 MODULE allocstor_mod
+  !! author: msleigh
+  !! date: 2002
+  !!
+  !! Handles memory allocation for storage
 
 PRIVATE
 PUBLIC :: allocstor
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! \brief Allocate storage 
-  !!
-  !! PURPOSE: Allocates sizes to global arrays
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Allocate storage
-
   SUBROUTINE allocstor( &
     & errstat)
+    !! author: msleigh
+    !! date: 2002
+    !!
+    !! Allocates sizes to global arrays
 
   USE getkinds_mod
   USE setdata_mod
@@ -28,7 +29,7 @@ CONTAINS
   CHARACTER(LEN=9), PARAMETER :: unitname = 'ALLOCSTOR'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Local error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   !---------------------------------------------------------------------------
   ! 1. Initialise variables
@@ -71,7 +72,7 @@ CONTAINS
     & centre(numcells), &
     & origin(numcells), &
     & width(numcells), &
-#ifdef CODETYPE
+#ifdef SNES
     & matnum(numcells), &
 #endif
     & STAT=errstat)
@@ -80,9 +81,9 @@ CONTAINS
   centre(:)          = 0.0_rk
   origin(:)          = 0.0_rk
   width(:)           = 0.0_rk
-#ifdef CODETYPE
+#ifdef SNES
   matnum(:)          = 0_ik
-#endif 
+#endif
 
   ! Arrays for sources and fluxes
   ALLOCATE( &

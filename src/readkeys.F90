@@ -1,23 +1,26 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Extracts keyword parameters from ASCII input file
+
 MODULE readkeys_mod
+  !! Extracts keyword parameters from ASCII input file
 
 PRIVATE
 PUBLIC :: readkeys
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Extracts keyword parameters from ASCII input file
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Extract keyword parameters from data
-  !! 3. Check validity of keyword parameters
-  !! 4. Print information
-
   SUBROUTINE readkeys( &
+    !! Extracts keyword parameters from an input file
     & filename, &
     & errstat)
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Extract keyword parameters from data
+  ! 3. Check validity of keyword parameters
+  ! 4. Print information
 
   USE casechange_mod
   USE getkinds_mod
@@ -31,8 +34,8 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'READKEYS'
 
   ! Arguments
-  CHARACTER(LEN=256), INTENT(IN)  :: filename !< Name of input file
-  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !< Error status
+  CHARACTER(LEN=256), INTENT(IN)  :: filename !! Name of the input file
+  INTEGER(KIND=ik),   INTENT(OUT) :: errstat  !! Error status indicator
 
   INTEGER(KIND=ik) :: inlun
   INTEGER(KIND=ik) :: linetype
@@ -58,7 +61,7 @@ CONTAINS
   numregs   = -1_ik
   snorder   = -1_ik
   calctype  = -1_ik
-  
+
   ! Set defaults
   epsinner      = 1.0E-06_rk
   epsouter      = 1.0E-06_rk
@@ -67,7 +70,7 @@ CONTAINS
   imaxouter     = 20_ik
   longmeshprint = .FALSE.
   macro         = .FALSE.
-#ifdef CODETYPE
+#ifdef SNES
   nffu          = .TRUE.
   numnodes      = 1_ik
 #else
@@ -106,7 +109,7 @@ CONTAINS
     WRITE(*,*)
     RETURN
   ENDIF
-  
+
   !----------------------------------------------------------------------------
   ! 3. Extract keyword parameters from input data
   !----------------------------------------------------------------------------
@@ -280,7 +283,7 @@ CONTAINS
     WRITE(*,*)
     inputerror = .TRUE.
   ENDIF
-  
+
   IF (numcells < 1_ik) THEN
     WRITE(*,*) unitname, ': Invalid value supplied for keyword CELLS: ', &
       & numcells
@@ -319,7 +322,7 @@ CONTAINS
     WRITE(*,*)
     inputerror = .TRUE.
   ENDIF
-  
+
   ! Control parameters
   ! ------------------
 
@@ -364,7 +367,7 @@ CONTAINS
     WRITE(*,*)
     inputerror = .TRUE.
   ENDIF
-  
+
   IF (TRIM(quadset) /= 's' .AND. quadset /= 'r') THEN
     WRITE(*,*) unitname, ': Invalid value supplied for keyword QUADSET: ', &
       & quadset
@@ -439,7 +442,7 @@ CONTAINS
     WRITE(*,'(A33,A22)')  ' Type of calculation:             ', 'flux'
   ENDIF
   WRITE(*,*)
-  
+
   WRITE(*,'(A19)')        ' Control Parameters'
   WRITE(*,'(A19)')        ' ------------------'
   WRITE(*,'(A33,ES22.4)') ' Convergence criterion (inners):  ', epsinner
@@ -489,7 +492,7 @@ CONTAINS
   WRITE(*,'(A33,F22.4)')  ' Left-hand edge x-coordinate:     ', xmin
   WRITE(*,'(A33,I22)')    ' Number of sources:               ', numsrcs
   WRITE(*,*)
-  
+
   WRITE(*,'(A20)')        ' Boundary Conditions'
   WRITE(*,'(A20)')        ' -------------------'
   IF (lhbc == 0) THEN
@@ -500,7 +503,7 @@ CONTAINS
   WRITE(*,'(A33,F22.4)')  ' Left-hand incoming flux:         ', lh_eflux
   WRITE(*,'(A33,F22.4)')  ' Right-hand incoming flux:        ', rh_eflux
   WRITE(*,*)
-  
+
   IF (inputerror) THEN
     WRITE(*,*) unitname, ': Error in input'
     WRITE(*,*)

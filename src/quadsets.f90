@@ -1,20 +1,19 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Defines quadrature sets for Sn approximations
+
 MODULE quadsets_mod
+  !! Defines quadrature sets for Sn approximations
 
 PRIVATE
 PUBLIC :: quadsets
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Defines quadrature sets for Sn approximations
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Define quadrature set
-
   SUBROUTINE quadsets( &
     & errstat)
+    !! Defines quadrature sets for Sn approximations
 
   USE getkinds_mod
   USE setdata_mod
@@ -22,7 +21,7 @@ CONTAINS
   IMPLICIT NONE
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !<
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Local error status
 
   !----------------------------------------------------------------------------
   ! 1. Initialise variables

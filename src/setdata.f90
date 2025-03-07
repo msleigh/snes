@@ -1,8 +1,10 @@
-!> \author msleigh
+!! author: msleigh
+!! date: 2002
 !!
-!! PURPOSE: Declares global data
+!! Declares global data
 
 MODULE setdata_mod
+  !! Declares and manages global data structures and parameters
 
 USE getkinds_mod
 
@@ -19,10 +21,10 @@ PUBLIC :: mattype
 LOGICAL,          PUBLIC :: inputerror
 
 ! Iterations criteria
-REAL(KIND=rk),    PUBLIC :: epsinner      ! Convergence criterion for inner iters
-REAL(KIND=rk),    PUBLIC :: epsouter      ! Convergence criterion for inner iters
-INTEGER(KIND=ik), PUBLIC :: imaxinner     ! Maximum no. of inner iterations
-INTEGER(KIND=ik), PUBLIC :: imaxouter     ! Maximum no. of outer iterations
+REAL(KIND=rk),    PUBLIC :: epsinner      !! Convergence criterion for inner iters
+REAL(KIND=rk),    PUBLIC :: epsouter      !! Convergence criterion for inner iters
+INTEGER(KIND=ik), PUBLIC :: imaxinner     !! Maximum no. of inner iterations
+INTEGER(KIND=ik), PUBLIC :: imaxouter     !! Maximum no. of outer iterations
 
 ! Switches
 INTEGER(KIND=ik), PUBLIC :: calctype      ! Calculation type
@@ -88,6 +90,7 @@ INTEGER(KIND=ik), PARAMETER, PUBLIC :: numsweeps = 2_ik
 ! file but not stored), and macroscopic cross-sections are calculated.
 
 TYPE mattype
+  !! Represents material properties and cross-sections
   INTEGER(KIND=rk)                       :: mat_id
   REAL(KIND=rk)                          :: rho
   REAL(KIND=rk)                          :: atomweight

@@ -1,10 +1,10 @@
-!> \author msleigh
+!! author: msleigh
+!! date: 2002
 !!
-!! NOTES:   1D within-group non-multiplying version
-!!
-!! PURPOSE: Declares kind type parameters
+!! Declares kind type parameters
 
 MODULE getkinds_mod
+  !! Provides kind parameters for numerical precision
 
   IMPLICIT NONE
 

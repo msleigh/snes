@@ -1,4 +1,10 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Routine to read in a line of input from file instream
+
 MODULE readline_mod
+  !! Routine to read in a line of input from file instream
 
 USE getkinds_mod
 
@@ -13,45 +19,41 @@ INTEGER(KIND=ik), PUBLIC                             :: num_fields
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Routine to read in a line of input from file instream
-  !!          Line is split into field() with each element of field
-  !!          containing character representation of each white-space-
-  !!          delimited field in variable line
-  !!          Variable num_fields contains number of fields in field()
-  !!          Allows comment character # to appear anywhere on input line
-  !!          Output argument 'line_type' is integer specifying type of line
-  !!          read, i.e. line_type=0 all comment or blank line
-  !!                     line_type=1 end of file
-  !!                     line_type=2 error on read
-  !!                     line_type=3 line contains input
-  !!          Output argument printout is flag for printing out line read
-  !!                     .TRUE. is print
-  !!                     .FALSE. is do not print
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Extract keyword parameters from data
-  !! 3. Check validity of keyword parameters
-  !! 4. Print information
-
   SUBROUTINE readline( &
+    !! Reads a line of input and splits it into fields
     & line_type, &
     & instream, &
     & printout)
 
+  !! Line is split into field() with each element of field
+  !! containing character representation of each white-space-
+  !! delimited field in variable line
+
+  !! Variable num_fields contains number of fields in field()
+
+  !! Allows comment character # to appear anywhere on input line
+
+  !! Output argument 'line_type' is integer specifying type of line
+  !! read, i.e.: line_type=0 all comment or blank line;
+  !!             line_type=1 end of file;
+  !!             line_type=2 error on read;
+  !!             line_type=3 line contains input.
+
+  !! Output argument printout is flag for printing out line read
+  !!            .TRUE. is print
+  !!            .FALSE. is do not print
+
   USE getkinds_mod
 
   IMPLICIT NONE
-  
+
   CHARACTER(LEN=8), PARAMETER :: unitname = 'readline'
-  
+
   ! Arguments
-  INTEGER(kind=ik),  INTENT(OUT) :: line_type !< Output argument
-  INTEGER(kind=ik),  INTENT(IN)  :: instream  !< Input stream
-  LOGICAL, OPTIONAL, INTENT(IN)  :: printout  !< Flag to print or not
-  
+  INTEGER(kind=ik),  INTENT(OUT) :: line_type !! Type of line read
+  INTEGER(kind=ik),  INTENT(IN)  :: instream  !! Input stream identifier
+  LOGICAL, OPTIONAL, INTENT(IN)  :: printout  !! Flag to print the line
+
   INTEGER(KIND=ik), DIMENSION(:,:), ALLOCATABLE :: fp
   LOGICAL                                       :: pp
   INTEGER(KIND=ik)                              :: allocation_status
@@ -60,12 +62,12 @@ CONTAINS
   INTEGER(KIND=ik)                              :: loc_com
   INTEGER(KIND=ik)                              :: fld
   CHARACTER(LEN=120)                            :: line
-  
+
   ! Counters
   INTEGER(KIND=ik) :: i
 
   allocation_status = 0_ik
-  
+
   !----------------------------------------------------------------------------
   ! 1. Test for optional argument 'printout' and set working variable 'pp'
   !----------------------------------------------------------------------------
@@ -107,7 +109,7 @@ CONTAINS
 
   ! Remove initial spaces
   line = ADJUSTL(line)
-  
+
   ! Compress multiple spaces to one
   DO
     i = INDEX(TRIM(line),"  ")
@@ -118,7 +120,7 @@ CONTAINS
 
   ! Write out adjusted input
   IF (pp) WRITE(*,*) unitname, ': ', TRIM(line), '$'
-  
+
   ! Check for zero-length lines and comment lines
   IF (line_length == 0_ik .OR. line(1:1) == '#' ) THEN
     line_type = 0_ik

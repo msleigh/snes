@@ -1,22 +1,25 @@
+!! author: msleigh
+!! date: 2002
+!!
+!! Constructs the mesh by assigning data to cell arrays
+
 MODULE initmesh_mod
+  !! Initializes the computational mesh
 
 PRIVATE
 PUBLIC :: initmesh
 
 CONTAINS
 
-  !> \author msleigh
-  !!
-  !! PURPOSE: Constructs the mesh by assigning data to cell arrays
-  !!
-  !! STRUCTURE
-  !! 1. Initialise variables
-  !! 2. Construct mesh geometry
-  !! 3. Construct mesh material properties
-  !! 4. Print information
-
   SUBROUTINE initmesh( &
     & errstat)
+    !! Initializes the mesh and assigns data to cell arrays
+
+  ! STRUCTURE
+  ! 1. Initialise variables
+  ! 2. Construct mesh geometry
+  ! 3. Construct mesh material properties
+  ! 4. Print information
 
   USE casechange_mod
   USE getkinds_mod
@@ -30,7 +33,7 @@ CONTAINS
   CHARACTER(LEN=8), PARAMETER :: unitname = 'INITMESH'
 
   ! Arguments
-  INTEGER(KIND=ik), INTENT(OUT) :: errstat !< Error status
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat !! Error status
 
   ! Counters
   INTEGER(KIND=ik) :: cell
@@ -176,7 +179,7 @@ CONTAINS
   !----------------------------------------------------------------------------
   ! 6. Calculate cell centres and origins
   !----------------------------------------------------------------------------
- 
+
   origin(1) = xmin
   centre(1) = xmin + width(1)*0.5_rk
   DO cell = 2_ik, numcells
@@ -184,8 +187,8 @@ CONTAINS
     centre(cell) = origin(cell) + width(cell)*0.5_rk
   ENDDO
   xmax = origin(numcells) + width(numcells)
-  
-#ifdef CODETYPE
+
+#ifdef SNES
   !----------------------------------------------------------------------------
   ! 7. Construct mesh material properties
   !----------------------------------------------------------------------------
@@ -205,12 +208,12 @@ CONTAINS
       sigma_t(cell,group) = mats(matnum(cell))%macroxstot(group)
     ENDDO
   ENDDO
- 
+
 #else
   !----------------------------------------------------------------------------
   !  7. Construct mesh material properties
   !----------------------------------------------------------------------------
-  
+
   DO group = 1_ik, numgroups
     DO mat = 1_ik, nummats
       DO group_primed = 1_ik, numgroups
@@ -224,12 +227,12 @@ CONTAINS
     ENDDO
   ENDDO
 #endif
- 
+
   !----------------------------------------------------------------------------
   !  8. Set up mesh sources
   !----------------------------------------------------------------------------
 
-  DO group = 1_ik, numgroups 
+  DO group = 1_ik, numgroups
     DO src = 1_ik, numsrcs
       source_i(firstcell_src(src):lastcell_src(src),group) = value_src(src,group)
     ENDDO
@@ -250,7 +253,7 @@ CONTAINS
     WRITE(*,'(A4,4A16)') '----', '-----------', '-----------', '----------', &
       '------------'
     DO cell = 1_ik, numcells
-#ifdef CODETYPE
+#ifdef SNES
       WRITE(*,'(I4,3F16.6,I16)') cell, origin(cell), centre(cell), &
         width(cell), matnum(cell)
 #else
