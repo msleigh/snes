@@ -31,6 +31,16 @@ make snel1.2
 
 Examples and explanations on how to use the software.
 
+## Building Documentation Locally
+
+To build the documentation locally, ensure you have all the necessary dependencies installed. Then, navigate to the `docs` directory and run:
+
+```bash
+make html
+```
+
+This will generate the HTML documentation in the `docs/_build/html` directory.
+
 ## Docker Build Instructions
 
 To build the Docker container locally, run:
