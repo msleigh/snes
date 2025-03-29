@@ -25,10 +25,7 @@ A one-dimensional discrete-ordinates neutron transport code written in Fortran, 
 
 ### Documentation
 
-- Doxygen
-- Graphviz
-- LaTeX
-- ghp-import (optional, to push documentation to GitHub Pages)
+- Ford
 
 ### Misc
 
@@ -41,13 +38,7 @@ To install the necessary dependencies, ensure you have the following tools insta
 - GFortran
 - Matplotlib
 - Jupyter
-- Doxygen
-- Graphviz
-- LaTeX
-- Docker (optional)
-- ghp-import (optional, to push documentation to GitHub Pages)
-
-
+- Ford
 
 ## Usage
 

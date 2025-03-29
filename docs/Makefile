@@ -7,8 +7,5 @@ fortran := $(wildcard ../src/*.f90)
 html: snes.md $(markdown) $(fortran)
 	uv run ford snes.md
 
-github:
-	ghp-import --no-jekyll --no-history --push html
-
 clean:
 	rm -rf html latex
