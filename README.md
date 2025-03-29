@@ -4,6 +4,10 @@ title: Readme
 snes
 ====
 
+Simple Neutron-Transport Equation Solver
+
+---
+
 A one-dimensional discrete-ordinates neutron transport code written in Fortran, with diamond-difference and linear-
 discontinuous variants.
 
