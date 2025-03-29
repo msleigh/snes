@@ -61,6 +61,10 @@ To clean up intermediate build files etc.:
 
     make clean
 
+To clean documentation:
+
+    make -C docs clean
+
 ### Docker
 
 To create the Docker build (used in GitHub to build and run the tests):
