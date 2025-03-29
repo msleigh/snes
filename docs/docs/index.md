@@ -7,7 +7,7 @@ ordered_subpage: theory_documentation
 
 ## Introduction
 
-Welcome to the SNES Documentation.
+Welcome to the SNES (Simple Neutron-Transport Equation Solver) documentation.
 
 SNES is a one-dimensional discrete ordinates neutron transport code written in Fortran.
 

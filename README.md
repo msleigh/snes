@@ -1,21 +1,16 @@
 ---
 title: Readme
 ---
-snes
-====
+# snes
 
-Simple Neutron-Transport Equation Solver
+**Simple Neutron-Transport Equation Solver**
 
----
+A one-dimensional discrete-ordinates neutron transport code written in Fortran, with diamond-difference and linear-discontinuous variants.
 
-A one-dimensional discrete-ordinates neutron transport code written in Fortran, with diamond-difference and linear-
-discontinuous variants.
-
-<img src="https://img.shields.io/github/v/release/msleigh/snes?include_prereleases">
-<img src="https://img.shields.io/github/license/msleigh/fcimc">
-<img src="https://img.shields.io/github/last-commit/msleigh/snes">
-
-![Build status (`develop`)](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=main)
+![Release](https://img.shields.io/github/v/release/msleigh/snes?include_prereleases)
+![License](https://img.shields.io/github/license/msleigh/fcimc)
+![Last Commit](https://img.shields.io/github/last-commit/msleigh/snes)
+![Build Status](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=main)
 
 ## Dependencies
 
@@ -40,6 +35,17 @@ discontinuous variants.
 - Docker (optional)
 
 ## Installation
+
+To install the necessary dependencies, ensure you have the following tools installed on your system:
+
+- GFortran
+- Matplotlib
+- Jupyter
+- Doxygen
+- Graphviz
+- LaTeX
+- Docker (optional)
+- ghp-import (optional, to push documentation to GitHub Pages)
 
 
 
