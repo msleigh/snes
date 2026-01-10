@@ -1,0 +1,12 @@
+site_name: SNES Documentation
+site_description: Simple Neutron-Transport Equation Solver
+site_dir: site
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Theory: theory.md
+  - Verification: verification.md
