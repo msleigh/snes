@@ -1,4 +1,0 @@
-ford
-matplotlib
-notebook
-pre-commit

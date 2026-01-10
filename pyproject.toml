@@ -1,0 +1,21 @@
+[project]
+name = "snes"
+version = "0.1.0"
+description = "Simple Neutron-Transport Equation Solver"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+dependencies = [
+  "ford",
+  "jupyter",
+  "matplotlib",
+  "mkdocs",
+  "mkdocs-material",
+  "numpy",
+  "notebook",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit",
+]
