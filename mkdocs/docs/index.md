@@ -29,4 +29,6 @@ Key directories and files:
 
 ## Fortran API reference
 
-The detailed Fortran API reference is generated separately with Ford and is written to doc/ by default. See the Fortran page for build steps and a link.
+The detailed Fortran API reference is generated with Ford and synced into this
+site at `ford/index.html`. Open the [Fortran API reference](ford/index.html)
+to browse the module and routine documentation.

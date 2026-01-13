@@ -1,9 +1,22 @@
-site_name: SNES Documentation
+site_name: SNES
 site_description: Simple Neutron-Transport Equation Solver
+repo_url: https://github.com/msleigh/snes
+repo_name: msleigh/snes
+
+docs_dir: docs
 site_dir: site
 
 theme:
   name: material
+  features:
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Fortran solver: fortran-solver.md
+  - Verification: verification.md
+  - Theory: theory.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -11,10 +24,3 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-nav:
-  - Home: index.md
-  - Getting Started: getting-started.md
-  - Fortran Solver: fortran-solver.md
-  - Theory: theory.md
-  - Verification: verification.md
