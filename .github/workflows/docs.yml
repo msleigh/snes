@@ -31,7 +31,7 @@ jobs:
       - name: Build docs
         run: |
           set -e
-          make -C docs html
+          uv run make -C docs html
       - name: Deploy docs via SSH
         if: >-
           github.event_name == 'push' &&
