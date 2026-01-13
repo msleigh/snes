@@ -5,8 +5,16 @@ site_dir: site
 theme:
   name: material
 
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Fortran Solver: fortran-solver.md
   - Theory: theory.md
   - Verification: verification.md

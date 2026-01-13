@@ -1,18 +1,32 @@
-# SNES Documentation
+# SNES
 
-SNES is a one-dimensional discrete-ordinates neutron transport solver with
-both diamond-difference and linear-discontinuous variants. This site provides
-an overview of the model, how to run it, and how to verify outputs.
+## Introduction
 
-## What you can find here
+Welcome to the SNES (Simple Neutron-Transport Equation Solver) documentation.
 
-- Quick setup steps and basic commands.
-- A concise outline of the transport theory used.
-- Verification guidance and example checks.
+SNES is a one-dimensional discrete ordinates neutron transport code written in Fortran.
 
-## Project structure
+It employs diamond-difference and linear-discontinuous methods to solve the neutron
+transport equation, providing an accurate and efficient model of neutron flux in
+one-dimensional systems.
 
-- `src/` contains the Fortran implementation.
-- `qa/` includes test problems and reference outputs.
-- `docs/` builds the Ford API docs.
-- `verification.py` generates a quick comparison plot.
+## Verification
+
+The following plot shows the $k_\mathrm{eff}$ results for the test problems:
+
+![$k_\mathrm{eff}$ results](images/keff_results.png)
+
+## Repository layout
+
+Key directories and files:
+
+- `src/`: Fortran source code for the solver and supporting modules.
+- `qa/`: Test inputs, outputs, and log files used for verification.
+- `nucdata/`: Nuclear data tables referenced by the test suite.
+- `docs/`: Ford-generated documentation source and build outputs.
+- `mkdocs/`: This MkDocs site configuration and content.
+- `verification.py`: Script that generates the $k_\mathrm{eff}$ comparison plot.
+
+## Fortran API reference
+
+The detailed Fortran API reference is generated separately with Ford and is written to doc/ by default. See the Fortran page for build steps and a link.
