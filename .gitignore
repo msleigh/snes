@@ -17,3 +17,5 @@ docs/doxygen.log
 .venv
 .aider*
 mkdocs/site/
+mkdocs/docs/images/
+mkdocs/docs/ford/
