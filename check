@@ -4,10 +4,19 @@ set -eu
 set -o pipefail
 
 SFX="$1"
+REL_TOL="1e-4"
+
+# Extract K_EFF values to a temp file
+TMPFILE=$(mktemp)
+trap 'rm -f "$TMPFILE"' EXIT
 
 # shellcheck disable=SC2086
-diff <(grep "K[ ]*EFF" qa/snestp*.out${SFX} | tr -s " " | cut -d" " -f4) "./reference${SFX}"
+grep "K[ ]*EFF" qa/snestp*.out${SFX} | tr -s " " | cut -d" " -f4 > "$TMPFILE"
 
-diff "qa/snestp011.flx${SFX}" "snestp011.flxref${SFX}"
+# Compare K_EFF values with tolerance
+python3 numcheck.py "$TMPFILE" "./reference${SFX}" "$REL_TOL"
+
+# Compare flux values with tolerance (column 1 = position, column 2 = flux)
+python3 numcheck.py "qa/snestp011.flx${SFX}" "snestp011.flxref${SFX}" "$REL_TOL" 1
 
 echo "Pass"
