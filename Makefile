@@ -110,8 +110,8 @@ cleanertest:
 verycleantest: cleantest cleanertest
 
 # Documentation
-docs: docs/docs/images/keff_results.png
+docs: images/figures/keff_results.png images/figures/test11_flux_comparison.png
 	make -C docs html
 
-docs/docs/images/keff_results.png: verification.py
+images/figures/keff_results.png images/figures/test11_flux_comparison.png: verification.py
 	uv run python verification.py

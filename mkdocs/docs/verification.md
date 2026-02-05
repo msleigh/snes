@@ -8,6 +8,11 @@ The following plot shows the $k_\mathrm{eff}$ results for the test problems:
 
 ![$k_\mathrm{eff}$ results](images/keff_results.png)
 
+The following plot compares the scalar flux from the two spatial discretization
+schemes for the Reed test problem (test 11):
+
+![Reed test problem flux comparison](images/test11_flux_comparison.png)
+
 ## Running verification
 
 Run the test suites:

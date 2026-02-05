@@ -12,6 +12,10 @@ A one-dimensional discrete-ordinates neutron transport code written in Fortran, 
 ![Last Commit](https://img.shields.io/github/last-commit/msleigh/snes)
 ![Build Status](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=main)
 
+![K-effective Results](images/figures/keff_results.png)
+
+![Reed Test Problem Flux Comparison](images/figures/test11_flux_comparison.png)
+
 ## Dependencies
 
 ### Code
