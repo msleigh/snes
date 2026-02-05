@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM ubuntu:latest
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
 RUN apt-get update && apt-get install -y gfortran make python3 python3-pip rsync graphviz
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 WORKDIR /snes
