@@ -20,3 +20,4 @@ mkdocs/site/
 mkdocs/docs/images/
 mkdocs/docs/ford/
 .claude/
+build/
