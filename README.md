@@ -10,6 +10,7 @@ A one-dimensional discrete-ordinates neutron transport code written in Fortran, 
 ![Release](https://img.shields.io/github/v/release/msleigh/snes?include_prereleases)
 ![License](https://img.shields.io/github/license/msleigh/snes)
 ![Last Commit](https://img.shields.io/github/last-commit/msleigh/snes)
+![Repo size](https://img.shields.io/github/repo-size/msleigh/snes)
 ![Build Status](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=main)
 
 ![K-effective Results](images/figures/keff_results.png)
