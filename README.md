@@ -8,7 +8,7 @@ title: Readme
 A one-dimensional discrete-ordinates neutron transport code written in Fortran, with diamond-difference and linear-discontinuous variants.
 
 ![Release](https://img.shields.io/github/v/release/msleigh/snes?include_prereleases)
-![License](https://img.shields.io/github/license/msleigh/fcimc)
+![License](https://img.shields.io/github/license/msleigh/snes)
 ![Last Commit](https://img.shields.io/github/last-commit/msleigh/snes)
 ![Build Status](https://github.com/msleigh/snes/actions/workflows/main.yml/badge.svg?branch=main)
 
