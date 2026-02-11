@@ -43,7 +43,7 @@ requires-dist = [
 
 [[package]]
 name = "ford"
-version = "7.0.9"
+version = "7.0.13"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -58,9 +58,9 @@ dependencies = [
     { name = "toposort" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b5/eb/ec32133d28c57141d96081f5a23060e7cca71b423ff96505cd7ebac50aa7/ford-7.0.9.tar.gz", hash = "sha256:b9b660552a753f1d5265c3355548ca2bc4e38828a0802c03da347ebdd6d594ab", size = 6091825, upload-time = "2024-11-12T11:16:10.638Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7e/22/c9688672022dc47456a0dd0a51e0f4310e5c69ef4cd8243c141420421dc9/ford-7.0.13.tar.gz", hash = "sha256:482a75b34b9f2b1975cbae9aa1c533a62d63e0c1861b5b772d25aa52fb1ce809", size = 6334629, upload-time = "2026-02-05T16:47:05.791Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/93/44/f12727ef2a44bbe6dd0a14e7dd9444713d87dc5e300e68346c89aad044bc/FORD-7.0.9-py3-none-any.whl", hash = "sha256:f4645c804c6376b19c10f6beca2aa1491287ad7bd9caaa4f07c5b4d86a855ade", size = 593904, upload-time = "2024-11-12T11:16:08.252Z" },
+    { url = "https://files.pythonhosted.org/packages/f8/f6/fe778029784e2849ac84a828247ba60a358d91fa8dbe67dfc988aa60c56c/ford-7.0.13-py3-none-any.whl", hash = "sha256:0f6a73fc85db45fea51254165dd13b699dd27f059387aa98d494bbc92e7c8752", size = 837416, upload-time = "2026-02-05T16:47:04.277Z" },
 ]
 
 [[package]]
@@ -242,14 +242,14 @@ wheels = [
 
 [[package]]
 name = "tqdm"
-version = "4.64.1"
+version = "4.66.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c1/c2/d8a40e5363fb01806870e444fc1d066282743292ff32a9da54af51ce36a2/tqdm-4.64.1.tar.gz", hash = "sha256:5f4f682a004951c1b450bc753c710e9280c5746ce6ffedee253ddbcbf54cf1e4", size = 169599, upload-time = "2022-09-03T11:10:30.943Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/03/00/6a9b3aedb0b60a80995ade30f718f1a9902612f22a1aaf531c85a02987f7/tqdm-4.66.3.tar.gz", hash = "sha256:23097a41eba115ba99ecae40d06444c15d1c0c698d527a01c6c8bd1c5d0647e5", size = 169551, upload-time = "2024-05-02T21:44:05.084Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/47/bb/849011636c4da2e44f1253cd927cfb20ada4374d8b3a4e425416e84900cc/tqdm-4.64.1-py2.py3-none-any.whl", hash = "sha256:6fee160d6ffcd1b1c68c65f14c829c22832bc401726335ce92c52d395944a6a1", size = 78468, upload-time = "2022-09-03T11:10:27.148Z" },
+    { url = "https://files.pythonhosted.org/packages/d1/ad/7d47bbf2cae78ff79f29db0bed5016ec9c56b212a93fca624bb88b551a7c/tqdm-4.66.3-py3-none-any.whl", hash = "sha256:4f41d54107ff9a223dca80b53efe4fb654c67efaba7f47bada3ee9d50e05bd53", size = 78374, upload-time = "2024-05-02T21:44:01.541Z" },
 ]
 
 [[package]]
