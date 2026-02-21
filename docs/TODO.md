@@ -1,0 +1,11 @@
+- [ ] Refactor Bash Scripts to Python. Convert the `check`, `compare`, and `updateref` scripts to Python?
+- [ ] Improve Error Handling in Scripts. Enhance error handling in the `verification.py` script to provide more informative messages and prevent unexpected crashes.
+- [ ] Optimise Makefile Targets. Review and optimise the Makefile targets to ensure they are efficient and well-documented, especially for the `docs` and `clobber` targets.
+- [ ] Use Environment Variables for Configuration. Replace hardcoded paths and values in scripts with environment variables to allow easier customisation and deployment.
+- [ ] Add Logging to Python Scripts. Implement logging in `verification.py` to track execution flow and aid in debugging.
+- [ ] Modularise Python Code. Break down the `verification.py` script into smaller, reusable functions to improve readability and maintainability.
+- [ ] Add Type Annotations to Python Code. Add type annotations to `verification.py` to improve readability and facilitate static analysis.
+- [ ] Implement Code Formatting. Use a code formatter like `black` for Python to ensure consistent code style across the project.
+- [ ] Improve Dockerfile Efficiency. Optimise the Dockerfile to reduce image size and improve build times, such as by using multi-stage builds.
+- [ ] Enhance Documentation. Expand documentation to include detailed setup instructions, code explanations, and usage examples, especially for new contributors.
+- [ ] Improve Test Coverage. Increase test coverage to ensure all critical paths and edge cases are tested, particularly in the `verification.py` script.
