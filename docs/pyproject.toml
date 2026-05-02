@@ -7,5 +7,5 @@ requires-python = ">=3.13"
 dependencies = [
     "ford>=7.0.9",
     "graphviz>=0.20.3",
-    "lxml>=5.3.1",
+    "lxml>=6.1.0",
 ]
