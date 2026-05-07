@@ -60,7 +60,7 @@ Do a `make clean` when switching between versions.
 
 To build the documentation:
 
-    make -C docs html
+    uv run make -C docs html
     open docs/html/index.html
 
 ### Cleaning

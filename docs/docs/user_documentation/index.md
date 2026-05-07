@@ -71,10 +71,10 @@ This will update the reference files with the current outputs, which is useful i
 
 ## Building Documentation Locally
 
-To build the documentation locally, ensure you have all the necessary dependencies installed. Then, navigate to the `docs` directory and run:
+To build the documentation locally, ensure you have the project dependencies installed via uv. Then, from the repository root, run:
 
 ```bash
-make -C docs html
+uv run make -C docs html
 ```
 
 This will generate the HTML documentation in the `docs/html` directory.
