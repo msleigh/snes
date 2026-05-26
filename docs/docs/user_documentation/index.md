@@ -77,7 +77,15 @@ To build the documentation locally, ensure you have the project dependencies ins
 uv run make -C docs html
 ```
 
-This will generate the HTML documentation in the `docs/html` directory.
+This will generate the final HTML site in the `mkdocs/site` directory. The Ford API reference is generated in `docs/html` and copied into the site during the build.
+
+To try the experimental Zensical build with the same content and `mkdocs/mkdocs.yml` configuration, run:
+
+```bash
+uv run make -C docs zensical
+```
+
+This uses the same content and writes to the same `site_dir` configured in `mkdocs/mkdocs.yml`.
 
 ## Docker Build Instructions
 

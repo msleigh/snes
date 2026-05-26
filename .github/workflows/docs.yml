@@ -63,3 +63,25 @@ jobs:
           env.DOCS_SSH_PATH != ''
         run: |
           rsync -avz --delete mkdocs/site/ ${{ env.DOCS_SSH_USER }}@${{ env.DOCS_SSH_HOST }}:${{ env.DOCS_SSH_PATH }}
+
+  zensical:
+    name: Experimental Zensical docs build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.9.24"
+      - name: Build docs with Zensical
+        run: |
+          set -e
+          uv run make -C docs zensical

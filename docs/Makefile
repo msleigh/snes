@@ -1,4 +1,4 @@
-.PHONY: html mkdocs ford sync-ford sync-images clean clobber
+.PHONY: html mkdocs zensical ford sync-ford sync-images clean clobber
 
 # Needs to be consistent with input to Ford in snes.md
 markdown := $(wildcard *.md)
@@ -6,6 +6,7 @@ fortran := $(wildcard ../src/*.f90)
 
 FORD := ford
 MKDOCS := mkdocs
+ZENSICAL := zensical
 
 MKDOCS_DIR := ../mkdocs
 MKDOCS_DOCS := $(MKDOCS_DIR)/docs
@@ -23,6 +24,9 @@ html: mkdocs
 
 mkdocs: sync-ford sync-images
 	$(MKDOCS) build -f $(MKDOCS_CFG)
+
+zensical: sync-ford sync-images
+	$(ZENSICAL) build -f $(MKDOCS_CFG)
 
 sync-ford: $(FORD_OUT)
 	rm -rf $(MKDOCS_DOCS_FORD)

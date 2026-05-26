@@ -61,7 +61,12 @@ Do a `make clean` when switching between versions.
 To build the documentation:
 
     uv run make -C docs html
-    open docs/html/index.html
+    open mkdocs/site/index.html
+
+To try the experimental Zensical build with the same content and `mkdocs/mkdocs.yml` configuration:
+
+    uv run make -C docs zensical
+    open mkdocs/site/index.html
 
 ### Cleaning
 

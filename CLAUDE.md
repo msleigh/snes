@@ -34,6 +34,7 @@ make clobber       # Full clean including test outputs
 
 ```bash
 uv run make -C docs html         # Build full documentation (Ford + MkDocs)
+uv run make -C docs zensical     # Experimental Zensical build using mkdocs.yml
 uv run ford docs/snes.md         # Build Ford API docs only
 ```
 
