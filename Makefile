@@ -9,6 +9,15 @@ FFLAGS = -pedantic \
          -Wno-error=unused-function
 
 CMP = gfortran
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Darwin)
+  OPEN_CMD = open
+else ifeq ($(UNAME_S),Linux)
+  OPEN_CMD = xdg-open
+else
+  OPEN_CMD =
+endif
 
 # Object files (without path)
 OBJS = getkinds.o \
@@ -39,6 +48,15 @@ ifeq ($(origin TEST_PROBLEMS), undefined)
 endif
 TEST_OUTPUTS = $(TEST_PROBLEMS:.in=.outs)
 TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
+VERIFICATION_SOURCES = $(wildcard $(SOURCE)/*.f90 $(SOURCE)/*.F90)
+VERIFICATION_STAMP_S = $(BUILD_BASE)/.verification_snes.stamp
+VERIFICATION_STAMP_L = $(BUILD_BASE)/.verification_snel.stamp
+PLOT_STAMP = $(BUILD_BASE)/.verification_plots.stamp
+PLOT_FILES = images/figures/index.html \
+             images/figures/keff_results.png \
+             images/figures/test11_flux_comparison.png
+PLOT_DOC_FILES = docs/docs/images/keff_results.png \
+                 docs/docs/images/test11_flux_comparison.png
 
 .SUFFIXES: .f90 .F90
 .PHONY: tests testl clean cleaner veryclean cleantest cleanertest verycleantest docs plots view-plots snes snel
@@ -90,6 +108,14 @@ tests: $(TEST_OUTPUTS) references
 testl: $(TEST_OUTPUTL) referencel
 	./check "l"
 
+$(VERIFICATION_STAMP_S): $(TEST_PROBLEMS) $(VERIFICATION_SOURCES) qa/jcf nucdata/* references
+	$(MAKE) tests
+	touch $@
+
+$(VERIFICATION_STAMP_L): $(TEST_PROBLEMS) $(VERIFICATION_SOURCES) qa/jcf nucdata/* referencel
+	$(MAKE) testl
+	touch $@
+
 # Clean targets
 clean:
 	rm -rf $(BUILD_BASE)
@@ -110,13 +136,24 @@ cleanertest:
 verycleantest: cleantest cleanertest
 
 # Documentation
-docs: images/figures/keff_results.png images/figures/test11_flux_comparison.png
+docs: $(PLOT_FILES) $(PLOT_DOC_FILES)
 	make -C docs html
 
-plots: images/figures/index.html
+plots: $(PLOT_FILES) $(PLOT_DOC_FILES)
 
 view-plots: images/figures/index.html
-	open images/figures/index.html
+	@if [ -z "$(OPEN_CMD)" ]; then \
+		echo "No supported browser opener found for $(UNAME_S); open images/figures/index.html manually" >&2; \
+		exit 1; \
+	fi
+	$(OPEN_CMD) images/figures/index.html
 
-images/figures/index.html images/figures/keff_results.png images/figures/test11_flux_comparison.png: verification.py
+$(PLOT_STAMP): verification.py $(VERIFICATION_STAMP_S) $(VERIFICATION_STAMP_L)
 	uv run python verification.py
+	touch -r images/figures/index.html $@
+
+$(PLOT_FILES) $(PLOT_DOC_FILES): $(PLOT_STAMP)
+	@test -f "$@" || { \
+		rm -f $(PLOT_STAMP); \
+		$(MAKE) $(PLOT_STAMP); \
+	}

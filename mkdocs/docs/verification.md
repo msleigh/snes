@@ -29,11 +29,11 @@ Use the `check` helper to compare new outputs against references:
 ./check l
 ```
 
-The verification plot gathers `k_eff` values from the test outputs and writes
-an image used in the docs.
+The verification step rebuilds the test outputs when needed, then gathers
+`k_eff` values and flux data to write the images used in the docs.
 
 Generate the plot used above:
 
 ```bash
-uv run python verification.py
+make plots
 ```

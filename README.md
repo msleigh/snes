@@ -88,8 +88,8 @@ Generate the verification plots from the current test outputs:
 
     make plots
 
-This script rebuilds the test outputs for both schemes and refreshes the plots
-used in the README and docs.
+This rebuilds the test outputs for both schemes, then refreshes the plots used
+in the README and docs when verification inputs have changed.
 
 To inspect all generated plots in one view:
 
