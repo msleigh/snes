@@ -41,7 +41,7 @@ TEST_OUTPUTS = $(TEST_PROBLEMS:.in=.outs)
 TEST_OUTPUTL = $(TEST_PROBLEMS:.in=.outl)
 
 .SUFFIXES: .f90 .F90
-.PHONY: tests testl clean cleaner veryclean cleantest cleanertest verycleantest docs snes snel
+.PHONY: tests testl clean cleaner veryclean cleantest cleanertest verycleantest docs plots view-plots snes snel
 
 # SNES build
 BUILD_SNES = $(BUILD_BASE)/snes
@@ -113,5 +113,10 @@ verycleantest: cleantest cleanertest
 docs: images/figures/keff_results.png images/figures/test11_flux_comparison.png
 	make -C docs html
 
-images/figures/keff_results.png images/figures/test11_flux_comparison.png: verification.py
+plots: images/figures/index.html
+
+view-plots: images/figures/index.html
+	open images/figures/index.html
+
+images/figures/index.html images/figures/keff_results.png images/figures/test11_flux_comparison.png: verification.py
 	uv run python verification.py

@@ -7,12 +7,10 @@ requires-python = ">=3.10"
 license = { file = "LICENSE" }
 dependencies = [
   "ford",
-  "jupyter",
   "matplotlib",
   "mkdocs",
   "mkdocs-material",
   "numpy",
-  "notebook",
   "pre-commit>=4.5.1",
   "zensical>=0.0.43",
 ]

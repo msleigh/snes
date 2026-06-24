@@ -26,7 +26,6 @@ A one-dimensional discrete-ordinates neutron transport code written in Fortran, 
 ### Bundled calculations
 
 - Matplotlib
-- Jupyter
 
 ### Documentation
 
@@ -42,7 +41,6 @@ To install the necessary dependencies, ensure you have the following tools insta
 
 - GFortran
 - Matplotlib
-- Jupyter
 - Ford
 
 ## Usage
@@ -84,8 +82,15 @@ To create the Docker build (used in GitHub to build and run the tests):
 
     docker build -t snes .
 
-##  Verification
+## Verification
 
-Run the Jupyter notebook to plot the results:
+Generate the verification plots from the current test outputs:
 
-    jupyter notebook verification.ipynb
+    make plots
+
+This script rebuilds the test outputs for both schemes and refreshes the plots
+used in the README and docs.
+
+To inspect all generated plots in one view:
+
+    make view-plots

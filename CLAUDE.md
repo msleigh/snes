@@ -63,7 +63,7 @@ uv run ford docs/snes.md         # Build Ford API docs only
 
 ```bash
 uv sync                 # Install Python dependencies
-pre-commit install      # Set up git hooks (notebook output stripping, shellcheck)
+pre-commit install      # Set up git hooks (shellcheck)
 ```
 
 ## Key Conventions

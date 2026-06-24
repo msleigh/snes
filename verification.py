@@ -2,6 +2,81 @@ import matplotlib.pyplot as plt
 import re
 import glob
 import subprocess
+from pathlib import Path
+
+
+def write_plot_gallery(image_paths):
+    """Write a simple HTML gallery for quick visual inspection."""
+    gallery_path = Path("images/figures/index.html")
+    gallery_path.parent.mkdir(parents=True, exist_ok=True)
+
+    cards = []
+    for image_path in image_paths:
+        image_name = Path(image_path).name
+        title = image_name.replace("_", " ").replace(".png", "")
+        cards.append(
+            f"""
+    <section class="card">
+      <h2>{title}</h2>
+      <img src="{image_name}" alt="{title}">
+    </section>"""
+        )
+
+    gallery_path.write_text(
+        """<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SNES verification plots</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 2rem;
+        background: #f6f7f8;
+        color: #111;
+      }
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 1.5rem;
+      }
+      .card {
+        margin: 0 0 2rem;
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid #d9dde3;
+        border-radius: 0.75rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.06);
+      }
+      .card h2 {
+        margin: 0 0 1rem;
+        text-transform: capitalize;
+      }
+      .card img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>SNES verification plots</h1>"""
+        + "".join(cards)
+        + """
+    </main>
+  </body>
+</html>
+""",
+        encoding="utf-8",
+    )
 
 
 def read_flux(filepath):
@@ -125,3 +200,10 @@ add_material_annotations(ax2)
 plt.tight_layout()
 plt.savefig("images/figures/test11_flux_comparison.png", dpi=150)
 plt.savefig("docs/docs/images/test11_flux_comparison.png", dpi=150)
+
+write_plot_gallery(
+    [
+        "images/figures/keff_results.png",
+        "images/figures/test11_flux_comparison.png",
+    ]
+)
