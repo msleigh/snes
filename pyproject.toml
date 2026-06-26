@@ -10,8 +10,6 @@ dependencies = [
   "matplotlib",
   "mkdocs",
   "mkdocs-material",
-  "numpy",
-  "pre-commit>=4.5.1",
   "zensical>=0.0.43",
 ]
 
