@@ -300,6 +300,7 @@ CONTAINS
 
   IF ((snorder /=  2_ik) .AND. &
     & (snorder /=  4_ik) .AND. &
+    & (snorder /=  6_ik) .AND. &
     & (snorder /=  8_ik) .AND. &
     & (snorder /= 12_ik) .AND. &
     & (snorder /= 16_ik)) THEN
