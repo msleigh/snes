@@ -138,7 +138,7 @@ def plot_keff_results():
     plt.plot(x, snel, "d", color="indigo", markersize=18, label="Linear discontinuous")
     plt.plot(xc, yc, "k--", label="Critical ($k_\\mathrm{eff}=1$)")
     plt.xlim([0.5, n + 0.5])
-    plt.ylim([0.5, 1.1])
+    plt.ylim([0.9, 1.1])
     plt.xlabel("Test problem number", fontsize=20)
     plt.ylabel("$k_\\mathrm{eff}$", fontsize=20)
     plt.title("$k_{\\text{eff}}$ results", fontsize=30)
