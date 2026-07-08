@@ -1,6 +1,6 @@
 .PHONY: html mkdocs zensical ford sync-ford sync-images clean clobber
 
-# Needs to be consistent with input to Ford in snes.md
+# Needs to be consistent with input to Ford in ford.md
 markdown := $(wildcard *.md)
 fortran := $(wildcard ../src/*.f90)
 
@@ -33,8 +33,8 @@ sync-ford: $(FORD_OUT)
 	mkdir -p $(MKDOCS_DOCS_FORD)
 	rsync -a --delete $(FORD_DIR)/ $(MKDOCS_DOCS_FORD)/
 
-$(FORD_OUT): snes.md $(markdown) $(fortran)
-	$(FORD) snes.md
+$(FORD_OUT): ford.md $(markdown) $(fortran)
+	$(FORD) ford.md
 
 ford: $(FORD_OUT)
 
