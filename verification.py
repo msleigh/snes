@@ -7,10 +7,6 @@ PLOT_OUTPUTS = [
     "images/figures/keff_results.png",
     "images/figures/test11_flux_comparison.png",
 ]
-DOCS_PLOT_OUTPUTS = [
-    "docs/docs/images/keff_results.png",
-    "docs/docs/images/test11_flux_comparison.png",
-]
 
 
 def write_plot_gallery(image_paths):
@@ -146,7 +142,6 @@ def plot_keff_results():
     plt.grid()
     plt.xticks(x)
     plt.savefig(PLOT_OUTPUTS[0])
-    plt.savefig(DOCS_PLOT_OUTPUTS[0])
     plt.close()
 
 
@@ -185,7 +180,6 @@ def plot_reed_flux_comparison():
 
     plt.tight_layout()
     plt.savefig(PLOT_OUTPUTS[1], dpi=150)
-    plt.savefig(DOCS_PLOT_OUTPUTS[1], dpi=150)
     plt.close(fig)
 
 

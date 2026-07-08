@@ -9,7 +9,6 @@ extra_filetypes:
     py #
 graph: false
 output_dir: ./html
-page_dir: ./docs
 preprocess: true
 print_creation_date: true
 project_github: https://github.com/msleigh/snes

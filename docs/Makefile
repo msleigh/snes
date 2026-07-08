@@ -17,7 +17,7 @@ MKDOCS_DOCS_IMAGES := $(MKDOCS_DOCS)/images
 MKDOCS_DOCS_FORD := $(MKDOCS_DOCS)/ford
 FORD_DIR := html
 FORD_OUT := $(FORD_DIR)/index.html
-REFERENCE_IMAGES := docs/images
+REFERENCE_IMAGES := ../images/figures
 CLEAN_DIRS := latex $(FORD_DIR) $(MKDOCS_DIR)/.cache $(MKDOCS_DOCS_FORD)
 
 html: mkdocs

@@ -55,8 +55,6 @@ PLOT_STAMP = $(BUILD_BASE)/.verification_plots.stamp
 PLOT_FILES = images/figures/index.html \
              images/figures/keff_results.png \
              images/figures/test11_flux_comparison.png
-PLOT_DOC_FILES = docs/docs/images/keff_results.png \
-                 docs/docs/images/test11_flux_comparison.png
 
 .SUFFIXES: .f90 .F90
 .PHONY: tests testl clean cleaner veryclean cleantest cleanertest verycleantest docs plots view-plots snes snel
@@ -136,10 +134,10 @@ cleanertest:
 verycleantest: cleantest cleanertest
 
 # Documentation
-docs: $(PLOT_FILES) $(PLOT_DOC_FILES)
+docs: $(PLOT_FILES)
 	make -C docs html
 
-plots: $(PLOT_FILES) $(PLOT_DOC_FILES)
+plots: $(PLOT_FILES)
 
 view-plots: images/figures/index.html
 	@if [ -z "$(OPEN_CMD)" ]; then \
@@ -152,7 +150,7 @@ $(PLOT_STAMP): verification.py $(VERIFICATION_STAMP_S) $(VERIFICATION_STAMP_L)
 	uv run python verification.py
 	touch -r images/figures/index.html $@
 
-$(PLOT_FILES) $(PLOT_DOC_FILES): $(PLOT_STAMP)
+$(PLOT_FILES): $(PLOT_STAMP)
 	@test -f "$@" || { \
 		rm -f $(PLOT_STAMP); \
 		$(MAKE) $(PLOT_STAMP); \
