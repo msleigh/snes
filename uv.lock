@@ -1332,7 +1332,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "ford" },
+    { name = "ford", specifier = "<7" },
     { name = "matplotlib" },
     { name = "mkdocs" },
     { name = "mkdocs-material" },
