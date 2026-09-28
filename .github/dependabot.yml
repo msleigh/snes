@@ -9,5 +9,5 @@ updates:
     schedule:
       interval: "weekly"
     ignore:
+      # Later Ford releases conflict with Zensical's Markdown or Pygments requirements.
       - dependency-name: "ford"
-        versions: [">=6.2"]
