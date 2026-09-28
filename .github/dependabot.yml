@@ -10,4 +10,4 @@ updates:
       interval: "weekly"
     ignore:
       - dependency-name: "ford"
-        versions: [">=7"]
+        versions: [">=6.2"]

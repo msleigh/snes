@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 dependencies = [
-  "ford<7",
+  "ford<6.2",
   "matplotlib",
   "mkdocs",
   "mkdocs-material",
