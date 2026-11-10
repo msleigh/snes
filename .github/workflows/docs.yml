@@ -67,7 +67,6 @@ jobs:
   zensical:
     name: Experimental Zensical docs build
     runs-on: ubuntu-latest
-    continue-on-error: true
     defaults:
       run:
         shell: bash -l {0}
