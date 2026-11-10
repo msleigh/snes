@@ -10,7 +10,7 @@ dependencies = [
   "matplotlib",
   "mkdocs",
   "mkdocs-material",
-  "zensical>=0.0.72",
+  "zensical>=0.1.0",
 ]
 
 [project.optional-dependencies]
