@@ -86,7 +86,7 @@ uv run make -C docs html
 
 This uses Zensical to generate the final HTML site in the `mkdocs/site` directory. The Ford API reference is generated in `docs/html` and copied into the site during the build.
 
-To build with MkDocs during the migration, run:
+MkDocs is also supported:
 
 ```bash
 uv run make -C docs mkdocs
