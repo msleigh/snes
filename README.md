@@ -61,11 +61,6 @@ To build the documentation:
     uv run make -C docs html
     open mkdocs/site/index.html
 
-The default build uses Zensical. MkDocs is also supported:
-
-    uv run make -C docs mkdocs
-    open mkdocs/site/index.html
-
 ### Cleaning
 
 To clean up intermediate build files etc.:

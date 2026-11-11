@@ -24,7 +24,7 @@ Key directories and files:
 - `qa/`: Test inputs, outputs, and log files used for verification.
 - `nucdata/`: Nuclear data tables referenced by the test suite.
 - `docs/`: Ford-generated documentation source and build outputs.
-- `mkdocs/`: This MkDocs site configuration and content.
+- `mkdocs/`: Zensical site configuration and content.
 - `verification.py`: Script that generates the $k_\mathrm{eff}$ comparison plot.
 
 ## Fortran API reference
