@@ -1,11 +1,10 @@
-.PHONY: html mkdocs zensical ford sync-ford sync-images clean clobber
+.PHONY: html zensical ford sync-ford sync-images clean clobber
 
 # Needs to be consistent with input to Ford in ford.md
 markdown := $(wildcard *.md)
 fortran := $(wildcard ../src/*.f90)
 
 FORD := ford
-MKDOCS := mkdocs
 ZENSICAL := zensical
 
 MKDOCS_DIR := ../mkdocs
@@ -21,9 +20,6 @@ REFERENCE_IMAGES := ../images/figures
 CLEAN_DIRS := latex $(FORD_DIR) $(MKDOCS_DIR)/.cache $(MKDOCS_DOCS_FORD)
 
 html: zensical
-
-mkdocs: sync-ford sync-images
-	$(MKDOCS) build -f $(MKDOCS_CFG)
 
 zensical: sync-ford sync-images
 	$(ZENSICAL) build -f $(MKDOCS_CFG)
