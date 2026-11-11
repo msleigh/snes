@@ -11,7 +11,7 @@ PUBLIC :: iterate
 
 CONTAINS
 
-  SUBROUTINE iterate
+  SUBROUTINE iterate(errstat)
     !! Controls the iterative solution process
     !! Controls the iterative solution process
 
@@ -30,6 +30,8 @@ CONTAINS
   USE sweep_mod
 
   IMPLICIT NONE
+
+  INTEGER(KIND=ik), INTENT(OUT) :: errstat
 
   CHARACTER(LEN=7), PARAMETER :: unitname = 'ITERATE'
 
@@ -62,6 +64,7 @@ CONTAINS
   ! 1. Initialise variables
   !----------------------------------------------------------------------------
 
+  errstat = 0_ik
   keff = 1.0_rk
 
 #ifdef SNES
@@ -168,6 +171,7 @@ CONTAINS
             WRITE(*,*) unitname, &
               & ': Inners not converged - increase parameter IMAXINNERS'
             WRITE(*,*)
+            errstat = -1_ik
             RETURN
           ENDIF
         ENDIF
@@ -289,8 +293,10 @@ CONTAINS
     CASE(1_ik)
       WRITE(*,'(A32,I3,A17)') 'Convergence not achieved within ', imaxouter, &
         & ' outer iterations'
+      errstat = -1_ik
     CASE(2_ik)
       WRITE(*,'(A33)') 'Fission source is zero everywhere'
+      errstat = -1_ik
   END SELECT
   WRITE(*,*)
 

@@ -85,7 +85,7 @@ CONTAINS
   IF (ALLOCATED(field)) DEALLOCATE(field,STAT=allocation_status)
   IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Deallocation error - field', allocation_status
-    STOP
+    STOP 1
   ENDIF
   IF (ALLOCATED(fp)) WRITE(*,*) 'IMPOSSIBLE ERROR'
 
@@ -152,12 +152,12 @@ CONTAINS
   ALLOCATE(field(num_fields),STAT=allocation_status)
   IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Allocation error - field'
-    STOP
+    STOP 1
   ENDIF
   ALLOCATE(fp(num_fields,2),STAT=allocation_status)
   IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Allocation error - fp'
-    STOP
+    STOP 1
   ENDIF
 
   fld = 1_ik
@@ -177,7 +177,7 @@ CONTAINS
   DEALLOCATE(fp,STAT=allocation_status)
   IF (allocation_status > 0_ik) THEN
     WRITE(*,*) 'Deallocation error - fp'
-    STOP
+    STOP 1
   ENDIF
 
   RETURN

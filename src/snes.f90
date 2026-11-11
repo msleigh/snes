@@ -91,7 +91,7 @@ PROGRAM main
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
-    STOP
+    STOP 1
   ENDIF
 
   CALL allocstor( &
@@ -100,7 +100,7 @@ PROGRAM main
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
-    STOP
+    STOP 1
   ENDIF
 
   materialfile = 'snes.in'
@@ -112,7 +112,7 @@ PROGRAM main
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
-    STOP
+    STOP 1
   ENDIF
 
   IF (calctype == 2_ik) THEN
@@ -122,7 +122,7 @@ PROGRAM main
       WRITE(*,*) unitname, ': Non-zero error code'
       WRITE(*,*) unitname, ': Aborting...'
       WRITE(*,*)
-      STOP
+      STOP 1
     ENDIF
   ENDIF
 
@@ -134,9 +134,9 @@ PROGRAM main
     & errstat)
   IF (errstat /= 0_ik) THEN
     WRITE(*,*) unitname, ': Non-zero error code'
-    WRITE(*,*) unitname, ': Aborting,..'
+    WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
-    STOP
+    STOP 1
   ENDIF
 
   !----------------------------------------------------------------------------
@@ -149,14 +149,21 @@ PROGRAM main
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
-    STOP
+    STOP 1
   ENDIF
 
   !----------------------------------------------------------------------------
   ! 5. Solve neutron transport equation
   !----------------------------------------------------------------------------
 
-  CALL iterate
+  CALL iterate( &
+    & errstat)
+  IF (errstat /= 0_ik) THEN
+    WRITE(*,*) unitname, ': Non-zero error code'
+    WRITE(*,*) unitname, ': Aborting...'
+    WRITE(*,*)
+    STOP 1
+  ENDIF
 
   !----------------------------------------------------------------------------
   ! 6. Write output
@@ -169,7 +176,7 @@ PROGRAM main
       WRITE(*,*) unitname, ': Non-zero error code'
       WRITE(*,*) unitname, ': Aborting...'
       WRITE(*,*)
-      STOP
+      STOP 1
     ENDIF
   ENDIF
 
@@ -180,7 +187,7 @@ PROGRAM main
       WRITE(*,*) unitname, ': Non-zero error code'
       WRITE(*,*) unitname, ': Aborting...'
       WRITE(*,*)
-      STOP
+      STOP 1
     ENDIF
   ENDIF
 
@@ -225,7 +232,7 @@ PROGRAM main
     WRITE(*,*) unitname, ': Non-zero error code'
     WRITE(*,*) unitname, ': Aborting...'
     WRITE(*,*)
-    STOP
+    STOP 1
   ENDIF
 
   !----------------------------------------------------------------------------
