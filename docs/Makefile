@@ -20,7 +20,7 @@ FORD_OUT := $(FORD_DIR)/index.html
 REFERENCE_IMAGES := ../images/figures
 CLEAN_DIRS := latex $(FORD_DIR) $(MKDOCS_DIR)/.cache $(MKDOCS_DOCS_FORD)
 
-html: mkdocs
+html: zensical
 
 mkdocs: sync-ford sync-images
 	$(MKDOCS) build -f $(MKDOCS_CFG)

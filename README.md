@@ -61,9 +61,9 @@ To build the documentation:
     uv run make -C docs html
     open mkdocs/site/index.html
 
-To try the experimental Zensical build with the same content and `mkdocs/mkdocs.yml` configuration:
+The default build uses Zensical. To build with MkDocs during the migration:
 
-    uv run make -C docs zensical
+    uv run make -C docs mkdocs
     open mkdocs/site/index.html
 
 ### Cleaning
