@@ -868,7 +868,7 @@ dependencies = [
     { name = "zensical" },
 ]
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 dev = [
     { name = "pre-commit" },
 ]
@@ -877,10 +877,11 @@ dev = [
 requires-dist = [
     { name = "ford", specifier = "==6.1.13" },
     { name = "matplotlib" },
-    { name = "pre-commit", marker = "extra == 'dev'" },
     { name = "zensical", specifier = ">=0.1.0" },
 ]
-provides-extras = ["dev"]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pre-commit" }]
 
 [[package]]
 name = "soupsieve"
