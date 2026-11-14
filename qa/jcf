@@ -35,7 +35,8 @@ for NUC in 19423901 29423901 19223501 29223501 126nat01 111nat01 \
   cp "${NUCDIR}/a${NUC}.dat"   "./${NUC}.dat"
 done
 
-./a.out > snes.out 2>&1
+STATUS=0
+./a.out > snes.out 2>&1 || STATUS=$?
 
 {                                                           # skip
 echo "---------------------------------------------------"  # skip
@@ -61,4 +62,4 @@ echo "---------------------------------------------------"  # skip
 mv "${OUTPUT}" "${BASEDIR}/qa"
 [[ -f flux1.dat ]] && mv flux1.dat "${BASEDIR}/qa/${FLXDAT}"
 
-exit 0
+exit "${STATUS}"
