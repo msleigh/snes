@@ -102,7 +102,7 @@ Install the Python tooling and set up the git hooks:
 
 ```bash
 uv sync
-pre-commit install
+uv run pre-commit install
 ```
 
 The hooks run shellcheck and general hygiene checks (whitespace, line endings,
