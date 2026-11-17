@@ -8,7 +8,7 @@ license = { file = "LICENSE" }
 dependencies = [
   "ford==6.1.13",
   "matplotlib",
-  "zensical>=0.1.0",
+  "zensical>=0.1.1",
 ]
 
 [dependency-groups]
