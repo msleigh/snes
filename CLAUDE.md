@@ -17,7 +17,7 @@ make snes          # Build diamond-difference executable
 make snel          # Build linear-discontinuous executable
 make tests         # Build SNES and run all tests with validation
 make testl         # Build SNEL and run all tests with validation
-make clean         # Remove build artifacts (required when switching variants)
+make clean         # Remove build artifacts
 make clobber       # Full clean including test outputs
 ```
 
@@ -34,7 +34,7 @@ make clobber       # Full clean including test outputs
 
 ```bash
 uv run make -C docs html         # Build full documentation (Ford + Zensical)
-uv run ford docs/snes.md         # Build Ford API docs only
+uv run make -C docs ford         # Build Ford API docs only
 ```
 
 ## Code Architecture
@@ -46,12 +46,13 @@ uv run ford docs/snes.md         # Build Ford API docs only
 - `src/*.f90` - Shared code between variants
 
 ### Build System
-- Separate build directories: `build/snes/` and `build/snel/`
+- Separate build directories: `build/snes/` and `build/snel/`, so switching
+  variants needs no `make clean`
 - Compiler: GFortran with F95 standard (`-std=f95 -pedantic`)
 - All warnings treated as errors (`-Werror`)
 
 ### Test Infrastructure
-- `qa/snestp*.in` - 95+ test problem input files
+- `qa/snestp*.in` - Test problem input files
 - `references` / `referencel` - Reference K_EFF values for validation
 - `numcheck.py` - Numerical comparison with relative tolerance (1e-4)
 
@@ -69,4 +70,3 @@ uv run pre-commit install  # Set up git hooks (shellcheck)
 
 - Fortran code must comply with F95 standard
 - Test validation compares computed K_EFF (eigenvalue) against reference values
-- Run `make clean` when switching between SNES and SNEL builds
