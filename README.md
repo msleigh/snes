@@ -52,7 +52,8 @@ To build and run the tests:
     make tests  # Diamond-difference version
     make testl  # Linear-discontinuous version
 
-Do a `make clean` when switching between versions.
+Each version builds in its own directory, so there is no need to clean when
+switching between them.
 
 ### Documentation
 
